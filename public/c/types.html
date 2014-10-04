@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<style>
+table {margin:0 1em 0 2em;}
+</style>
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>型</h2>
+
+<p>Cのすべてのデータ、関数は型を持つ。</p>
+
+<p>型はそのデータがどのくらいのメモリを占有するか、
+その大きさのメモリに保存された０と１のビットバターンをどう解釈するかを定義する。
+</p>
+
+<table class='tabular'>
+<tr>
+<td>signed int i;<td>変数 i は32ビットのサイズで、
+そこに表現可能な2^32通りのパターンを-2^31から2^31-1 までの正負の整数と考える。
+キーワードsigned は多くの場合、省略される。
+</tr>
+
+<tr>
+<td style='width:8em;'>unsigned int i;
+<td>変数 i は32ビットのサイズで、
+そこに表現可能な2^32通りのパターンを 0 から 2^32-1 までの正の整数と考える。
+</tr>
+
+<tr>
+<td>float int i;<td>変数 i は32ビットのサイズで、
+小数点つきの数をx.y * 10^z の形式で近似する。
+メモリが高価だった頃は使い道があったが、最近は次に述べる double の使用が奨励されている。
+
+<!--
+使用中のコンピュータが扱える
+もっとも絶対値が小さい数(ゼロに近い数)は /usr/include/float.h ファイル中の FLT_MIN、
+もっとも絶対値が大きい数(ゼロから遠い数)は FLT_MAX で定義されている。
+-->
+</tr>
+
+<tr>
+<td>double int i;<td>変数 i は64ビットのサイズで、
+小数点つきの数をx.y * 10^z の形式で近似する。
+float の2倍、メモリを消費するが、その分、近似の精度が高い。
+double を計算するのにひどく時間がかかる時代もあったが、
+最近では float よりも短い時間で計算できるコンピュータもある。(実験してみよ。)
+<!--
+使用中のコンピュータが扱える
+もっとも絶対値が小さい数(ゼロに近い数)は /usr/include/float.h ファイル中の FLT_MIN、
+もっとも絶対値が大きい数(ゼロから遠い数)は FLT_MAX で定義されている。
+-->
+</tr>
+</table>
+
+<h3>配列</h3>
+
+<p>みんなが思っているほど、難しくない。</p>
+
+<table class='tabular'>
+<tr>
+<td style='width:8em;'>int is[100];
+<td>is は32ビットのエリア100個分のメモリを使って、整数を100個、格納できる。
+先頭の要素を is[0]、最後の要素をis[99] で参照する。
+</tr>
+
+<tr>
+<td>char name[32];
+<td>name は8ビットのエリア32個分のメモリを専有するデータ。
+</tr>
+</table>
+
+<h3>ポインタ</h3>
+
+<p>配列要素をポインタ演算で参照できる。昔はポインタの方が速かった時代もあったが、
+最近はまったく変わらない。ポインタで悩むくらいだったら配列使え。</p>
+
+<h3>文字列</h3>
+
+<p>Ｃの文字列はcharの配列で表現される。
+注意すべきことは、文字列の後ろに「文字列は以上で終わり」の印が必要なこと。
+</p>
+
+<p>文字列を扱う場合はポインタの方が楽なときもある、かな?</p>
+
+<pre class='c'>
+/*
+ * 配列版
+ */
+#include &lt;stdio.h>
+#include &lt;string.h>
+
+int main(void)
+{
+    char name[100]; // 大きめに宣言
+
+    strcpy(name, "大島 優子"); // string.h で定義される関数
+    printf("%s love.\n",name);
+    return 0;
+}
+</pre>
+
+<pre class='c'>
+/*
+ * ポインタ版
+ */
+#include &lt;stdio.h>
+
+int main(void)
+{
+    char * name; // char 型へのポインタ
+
+    name = "大島 優子";
+    printf("%s love.\n",name);
+    return 0;
+}
+</pre>
+
+
+<h3>構造体</h3>
+
+<p>整数や小数や文字列その他を組み合わせて一つのデータとして扱った方が
+プログラムの見通しが良くなる場合に使おう。</p>
+
+<p>現在は構造体でなく、オブジェクトを使う方が楽。</p>
+
+<p>
+|
+<a href="../index.html">back</a>
+|
+<a href="programs.html">prev</a>
+|
+<a href="if.html">next</a>
+|
+</p>
+
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

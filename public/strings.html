@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>文字、文字列</h2>
+
+<p>C言語は本来、テキスト処理を目的として設計された。
+  テキスト処理とはワープロや web などを想像するとそんなに外れていない。</p>
+
+<ul>
+  <li>文字は a とか b とか 1 とか 2 とか、そんなものです。</li>
+
+  <li>文字の 1 を数の 1 と区別するために、C言語は文字 1 を引用符'' で
+    囲んで '1'と表す。</li>
+
+  <li>数は四則演算、他の数と比較ができるが、
+    文字は他の文字との比較、他の文字をつないで文字列を作ることしかできない。</li>
+
+  <li>(進んだ学生に)実は上はウソです。
+    C言語の文字は他の文字と足したり引いたりして別の文字となることができる。
+    しかしそんなことできるのは C の汚点、あるいは、
+    知らないでもいい裏ワザと思った方が学習には効果的というのが
+    hkimura の考え。
+    十分、学習が進んだあとに裏ワザを理解したほうがすんなり行く。
+    世の中にはC言語よりも設計がスッキリした言語がたくさんあります。
+    
+  <li>C言語では文字列を文字の配列で表す。</li>
+
+  <li>最初に十分大きなサイズの文字の配列を用意し、<br>
+
+    <pre>char s[1024];</pre></li>
+
+  <li>配列要素に文字を代入していく。
+
+    文字列の最後の文字の後ろに文字列終了の印 NULL を置く。
+    NULL はファイル /usr/include/stdio.h で定義されているから、
+    プログラムには #include &lt;stdio.h> が必要だ。
+  宣言で用意した配列の NULL 文字が置かれた場所から後ろは基本的に使われない。
+  (か、ウィルス作者の好物、という話はもっと学習が進んでからにしようね)<br>
+
+ <pre>
+   s[0]='h';
+   s[1]='e';
+   s[2]='l';
+   s[3]='l';
+   s[4]='o';
+   s[5]= NULL;
+ </pre></li>
+
+  <li>上のようにして準備した配列を puts()、あるいは pritnf()すると
+    hello が画面上に表示される。改行を指示していないので、画面は
+
+<pre class="term">$ ./a.out
+hello$
+</pre>
+
+のように、プロンプト $ が hello の直右に出るはず。
+    
+  <li>文字列はC言語の得意分野なのだが大抵の人はつまずく。
+    一度で理解できなくても投げ出さないこと。
+    書籍や授業中の話をただ丸のみしようとせず、
+    自分なりの理解のしかたを見つけようと努力したらきっと理解できる。</li>
+
+</ul>
+
+<pre class="c">
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+
+int run(char s[ ])		// 関数run の引き数は要素が文字の配列。
+{
+	printf("hello, %s\n",s); // "hello, "の後ろに引き数を印字。
+	return 0;		// 成功の証 0 を返す。
+}
+
+int main(void)
+{
+	char name[256];		// 大きめの配列を準備。
+
+	scanf("%s",name);	// 端末から配列に文字列を読み込む。
+	return run(name);	// 配列を引き数に関数 run を呼ぶ。
+}
+</pre>
+
+<ul>
+  <li>run() が文字列 s を引き数に取るとき、run(char *s) としてもよい。
+    C言語の嫌らしさのひとつ。
+    char *s スタイルの書き方の方が広く使われている。</li>
+
+  <li>char *s; は char* s; と書いたほうがわかりやすいのでは?
+    アスタリスク * の位置に注意。</li>
+
+  <li>s[1] や s[256] は文字列に含まれる1番目、256番目の文字を意味する。
+  s[0] は?文字列の先頭文字です。</li>
+</ul>
+
+<pre class="c">
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+
+/*
+ char s[ ] を n 回、プリントする。
+ つまらん例題だ。
+*/
+int run(char s[ ], int n)
+{
+	int i;
+
+	for (i=0; i&lt;n; i++) {
+		printf("hello, %s\n",s);
+	}
+	return i;
+}
+
+int main(void)
+{
+	char name[256];
+
+	scanf("%s",name);
+	run(name,10);
+	return 0;
+}
+</pre>
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

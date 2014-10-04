@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>LED を点滅させる</h2>
+
+<p>main.c を以下のように書き換え、コンパイルし、各班のロボカーに焼きこめ。</p>
+
+<pre class='c'>
+#include "LPC13xx.h"
+#include "gpio.h"
+#include "vs-wrc103.h"
+#include "ixbus.h"
+<span class='warn'>
+void run(void)
+{
+	LED(1);
+}
+</span>
+int main(void)
+{
+	const unsigned short MainCycle = 60;
+	Init(MainCycle);
+<span class='warn'>
+        run();
+</span>
+        return 0;
+}
+</pre>
+
+<ul>
+  <li>関数 LED(0) を呼び出すと、LED は消灯する。</li>
+  <li>関数 LED(1) を呼び出すと、緑 LED が点灯する。</li>
+  <li>関数 LED(2) を呼び出すと、オレンジ LED が点灯する</li>
+  <li>関数 LED(3) を呼び出すと、緑とオレンジ、両方の LED が点灯する。</li>
+</ul>
+
+<h3>LED を点滅</h3>
+<pre class='c'>
+#include "LPC13xx.h"
+#include "gpio.h"
+#include "vs-wrc103.h"
+#include "ixbus.h"
+void run(void)
+{
+<span class='warn'>
+	LED(1);
+        LED(2);
+        LED(0);
+</span>
+}
+
+int main(void)
+{
+	const unsigned short MainCycle = 60;
+	Init(MainCycle);
+
+        run();
+
+        return 0;
+}
+</pre>
+
+<p>これではうまくいかない。</p>
+
+<h3>Wait(int n)</h3>
+
+<p>Wait(n) はロボカーの状態を n msec 維持する。</p>
+
+<p>Wait(1000) を入れて上を改良する。</p>
+
+<h3>繰り返しを使う</h3>
+
+<p>jturtle では <i>n</i>.times { ... } で、
+  なみ括弧に囲まれる部分のプログラムを<i>n</i>回、繰り返した。</p>
+
+<p>C 言語では for や while を使う。説明は授業中に。</p>
+
+<h3>個人課題</h3>
+
+<p>個人課題だが、わからない時、不安なときはチームメートに相談しよう。
+  それでもダメなら教員に。</p>
+
+<ol>
+  <li> 点灯 &rarr; 消灯を 1000msec 間隔で10回繰り返す。</li>
+
+  <li> 緑 &rarr; オレンジ &rarr; 消灯 をゆっくり10回繰り返す。</li>
+
+  <li> 緑 &rarr; オレンジ &rarr; 消灯 を素早く100回繰り返す。</li>
+
+  <li> 緑 &rarr; オレンジ &rarr; 消灯 を素早く100回繰り返したあとに、
+    緑+オレンジ &rarr; 消灯をゆっくり 3 回繰り返す。</li>
+
+</ol>
+
+<h4>チャレンジ</h4>
+
+<p>以下のことするためにはなにをどのようにプログラムすればいいだろうか?
+何がわかればプログラムできるか?</p>
+
+<ul>
+  <li>スイッチが押されてから点滅をスタートする。</li>
+
+  <li>スイッチが押されたら点滅を終了する。</li>
+
+  <li>スイッチが押されたらブザーを鳴らし、点滅スタート。
+    もう一度押されたらブザーとともに点滅も終わり。</li>
+
+  <li>スイッチが押されたら１秒間だけブザーを鳴らし、点滅スタート。
+    もう一度押されたらブザーを１秒間、ブザーの終了共に点滅も終わり。</li>
+  
+</ul>
+  
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

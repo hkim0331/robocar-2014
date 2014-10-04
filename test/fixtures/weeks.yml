@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  iteration: 1
+  content: MyText
+  c1: 2013-10-18
+  c2: 2013-10-18
+  c3: 2013-10-18
+  c4: 2013-10-18
+  note: MyText
+
+two:
+  iteration: 1
+  content: MyText
+  c1: 2013-10-18
+  c2: 2013-10-18
+  c3: 2013-10-18
+  c4: 2013-10-18
+  note: MyText

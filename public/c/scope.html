@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>変数のスコープ</h2>
+
+<p>
+変数のスコープはその変数が定義された場所から下、{ }の内部。
+</p>
+
+<p>
+関数のスコープはプログラム全体。
+</p>
+
+<p>(若干嘘だが、今の段階ではそう覚えておいて十分。)</p>
+
+<pre class="c">
+#include &lt;stdio.h>
+
+int x=100;
+
+void func1(void)
+{
+	printf("func1, x=%i\n",x);
+}
+void func2(void)
+{
+	int x=10;
+	printf("func2, x=%i\n",x);
+}
+void func3(int x)
+{
+	print("func3, x=%i\n", x);
+}
+void func4(int *x)
+{
+	*x = 5000;
+	printf("func4, x=%i, *x=%i\n", x, *x);
+}
+int main(void)
+{
+	int x;
+
+	x=300;
+	func1();
+	func2();
+	func3(x);
+	printf("main, x=%i\n",x);
+	func4(&amp;x);
+	printf("main, x=%i\n",x);
+	return 0;
+}
+</pre>
+
+<p>
+|
+<a href="../index.html">back</a>
+|
+<a href="">prev</a>
+|
+<a href="">next</a>
+|
+</p>
+
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

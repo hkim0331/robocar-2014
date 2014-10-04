@@ -1,0 +1,59 @@
+<h1>新規貸出</h1>
+<% if Rails.env == "development" %>
+@free_cars: <%= @free_cars %>
+<% end %>
+
+<%= form_for(@lent) do |f| %>
+  <% if @lent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lent.errors.count, "error") %> prohibited this lent from being saved:</h2>
+
+      <ul>
+      <% @lent.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id='notice'><%= flash[:notice]%></div>
+
+  <div class="field">
+    <%= f.label 'car #' %><br />
+    <%= f.select :car_id, @free_cars %>
+  </div>
+
+  <%= f.hidden_field :condition, value: Lent::Lent %>
+
+  <div class="field">
+    <%= f.label '貸し出し' %><br />
+    <%= f.date_select :lent_on %>
+  </div>
+
+  <div class="field">
+    <%= f.label '返却予定' %><br />
+    <%= f.date_select :willback_on %>
+  </div>
+
+  <div class="field">
+    <%= f.label '学生番号' %><span class="req">*</span><br />
+    <%= f.text_field :sid, value: '空欄不可' %>
+  </div>
+
+  <div class="field">
+    <%= f.label '連絡先' %><span class="req">*</span><br />
+    <%= f.text_field :contact, value: '空欄不可' %>
+  </div>
+
+  <div class="field">
+    <%= f.label '備考' %><br />
+    <%= f.text_area :note, :size => "20x4" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "貸し出し" %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', lents_path %>

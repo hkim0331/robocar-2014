@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>プロジェクトの始め方</h2>
+
+<p>ロボカープログラミングを進めるためのプロジェクトのひな形を作った。
+LED、モーターなどのテーマごとにこのひな形をコピーし、利用するとよい。</p>
+
+<ol>
+  <li>プロジェクトのひな形
+    <a href="/rsrc/robocar.zip">robocar.zip</a> をクリックしてダウンロード、
+    適当な場所にセーブする。
+    情報センターの firefox は「ダウンロード」フォルダの下に
+    robocar.zip をセーブするはず。</li>
+
+  <li>LPCXpresso を立ち上げ、左下方のペインから Import projects を選ぶ。
+    <p><img src="images/import.png"></p></li>
+
+  <li>browse ボタンを押し、
+    <p><img src="images/browse.png"></p></li>
+
+  <li>先ほどダウンロードした robocar.zip を選択し、open、そして
+next。
+    <p><img src="images/select.png"></p></li>
+
+  <li>robocar(robocar) が選択されていることを確認して、finish。
+
+    <p><img src="images/finish.png"></p></li>
+
+  <li>ウィンドウ左上ペインに現れる robocar を右クリック、Rename を選択して、
+    プロジェクト名を変えておく。
+    <p><img src="images/rename.png"></p></li>
+</ol>
+
+<h3>アドバイス</h3>
+
+<ul>
+  <li>robocar(robocar)が選択できない場合、
+    見えない robocar プロジェクトができている。
+    <p><pre class="term">$ rm -r ~/robocar/workspace/robocar</pre></p>
+
+    <p>を実行し、見えない robocar を消してから再度やってみるといい。</p></li>
+
+  <li>最後の Rename は今後、複数のプロジェクトを作るために必要です。</li>
+</ul>
+
+
+<p><a href="/index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

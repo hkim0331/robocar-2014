@@ -1,0 +1,30 @@
+<h1>グループ課題のアップロード</h1>
+
+<p>課題が出た時のみアップロードすること。
+そうじゃないのは授業の話を聞いてない証拠で
+<span class='red'>減点</span>。</p>
+
+<p>「グループで力を尽くして読みやすいプログラムを上げてこい」っつってるのに、
+インデントの崩れたプログラム、関数を使っていないプログラム、
+だらだらと main() に突っ込んだプログラムを上げてきたら
+担当教員の怒りを買う。</p>
+
+<p>授業の内容を反映していない、出すだけの回答は
+<span class='red'>激しく減点</span>。
+出さないほうがまし。</p>
+
+<fieldset>
+<legend>グループ番号は自動計算します。</legend>
+<%= form_tag({:controler => :exercise, :action => :create},
+    {multipart: true}) do %>
+<%= file_field :g_ex, :name %>
+<%= submit_tag "送信" %>
+<% end %>
+</fieldset>
+
+<% if flash[:alert] %>
+<p id="notice"><%= flash[:alert] %></p>
+<% end %>
+
+<br/>
+<%= link_to 'Back', exercises_path %>

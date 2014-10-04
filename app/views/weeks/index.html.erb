@@ -1,0 +1,37 @@
+<h1>進行状況</h1>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>内容</th>
+    <th><%= Week::WD[:c1] %></th>
+    <th><%= Week::WD[:c2] %></th>
+    <th><%= Week::WD[:c3] %></th>
+<!--
+    <th><%= Week::WD[:c4] %></th>
+-->
+    <th>備考</th>
+    <% if session[:admin] %>
+    <th></th>
+    <% end %>
+  </tr>
+
+<% @weeks.each do |week| %>
+  <tr>
+    <td><%= week.iteration %></td>
+    <td><%=raw week.content %></td>
+    <td><%= week.c1 %></td>
+    <td><%= week.c2 %></td>
+    <td><%= week.c3 %></td>
+<!--
+    <td><%= week.c4 %></td>
+-->
+    <td><%=raw week.note %></td>
+    <td><%= link_to image_tag('/images/edit.png'), edit_week_path(week) %></td>
+  </tr>
+<% end %>
+</table>
+
+<p>
+<%= link_to 'Back', "/" %>
+</p>

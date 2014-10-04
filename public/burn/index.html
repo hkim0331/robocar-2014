@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>バイナリをロボカーに焼く</h2>
+
+
+<p>ビルドがエラーなく終了すると、バイナリが
+    workspace/robocar/Debug/<b>プロジェクト名</b>.bin に出来上がる。</p>
+
+<p>ビルド時のエラーについては、
+LPCXpresso の<a href="/lpcxpresso/error_warn.html">エラーと警告</a>
+を参照のこと。</p>
+
+<h3>hkimura Mac で焼く場合</h3>
+
+<ol>
+  <li><a href="/upload">バイナリ転送</a>を開き、必要ならばログインする。</li>
+
+  <li>バイナリが保存されている場所を入力し、送信ボタンを押す。</li>
+
+  <li>アップロードの画面上に、アップロードしたファイル名を
+    <span style="color:green;">グループ番号_数字.bin</span>
+    と表示するので、それを<span class='warn'>メモ</span>、
+    ロボカーもって教卓付近に並ぶ。ケーブルはいらない。</li>
+
+  <li>ロボカーのスイッチをオフにし、黒スイッチを押したまま、
+    USB ケーブルをつなぐ。ケーブルの裏表に注意。
+    <p><img src="images/connect.jpg"></p></li>
+
+  <li>接続を確認したら、焼き込みのコマンド、
+
+    <p><pre class="term">$ ./burm 00_9598.bin</pre></p>
+    <p>を入力。00_9598.bin はアップロードの際にメモしたファイル名。</p>
+
+  <li>success が表示されたら、ケーブルを外し、
+    安全な場所でロボットのスイッチをon。
+    <p><pre class="term">$ ./burn.sh 00_9598.bin
+Volume CRP DISABLD on disk2 unmounted
+success.
+$
+</pre></li>
+</ol>
+
+<p>ロボカーはみんなのプログラムに沿って動き出す。</p>
+
+<h3>自分 Mac、Windows で焼く場合</h3>
+
+<ol>
+  <li>ロボカーのスイッチをオフにし、黒スイッチを押したまま、
+    USB ケーブルをつなぐ。ケーブルの裏表に注意(上の図参照)。</li>
+
+  <li>ロボカーは CRP DISABLD の名前で USB メモリとしてマウントされる。
+    下図は MacOSX のものだが、Windows でもほぼ同じ。
+    ただし、マウントするまで 30 秒弱かかる。
+    <p><img src="images/crp_disabld.png"></p></li>
+
+  <li>CRP DISABLD 中のファイル firmware.bin を削除する。</li>
+
+  <li>workspace/robocar/Debug/<b>プロジェクト名</b>.bin を
+    CRP DISABLD 中にコピー。</li>
+
+  <li>コピーが完了したら、USB メモリを安全な方法で外す。</li>
+
+  <li>ロボカーのスイッチをオン。</li>
+</ol>
+
+<h3>焼いてみよう</h3>
+
+<p><a href="/rsrc/check.bin">check.bin</a>をダウンロードし、
+上記の手順でロボカーに焼いてみよう。</p>
+
+<p><a href="../index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

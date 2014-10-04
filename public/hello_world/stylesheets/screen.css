@@ -1,0 +1,13 @@
+h3 h4, p {
+    margin-left: 1em;
+}
+
+span.red {
+    color:red;
+}
+
+/* 
+td {
+    vertical-align: top;
+}
+*/

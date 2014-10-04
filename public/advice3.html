@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<style>
+  p { margin-left:1em; }
+  /*
+  table { margin-left: 2em; border-collapse: collapse;}
+  td { border:1pt solid gray; padding: 5px;}
+  */
+  .ex {color:red;}
+  pre { font-family: monospace; font-size: 14pt; border:1pt solid gray;}
+</style>
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+
+<h2>もうひとつアドバイス</h2>
+
+<p>今まで言わなかったことも言ってみる。順不同。</p>
+
+<h3>Mtr_Run_lv(10000,-10000,0,0,0,0) の 10000 について</h3>
+
+<p>vs-wrc103.c中に関数 Mtr_Run_lv() の定義が見つかる。</p>
+
+<pre>
+  void Mtr_Run_lv(short m1,short m2,short m3,short m4,short m5,short m6)
+</pre>
+
+<p>6つの引き数の型は short ということで 16bit 符号付き整数。
+  表すことのできる数の範囲は -32768 ~ 32767。
+  この範囲を超える数を引き数に与えているプログラムは、
+  大抵の場合、理解不足。</p>
+
+<pre>
+/* overflow.c */  
+#include &lt;stdio.h>
+int main(void)
+{
+	short i=0;
+
+	while (1<2) {
+		printf("%i\n");
+        	i+=1;
+        }
+        return 0;            
+}
+</pre>
+
+<p>上のプログラムを実行すると変数 i の値は 0 から大きくなって、
+  32767 を超えると突如マイナスの -32768 になり、
+  その後 0 に向かって増え、0 を越えて 32767 を超えるとまた -32768 になり、
+  ... を繰り返す。</p>
+
+<p>そういう理由で、
+  Mtr_Run_lv(30000,-30000,0,0,0,0) と Mtr_Run_lv(40000,-40000,0,0,0,0)
+  は逆向きにモータを回す。わかる?</p>
+
+<p>たまたまうまく行っていることを重ねていると、
+  うまく行かなくなったとき、
+  うまく行かなくなった原因を見つけられなくなります。</p>
+
+<h3>main()の最初の2行</h3>
+
+<p>main() の最初の2行は省略できない。</p>
+
+<pre>
+  const unsigned short MainCycle = 60;
+  Init(MainCycle);
+</pre>
+  
+<p>vs-wrc103.c 中に void Init(unsigned short maincnt) が定義されており、
+  プログラム全体から参照される MainCnt の値を設定している。
+
+<p>MainCnt 自体の宣言は、やはり、vs-wrc103.c の中にある。さがしてみよ。</p>
+
+
+<h3>インデント</h3>
+
+<p>流儀はいろいろあると思うが、この授業では以下でいく。</p>
+
+<pre>
+  int func(int param)
+  {
+	int x = 0;
+	int y = 0;
+
+	for (x = 0; x < 10; x+=1) {
+		if (x == y) {
+			y = 3;
+		} else {
+			y = 4;
+			x = 5;
+		}
+		if (g(x) == f(y)) {
+			break;
+		}
+	}
+	return 0;
+  }  
+</pre>
+
+<ul>
+  <li>関数定義の { } は行頭に。</li>
+  <li>if, for の 開始の { の位置は同じ行、
+    閉じる } は if や for の先頭文字にあわせる。</li>
+  <li>{ } を省略できるときでも省略しない。</li>
+</ul>
+
+<h3> if (expr) {...} の expr の真偽は？</h3>
+
+<p>expr の値が 0 の場合は偽。それ以外は真。
+  変でも納得できなくても C ではそう決まっています。受け入れるしか。</p>
+
+<h3> 0 &lt; x &lt; 10 の値は何ですか？</h3>
+
+<p>そのようにプログラムしないが正解。</p>
+
+<p>コンピュータは（というより、Cコンパイラはと
+  言うのが正しい）(0 &lt; x) &lt; 10 のように解釈する。
+  x に -10 が代入されたとき、 x に 20 が代入されたとき、式の値はどうなるか、
+  考えてみよ。</p>
+
+<h3>#define は置き換え</h3>
+
+<pre>
+  #define STOP Mtr_Run_lv(0,0,0,0,0,0);
+</pre>
+
+<p>ま、悪くはないが、セミコロンが余計。</p>
+
+<p>セミコロンがあるおかげでエラーになる場合もある。</p>
+
+<pre>
+  #define LEFT ADRead(0);
+  if (LEFT < 512) {
+	     turn_left();
+  }
+</pre>
+
+<p>これは下のように展開される。</p>
+
+<pre>
+  if (ADRead(0); < 512) {
+	     turn_left();
+  }
+</pre>
+
+<p>かっこ()の中で文が終わっちゃってるよ。</p>
+
+<h3>#define よりも関数で</h3>
+
+<pre>
+  #define P 10000
+  #define FW Mtr_Run_lv(P,-P,0,0,0,0)
+</pre>
+
+<p>ま、悪くはないが、出力をもうちょっと小さくしたくなったら、
+  あるいは大きくしたくなったらめんどうじゃないかい？</p>
+
+<pre>
+  #define HALF 5000
+  #define FW_HALF Mtr_Run_lv(HALF,-HALF,0,0,0,0)
+  #define FW_QUARTER Mtr_Run_lv(HALF/2,-HALF/2,0,0,0,0)
+  #define FW_PENTA Mtr_Run_lv(P/5,-P/5,0,0,0,0)
+  ...
+</pre>
+
+<p>それよりも、パワーを引数に取る関数を定義したほうが柔軟じゃないか?</p>
+<pre>
+  void fw(int p)
+  {
+  	Mtr_Run_lv(p,-p,0,0,0,0);
+  }
+</pre>
+
+<p>さらに Wait する時間も引き数に取って、</p>
+  
+<pre>
+  void fw(int p, int t)
+  {
+  	Mtr_Run_lv(p,-p,0,0,0,0);
+  	Wait(t);
+  }
+</pre>
+
+<p>なんつう関数を作っておくと有効じゃないかい？</p>
+
+<h3>Windows はファイル名の大文字小文字を区別しない</h3>
+
+<h3>なんで main() は int main(void) なのか？</h3>
+
+<p>関数 main() は引き数を取れます。正当な関数 main()の書き出しは以下。</p>
+
+<pre>
+  int main(int argc, char * argv[])
+</pre>
+
+<p>引き数はターミナルのコマンドラインから与える。</p>
+
+<p>ロボカーの場合、ターミナルに相当するものがないので、
+  int main(void)にしているが、戻り値を報告するモノがないので、
+  役目上は、void main(void) が正しいはず。</p>
+
+<h3>いろんなフォルダに見つかる main.c</h3>
+
+<p>src/main.c (src フォルダに見つかる main.c の意味。この書き方は一般的なので
+  覚えること) だけを相手にしてください。</p>
+
+<p>Debug/main.c はビルド時に src/main.c をコピーしてできます。
+  Debug/main.c を必死に編集しても、
+  ビルドかけると編集していない src/main.c で上書きされる運命です。</p>
+
+<h3>LEDを利用する</h3>
+
+<p>「ロボカーが動かない」--- プログラムの開始時
+  つまり、外せない例の2行の直下で LED を点灯、
+  main 関数を抜ける直前、つまり、return 0 の直上に LED を消灯する
+  命令を入れておこう(そのほかのパターンでも可）。</p>
+
+<p>プログラムがウルトラスピードで駆け抜けてしまって、ロボカーが動いたのに
+  気が付かないことがある。</p>
+
+
+<h3>変数名の日本語つづり</h3>
+
+<p>正しい英語がベター。辞書を引こう。</p>
+
+<p>気の利いた変数名、関数名はよりよいプログラマへの第一歩とも言える。</p>
+
+
+<h4 class='ex'>演習問題</h4>
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+
+<h2>LPCXpresso</h2>
+
+<div><img src="images/startup.png"></div>
+
+<p>
+<strike>情報センターの PC にはロボカープログラム開発用に
+LPCXpresso 6.0.2 をインストールした
+(2013/09/30 現在、最新)。</strike>
+C言語の学習、および、ロボカープログラム開発は LPCXpresso を使う。
+LPCXpresso は 2013/10/03 現在、バージョン6.0.2が最新だが、
+残念ながら、情報センターでは安定に動作しない。
+ちょっと古いがバージョン４を使う。
+</p>
+
+<p>
+しかし、LPCXpresso バージョン４は、プログラムの開発、
+バイナリのコンパイルまでできるが、肝心のロボカーへの焼付けができない。
+みんなの作ったバイナリは
+私の
+<a href="/upload">Mac に転送</a>
+し、
+<a href="/burn/">ロボカーへ焼きこむ</a>。この手順に慣れよう。</p>
+
+<p>
+個人PC(Mac, Windows)に
+<a href="to_my_pc.html">LPCXpresso をインストール</a>し、
+授業中それを使うことにすれば問題は解決する。
+個人PC の使用を奨励する。
+</p>
+
+<h3>LPCXpresso の立ち上げ</h3>
+
+<ol>
+
+<li>ターミナルから、小文字で、lpcxpresso &amp; (リターンキー）<br/>
+  <pre class="term">$ lpcxpresso &amp;</pre></li>
+
+
+<li>ワークスペース（作成したプログラムのセーブ場所）を聞かれるので、<br/>
+
+<p style='border:1pt solid black; span:3px;'>
+/home/t/########/robocar/workspace</p>
+
+をこたえて OK ボタンを押す。
+######## の部分はログインに使うアカウント(半角英数字８ケタ)。
+<span class='warn'>まちがうと成績評価されない</span>。正確に。</li>
+
+<li>次のウィンドウが表示される。
+
+<p><img src="images/lpc_unregistered.png"></p>
+
+<p>
+情報センターPCで起動するのは評価版。
+大きなプログラムは作れない。
+<a href="to_my_pc.html">自分PCにインストール</a>し、
+開発元からライセンスキーを取得すると、この制限がなくなる。<p>
+
+<p>
+受講生が作るロボカープログラムの平均的なサイズは 3k。
+最近３年間で制限の 8k を越えたグループはなかった。
+OKボタンを押して進む。
+</p>
+</li>
+
+</ol>
+
+<p><a href="../index.html">back</a></p>
+
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

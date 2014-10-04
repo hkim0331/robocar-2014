@@ -1,0 +1,32 @@
+<h1>ロボカー貸し出し状況</h1>
+
+<% if Rails.env=="development" %>
+student_id: <%= session[:student_id] %><br/>
+previous_url: <%= session[:previous_url] %>
+<% end %>
+
+<p style='color:red'>開発中(まだ動作しないよ)</a>
+
+<%= render 'navi' %>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Condition</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cars.each do |car| %>
+  <tr>
+    <td><%= (car.id % Car::Max)+1 %>
+    <td><%= Car::Conditions[car.condition] %></td>
+    <td><%= link_to 'Edit', edit_car_path(car) %></td>
+    <td><%= link_to 'Destroy', car, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= render 'navi' %>

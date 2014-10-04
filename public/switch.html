@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>スイッチ</h2>
+
+<p>今日のプロジェクトは <span class='red'>Switch</span>。簡単です。</p>
+
+<h3>int getSW(void)</h3>
+
+<p>getSW() は呼び出し時にスイッチが押されていたら 1, 離されていたら 0 を返す。</p>
+
+<p>ロボカー(に限らず、一般のメカは)電源投入時は動作が不安定。
+ロボカーを走らせるのに電源投入後数秒待つのはいい作戦。
+ボタンを押すまで動作開始を猶予しよう。</p>
+
+<pre class="c">
+void wait_until_sw_on(void)
+{
+	for (;;) {
+		if (getSW() == 1) { // getSW() の戻り値は１か?
+			break;
+		}
+	}
+}
+
+void run(void)
+{
+	wait_until_sw_on();
+	go(100);
+}
+</pre>
+
+<p>wait_until_sw_on はループを break で抜けてから関数の最後に達して、
+関数呼び出しから戻る。</p>
+
+<h3>改良</h3>
+
+<p>上のwait_until_sw_on( )はスイッチを押した直後に戻る。
+スイッチを押してまだロボカーを押さえている間にgo(100)を呼び出すことになる。
+スイッチを離して n 秒待ってから動作開始させよう。</p>
+
+<pre class="c">
+void wait_until_sw_off(void)
+{
+	for (;;) {
+		if (getSW() != 1) { // != はノットイコール
+			return;
+		}
+	}
+}
+
+void wait_on_off_and(int n)
+{
+	wait_until_sw_on(); // 問題:この行を省略するとどうなるか?
+	wait_until_sw_off();
+	Wait(n*1000);
+}
+
+void run(void)
+{
+	wait_until_on_off_and(1);
+	go(100);
+}
+</pre>
+
+<p>
+wait_until_sw_off() はループの途中で return して関数呼び出しから戻っている。
+</p>
+
+<h3>さらに状態をわかりやすく</h3>
+
+<p>(情報処理応用の)ロボカーは printf() で状態を書き出すようなことはできない。
+プログラムがどこを実行中か、音やLEDで確認できるようにしよう。やり方は自由だ。</p>
+
+<pre class="c">
+void wait_on_off_and(int n)
+{
+	wait_until_sw_on();
+	LED(3);
+	wait_until_sw_off();
+	LED(0);
+	Wait(n*1000);
+}
+</pre>
+
+<h3>return, break, continue</h3>
+
+<ul>
+
+  <li><b>return 式;</b> は式の値を戻り値として、関数の呼び出しを終了する。
+    関数の戻り値が void の時は戻す値がないから、
+    式を伴わない <b>return;</b>で戻るように。<br/>
+
+    <pre class="c">
+int will_return(void)
+{
+	int i;
+	for (i=0; i&lt; 100; i++) {
+		if (i==50) {
+			return i; // return from here.
+		}
+	}
+	return i; // never comes here.
+}
+</pre></li>
+
+  <li><b>break;</b> はbreakを含む最も内側のループ(for でも while でもよい)から抜ける。
+    for や while の後ろに実行文があれば、それから関数を続ける。<br/>
+
+<pre class="c">
+int will_break(void)
+{
+	int i;
+	for (i=0; i&lt; 100; i++) {
+		if (i==50) {
+			break;
+		}
+	}
+	return i; // return from here.
+}</pre></li>
+
+  <li><b>continue;</b>はループの最初にもどってやり直し。<br/>
+
+<pre class="c">
+int will_continue(void)
+{
+	int i;
+	for (i=0; i&lt; 100; i++) {
+		if (i!=50) {
+			continue;
+		}
+	}
+	return i; // return from here.
+}</pre>
+</li>
+
+</ul>
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

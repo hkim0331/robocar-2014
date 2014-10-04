@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Car:</b>
+  <%= @lent.car_id %>
+</p>
+
+<p>
+  <b>Condition:</b>
+  <%= Lent::Conditions[@lent.condition] %>
+</p>
+
+<p>
+  <b>Lent on:</b>
+  <%= @lent.lent_on %>
+</p>
+
+<p>
+  <b>Willback on:</b>
+  <%= @lent.willback_on %>
+</p>
+
+<p>
+  <b>Back on:</b>
+  <%= @lent.back_on %>
+</p>
+
+<p>
+  <b>Sid:</b>
+  <%= @lent.sid %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @lent.contact %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @lent.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_lent_path(@lent) %> |
+<%= link_to 'Back', lents_path %>

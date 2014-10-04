@@ -1,0 +1,25 @@
+<%= form_for(@icome) do |f| %>
+  <% if @icome.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@icome.errors.count, "error") %> prohibited this icome from being saved:</h2>
+
+      <ul>
+      <% @icome.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sid %><br />
+    <%= f.text_field :sid %>
+  </div>
+  <div class="field">
+    <%= f.label :attend_at %><br />
+    <%= f.datetime_select :attend_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

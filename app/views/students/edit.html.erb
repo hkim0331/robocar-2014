@@ -1,0 +1,8 @@
+<h1>Editing student</h1>
+
+<% if Rails.env == "development" %>
+params:<%= params %>
+<% end %>
+<%= render 'form' %>
+
+<%= link_to 'Back', students_path %>

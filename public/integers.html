@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<style>
+  b { color: red;}
+</style>
+<title>robocar 2013</title>
+
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>整数</h2>
+
+
+<pre class="c">
+  int x;
+  unsigned int ux;
+  short s;
+  unsigned short us;
+  const unsigned short MainCycle = 60;
+</pre>
+
+<p>
+  int は 32 ビットのエリアにおさまるデータ。
+  そこにおさまっているデータで整数を表すと考える。</p>
+
+<p>
+  32ビットで表現できるパターンは 000...0(32このゼロ）から
+  111...1(32個の1）、
+  パターンの総数は 2<sup>32</sup>-1。（なんでそうかを考えること）。
+  実はこれが <b>unsinged int</b>。</p>
+
+<p>
+  数に正負あった方が便利なときは、これを半分ずつ、正と負に使う。
+  かつ、ビットの機械的な操作が連続している方が便利なので、
+  「1足してゼロになる数のパターン」を-1 を表すと決める。
+  とすると -1 は 111..11 (1が32個）。
+  1足して-1になる数のパターンを -2 としたいので、-2 は 111...10。
+  -3, -4 も同様。これが <b>int</b>。</p>
+
+<p>
+  ロボカー以外のプログラムではあまり見かけないが、
+  <b>short</b> はメモリをケチって16ビットで表す数を考える。
+</p>
+
+<p><b>unsigned short</b> は
+  16 ビットで表されるパターンすべてが正の数を表すと考える。
+  short は正負半分。Mtr_Run_lv()の引き数は short と定義されているので、
+  -32768~32677 の数を表現できる。
+  この範囲を超える数を代入しても、
+  おさまったビットで何を表しているかが決定される。</p>
+
+<p>const unsigned short の
+  <b>const</b>
+  は再代入を許さないという約束。
+  MainCycle の値は一度 60 にしたら、
+  プログラムが終了するまで変更できない。
+  まちがって代入したらコンパイル時に警告が出る。</p>
+
+<h3>問題</h3>
+
+<ol>
+  <li>次のプログラム（断片）は何を表示するか？プログラムを動かして確認せよ。
+    プログラムを動かすに必要なものは適宜補え。
+
+    <pre class="c">
+      short i;
+
+      for (i=0; i>=0; i++) {
+      	printf("%d\n",i);
+      }
+      printf("finished. i=%i\n",i);
+    </pre>  
+  </li>
+
+  <li>次はどうか？プログラムを動かして確認せよ。
+    プログラムを動かすに必要なものは適宜補え。
+    <pre class="c">
+      unsigned short i;
+
+      for (i=0; i>=0; i++) {
+      	printf("%d\n",i);
+      }
+      printf("finished. i=%i\n",i);
+    </pre>  
+  </li>
+
+  <li>8ビットの符号付きあるいは符号なし整数を何で表すか？調べよ。
+  「テストにでないから」などとすすんで調べないのは結局理解も深まらない。</li>
+  
+</ol>
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<h1>2013 ロボカーの感想・後輩へのアドバイス</h1>
+
+<p>
+  授業の感想、来年度受講生へのアドバイス、ヒントなど、
+  Your Advice, please をクリック後、ぞんぶんに書き残してくれ。
+  例年通り、無記名です。個人と関係するデータは記録しません。
+</p>
+
+<p><%= link_to 'Your Advice, please', new_advice_path %></p>
+
+<% @advices.each do |advice| %>
+  <% rows = advice.body.split.count + 1 %>
+  <div>
+  <span style='color:green;'><%= advice.updated_at %>,</span><br>
+  <textarea cols='60' rows='<%= rows %>'><%= advice.body %></textarea>
+  </div>
+<!--  <hr> -->
+<% end %>
+
+<p><%= link_to 'Your Advice, please', new_advice_path %></p>
+
+
+

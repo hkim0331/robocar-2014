@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>student_id = [<%= session[:student_id] %>]</p>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<p>
+  <b>Members:</b>
+  <%= @group.members %>
+</p>
+
+<p>
+  <b>Car:</b>
+  <%= @group.car_id %>
+</p>
+
+
+<!--
+<%#= link_to 'Edit', edit_group_path(@group) %> |
+-->
+<%= link_to 'Back', groups_path %>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>プログラムは関数の集まり</h2>
+
+<p>Cのソースプログラムは単純なテキスト。
+セーブするファイルの名前の最後に".c"をつけるきまり。</p>
+
+<p>人間が読めるソースプログラムをコンピュータのための機械語に翻訳してから
+プログラムは実行可能になる。
+翻訳のことをコンパイル、
+翻訳するプログラムをコンパイラと言う。
+コンパイラは、linux ターミナル上では cc あるいは gcc、
+LPCXpresso などでは Build メニューで呼び出せる。
+</p>
+
+<p>翻訳できないプログラムが見つかると、翻訳作業は中断、
+プログラムは実行不能。翻訳できない部分を見つけ出し、修正する作業(これがもっとも大事)を
+<b>デバッグ</b>という。</p>
+
+<p>Cのソースプログラムは関数の集まり。
+関数の中に一つだけメイン関数がある。
+メイン関数の名前は main と決められている。
+プログラム中に複数のメイン関数があったらエラー。</p>
+
+<pre class="c">
+/*
+ * Ｃのプログラムは関数の集まり。
+ */
+関数1
+
+関数2
+
+関数3
+
+メイン関数
+
+関数4
+</pre>
+
+<p>メイン関数はプログラムのスタートポイント。
+プログラムの実行がメイン関数の最後に達するか、
+(メイン関数中で)return 文に出会うと、
+プログラムは終了する。</p>
+
+
+<p>
+|
+<a href="../index.html">back</a>
+|
+<a href="index.html">prev</a>
+|
+<a href="types.html">next</a>
+|
+</p>
+
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

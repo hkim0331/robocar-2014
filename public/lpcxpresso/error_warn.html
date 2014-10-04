@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<title>robocar 2013</title>
+<style>
+img.icon {
+width:1em;
+}
+</style>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>LPCXpresso:エラーと警告</h2>
+
+<p>往々にして、プログラムに間違い（エラー）を入り込ませてしまうが、
+  それはきわめてふつうのこと。卑屈になる必要はない。</p>
+
+<p>
+  しかし、エラーがあるプログラムはビルドできない。ロボカーにも焼けない。</p>
+
+<p>
+  LPCXpresso が「ビルドに失敗しました」と表示するのを無視し、
+  ビルドできたと思い込んで修正前の以前のバイナリを繰り返しロボカーに焼き付け、
+  泥沼にはまったチームが過去にはあった。</p>
+
+<h4><img src="images/red.png"> について</h4>
+
+<p>
+  ビルド時にエラーを見つけると LPCXpresso は
+  エラーが見つかった行の左に<span class='warn'>赤丸</span>にペケの
+  <img src="images/red.png" class="icon">
+  マークを表示する。</p>
+
+<p><img src="images/error-1.png"></p>
+
+<p>ウィンドウの右の方に見える
+<span style="border:1pt solid red;">&nbsp;&nbsp;</span>
+はそのエラーがプログラム全体のどのあたりにあるかを示している。
+（スクリーンショットは黄色っぽいが本来は赤です）。</p>
+
+<p><img src="images/red.png" class="icon">
+の上にカーソルをあわせると、どんなエラーかがポップアップする。</p>
+
+<p><img src="images/error-2.png"></p>
+
+<p>上の例ではとじ括弧が余計だ。それを削除し、セーブするか、ビルドすると
+<img src="images/red.png" class="icon">、
+<span style="border:1pt solid red;">&nbsp;&nbsp;</span>
+は消える。</p>
+<p>
+  プログラムのどこかに一カ所でも
+  <img src="images/red.png" class="icon">
+  があるときはビルドは失敗する。
+  <img src="images/red.png" class="icon">
+  の原因を LPCXpresso の助けを得、あるいは自力で解決しなければ、
+  ビルドできない。ここが勉強のしどころだ。</p>
+
+<h4><img src="images/warn.png"> について</h4>
+
+<p>時には <img src="images/warn.png" class="icon">
+が表示されることがある。</p>
+
+<p><img src="images/warn.png" class="icon">
+は警告（warning）といい、ビルドは失敗しないものの、
+  エラーにつながる箇所であることを示すものだ。たとえば下の例では
+  関数 run() の戻り値は int と宣言しているのに、戻り値を return していない。
+</p>
+
+<p><img src="images/warn-3.png"></p>
+
+<p>ビルドには成功しても、run() を呼び出す関数（ここでは main())
+  でその戻り値を利用したりすると、戻り値がないんだから確実にエラーとなる。</p>
+
+<p>どれが軽微なミスで、
+  どれが重大なエラーにつながるかは場数を踏まなければわからないかも。</p>
+
+<p>プログラムに表示された
+  警告マーク<img src="images/warn.png" class="icon" />
+  の意味がわからなかったらとりあえず
+  hkimura や TA に質問してみよう。</p>
+
+<p>今期の授業が終わる頃には警告の意味を理解し、修正できるようになる(はず)。なってほしい。</p>
+
+<p><a href="../index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

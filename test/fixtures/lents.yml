@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  car_id: MyString
+  : 1
+  condition: MyString
+  : 1
+  lent_on: MyString
+  : 2013-10-09
+  willback_on: MyString
+  : 2013-10-09
+  back_on: MyString
+  : 2013-10-09
+  sid: MyString
+  : MyString
+  contact: MyString
+  : MyString
+  note: MyString
+  : MyText
+
+two:
+  car_id: MyString
+  : 1
+  condition: MyString
+  : 1
+  lent_on: MyString
+  : 2013-10-09
+  willback_on: MyString
+  : 2013-10-09
+  back_on: MyString
+  : 2013-10-09
+  sid: MyString
+  : MyString
+  contact: MyString
+  : MyString
+  note: MyString
+  : MyText

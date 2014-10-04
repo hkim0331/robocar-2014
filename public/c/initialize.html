@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>変数の初期化</h2>
+
+<p>C言語の変数定義は「記憶領域の確保」しかしない。
+確保した領域がどんなビットパターンで埋められているか、予期できない。
+</p>
+
+<pre class="c">
+// 親切なコンパイラだと、エラーになる。
+#include &lt;stdio.h>
+int main(void)
+{
+	int x;
+	printf("x=%i\n",x);
+	return 0;
+}
+</pre>
+
+<ul>
+<li>定義と同時に初期化<br>
+
+<pre class="c">
+#include &lt;stdio.h>
+int main(void)
+{
+	int x=1;
+
+	printf("x=%i\n",x);
+	return 0;
+}
+</pre></li>
+
+<li>使う直前に初期化<br>
+
+<pre class="c">
+#include &lt;stdio.h>
+int main(void)
+{
+	int x;
+
+	x=1;
+	printf("x=%i\n",x);
+	return 0;
+}
+</pre></li>
+
+</ul>
+
+<p>
+|
+<a href="../index.html">back</a>
+|
+<a href="">prev</a>
+|
+<a href="">next</a>
+|
+</p>
+
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

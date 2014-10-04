@@ -1,0 +1,18 @@
+<h1>コンパイル済みバイナリの転送</h1>
+
+<% if flash[:alert] %>
+    <p id="notice"><%= flash[:alert] %></p>
+<% end %>
+
+<% unless session[:student_id] %>
+<p>送信にはログインが必要です。</p>
+<% end %>
+
+<p>グループIDは自動計算します。</p>
+<%= form_tag({action: 'upload'}, {multipart: true}) do %>
+<%= file_field :bin, :name %>
+<%= submit_tag "送信" %>
+<% end %>
+
+<%= render 'navi' %>
+

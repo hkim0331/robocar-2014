@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<title>robocar 2013</title>
+<style>
+td.box { border: 1pt solid black; width: 100px;}
+td {text-align: center;}
+table {margin-left: 2em;}
+</style>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>もっとセンサ</h2>
+
+<p>今回のプロジェクトは
+<span class='red'>Sensor3</span>
+とする。</p>
+
+<p>前回の課題の２番は完成したか?</p>
+
+<ul>
+<li>長さ 1cm 以下の黒は無視して直進、
+  長さ 5cm 以上の黒に乗ったらブザー鳴らして停止。</li>
+</ul>
+
+<p>
+これまで理解がいい加減、不足していた受講生はそろそろついてこれなくなる時期。
+授業のノートをとっているか? 前の学期のC言語教科書、読み返しているか?
+過去のプロジェクトに
+<img src="lpcxpresso/images/red.png" style='width:16px;'>
+ついたままにしてるだろ。それ、不可。</p>
+
+<h3>配列の準備(配列が使えなかったら?)</h3>
+
+<p>以下、main.c 中に。順番に全部作れ。過去に学習した内容もある。</p>
+
+<ol>
+
+<li>関数 void step(int n) を作れ。step(1)ではロボットカーは 1cm 前進する。</li>
+
+<li>ロボットカーのモーターを止める関数 void stop(void) を作れ。</li>
+
+<li>関数 int is_black(int n)を作れ。
+  is_black(0)はセンサ 0 が黒をみたら 1、白を見たら 0 を返す。
+  is_black(1)はセンサ 1 が黒をみたら 1、白を見たら 0 を返す。
+</li>
+
+<li>関数 int both_blacks(void) を作れ。
+  both_blacks( ) はセンサ１とセンサ２がともに黒を感知したら 1、
+  それ以外では 0 を返す。</li>
+
+<li>関数 void stop_if_black_5(void) を作れ。次は決してスマートなプログラムではないが、
+この問題の回答サンプル。真似するだけは C に届かない。Ｄだ。
+
+<pre class="c">
+void stop_if_black_5(void)
+{
+	int b0, b1, b2, b3, b4;
+
+	step(1);
+	if (both_blacks()) {
+		b0=1;
+	} else {
+		b0=0;
+	}
+
+	step(1);
+	if (both_blacks()) {
+		b1=1;
+	} else {
+		b1=0;
+	}
+
+	...
+	...
+
+	if (b0==1 && b1==1 && ...) {
+		buzzer();
+		stop();
+	}
+}
+</pre>
+</li>
+</ol>
+
+<h3>配列</h3>
+
+<p>上の b0, b1, ... を配列で置き換える。</p>
+<pre class="c">
+void stop_if_black_5(void)
+{
+	<span class='red'>int b[5];</span>
+
+	step(1);
+	if (both_blacks()) {
+		<span class='red'>b[0]</span>=1;
+	} else {
+		<span class='red'>b[0]</span>=0;
+	}
+
+	step(1);
+	if (both_blacks()) {
+		<span class='red'>b[1]</span>=1;
+	} else {
+		<span class='red'>b[1]</span>=0;
+	}
+	...
+	...
+
+	if (<span class='red'>b[0]</span>==1 && <span class='red'>b[1]</span>==1 && ...) {
+		buzzer();
+		stop();
+	}
+}
+</pre>
+
+<h3>もっと配列</h3>
+
+<p>配列を使ったことをもっと利用する。配列とループは相性抜群。
+<span class='red'>注意:</span>
+以下のプログラムは最近の C でないとコンパイルできない。
+古いのだとエラーで動かない。そんときはおとなしく int b[5] と定義しよう。
+関数名も戻さないと。</p>
+
+<pre class="c">
+void stop_if_black(<span class='red'>int n</span>)
+{
+	int b[<span class='red'>n</span>];
+	<span class='red'>int i;
+
+	for (i=0; i&lt;n; i++) {
+		step(1);
+		if (both_black()) {
+			b[i]=1;
+		} else {
+			b[i]=0;
+		}
+	}</span>
+
+	if (b[0]==1 && b[1]==1 && ...) {
+		buzzer();
+		stop();
+	}
+}
+
+...
+
+int main(void)
+{
+	...
+	stop_if_black(5);
+	...
+}
+</pre>
+
+<p>問題<br>
+if (both_black( )) { ... } の部分、もっとスマートに書けないか?
+</p>
+
+<p>問題<br>
+b[0]==1 && b[1]==1 && ... の部分、もっとスマートに書けないか?
+</p>
+
+<p>問題<br>
+5cm の黒だけでなく、6cm、7cm、8cm の黒を認識するには?
+</p>
+
+<p>問題<br>
+上のプログラムはそのままではみんなのライントレースプログラムに
+<span class='red'>組み込めない</span>。どこをどう工夫すればいいか?
+</p>
+
+<h3>どこにでもありそうな図</h3>
+
+<pre class="c">
+int b0, b1, b2, b3, b4;
+</pre>
+
+<table>
+<tr><td>b0<td class='box'></tr>
+<tr><td>b1<td class='box'></tr>
+<tr><td>b2<td class='box'></tr>
+<tr><td>b3<td class='box'></tr>
+<tr><td>b4<td class='box'></tr>
+</table>
+
+<pre class="c">
+int b[5];
+</pre>
+
+<table>
+<tr><td><td>0<td>1<td>2<td>3<td>4</tr>
+<tr>
+<td>b&nbsp;
+<td class='box'>
+<td class='box'>
+<td class='box'>
+<td class='box'>
+<td class='box'>
+</tr>
+</table>
+
+<p>普通の変数と配列との差を表している。</p>
+
+<h3>本日の課題</h3>
+
+<ul>
+<li>過去
+<img src="lpcxpresso/images/red.png" style="width:16px">
+残っているチーム:
+全部なくせ。そうじゃなくとこれからもっときつくなる。</li>
+
+<li>過去
+<img src="lpcxpresso/images/red.png" style="width:16px">
+ないチーム:
+昨年度課題に挑戦してみなさい。
+ライントレース中に黒長さを識別する。</li>
+
+</ul>
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

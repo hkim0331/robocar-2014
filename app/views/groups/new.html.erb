@@ -1,0 +1,9 @@
+<h1>新規グループ作成</h1>
+
+<% if Rails.env == "development" %>
+<p>student_id = [<%= session[:student_id] %>]</p>
+<% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', groups_path %>
