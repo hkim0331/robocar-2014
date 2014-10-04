@@ -9,5 +9,10 @@ install:
 		--exclude='*.ai' \
 		. ${HOST}:${BASE}
 
+2013-2014:
+	gsed -i.bak \
+		's/<title>robocar 2013<\/title>/<title>robocar 2014<\/title>/' \
+		[a-zA-Z]*.html
+
 clean:
 	${RM} *~ *.bak */*.bak
