@@ -2,7 +2,8 @@
 lock '3.2.1'
 
 set :application, 'robocar_2014'
-set :repo_url, 'git.melt.kyutech.ac.jp:git/robocar_2014.git'
+#set :repo_url, 'git.melt.kyutech.ac.jp:git/robocar_2014.git'
+set :repo_url, 'https://github.com/hkim0331/robocar-2014.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call

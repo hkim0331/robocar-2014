@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# bug?
+
+puts "seed Student"
 Student.transaction do
     Student.delete_all
     File.foreach("data/sid_uid.txt") do |line|
@@ -15,6 +16,7 @@ Student.transaction do
   end
 end
 
+puts "seed Icome"
 Icome.delete_all
 File.foreach("data/ucome.log") do |line|
   next if line=~/^#/
@@ -27,10 +29,9 @@ File.foreach("data/ucome.log") do |line|
     raise "format error"
   end
   Icome.create(sid: sid, attend_at: attend);
-  print('.')
 end
-puts
 
+puts "seed Car"
 Car.transaction do
   Car.delete_all
   Car::Max.times do
@@ -38,11 +39,13 @@ Car.transaction do
   end
 end
 
+puts "seed Week"
 Week.delete_all
 (1..16).each do |w|
   Week.create(iteration: w)
 end
 
+puts "seed Lent"
 Lent.delete_all
 (1..Car::Max).each do |c|
 	Lent.create(car_id: c, condition: Car::Free, sid: 'hkimura', contact: '3457')

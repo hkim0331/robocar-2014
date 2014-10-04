@@ -17,8 +17,7 @@ class StudentsController < ApplicationController
   # GET /students/1.json
   def show
     @student = Student.find(params[:id])
-    unless session[:student_id] == @student.id ||
-        session[:student_id] == Student::AdminId
+    unless session[:student_id] == @student.id || session[:admin]
       redirect_to students_url, notice: "他のユーザのプロフィールは閲覧できません。"
       # 2013-10-21, return is necessary here.
       return
@@ -47,8 +46,7 @@ class StudentsController < ApplicationController
   # GET /students/1/edit
   def edit
     @student = Student.find(params[:id])
-    unless session[:student_id] == @student.id ||
-        session[:student_id] == Student::AdminId
+    unless session[:student_id] == @student.id || session[:admin]
       redirect_to students_url, notice: "他のユーザのプロフィールは編集できません。"
     end
   end
@@ -91,7 +89,7 @@ class StudentsController < ApplicationController
   # DELETE /students/1.json
   def destroy
     alert = nil
-    if session[:student_id] == Student::AdminId
+    if session[:admin]
       @student = Student.find(params[:id])
       sid = @student.sid
       @student.destroy
