@@ -12,14 +12,14 @@
 /db/data.yml
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log
 /tmp
 
 # lpcxpresso workspace
 /workspace
 
-# ignore uploads
-/upload/*.bin
+# ignore  uploads
+/beuto-bin/*.bin
 
 #
 Gemfile.lock

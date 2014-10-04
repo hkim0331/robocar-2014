@@ -24,7 +24,7 @@ VERSION=$1
 TODAY=`date +%Y-%m-%d`
 
 # files to footprint version number.
-FILES="upload/b upload/burn.sh"
+FILES="beuto-bin/b beuto-bin/burn.sh"
 
 # views
 for i in ${FILES}; do

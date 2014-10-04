@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
-# VERSION: 0.1.1
+# VERSION: 0.1.2
 
 if [ ! $# = 1 ]; then
-    echo usage: burn prog
+    echo usage: burn prog.bin
     exit
 fi
 
 CRP="/Volumes/CRP DISABLD"
-rm -f "${CRP}"/firmware.bin
-cp $1.bin "${CRP}"/firmware.bin
+rm "${CRP}"/firmware.bin
+cp $1 "${CRP}"/firmware.bin
 if [ $? = 0 ]; then
     diskutil unmount "${CRP}"
+    sleep 1
+# can not rm since file's owner differs.
+#    rm $1
     echo success.
 else
-    diskutil unmount "${CRP}"
     echo burn failed.
 fi
 
