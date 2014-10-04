@@ -36,7 +36,7 @@ class WeeksController < ApplicationController
 
   # GET /weeks/1/edit
   def edit
-    unless session[:student_id] == Student::AdminId
+    unless session[:admin]
       redirect_to students_url, notice: "admin only."
     end
     @week = Week.find(params[:id])

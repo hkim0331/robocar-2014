@@ -16,6 +16,7 @@ class Student < ActiveRecord::Base
 
   Admin = "hkimura"
 
-  AdminId = Student.find_by_sid(Student::Admin).id
+# when rake db:seed, Admin is not exist.
+#  AdminId = Student.find_by_sid(Student::Admin).id
 
 end
