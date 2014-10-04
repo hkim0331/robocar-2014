@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>Hello, World! をもう一度</h2>
+
+<p>前期にやったはずの Hello, World! に LPCXpresso で再度アタックしてみる。</p>
+
+<ol>
+  <li>File > New > Project...を選んで、さらに C/C++ から C Project を選択、
+    Next ボタンを押す。
+    <p><img src="images/c_project.png"></p></li>
+
+  <li>project name: に hello_world とタイプ、
+    Project type: から Hello World ANSI Project を選択後、Finish ボタン
+    (右の方の MacOSX GCC は気にしなくて大丈夫。
+    資料を作っているのが情報センターの Linux でなく MacOSX なだけ）。
+
+    <p><img src="images/hello_world.png"></p></li>
+
+  <li>hello_world プロジェクトができあがる。
+    src > hello_world.c をダブルクリック。
+    <p><img src="images/hello_world_c.png"></p></li>
+
+  <li>いつも通りに Build したら、Binaries > hello_world の上で右クリック、
+    Run As > Local C/C++ Application を選択。ウィンドウ右下の区画に、
+    !!Hello, World!! が表示される。
+    <p><img src="images/run_as.png"></p></li>
+
+</ol>
+
+<h3>/* ... */ はコメント</h3>
+
+<p>
+バイナリを作成するとき完全に無視される。</p>
+
+<p>
+プログラムを読むヒトの役に立つことを書いておくと読むヒトはうれしい。</p>
+
+<h3>#include の意味</h3>
+
+<p>
+<span class='red'>#include</span>
+の右に示されるファイルのコピーをその場所にペーストしろという命令。</p>
+
+<p>
+ファイル名が &lt; &gt; で囲まれる場合、
+ファイルはフォルダ /usr/include の下を探す。</p>
+
+<p>
+ファイル名が " " で囲まれる場合、
+ファイルはそのプログラム(今の場合、hello_world.c)
+がセーブされるフォルダ(同じく hello_world)
+の下を探す。</p>
+
+<p>
+#include と &lt; &gt;
+の間にはスペース文字を一つ以上入れるのがプログラムのルール。</p>
+
+<p>/usr/include/stdlib.h と/usr/include/stdlib.h ファイルを探してみよ。</p>
+
+<h3>int main(void) {...} の意味</h3>
+
+<p>
+int <span class='red'>main</span>(void)
+は引き続く{...} の部分に書かれる(「定義される」と言うと格調高い)
+コンピュータへの命令群に名前 main をつける。
+
+<p>int main(<span class='red'>void</span>)は
+  「外部から void データを受け取って {...} の命令を実行する。」の意味。
+  void は「無効」の意味で、 "I have no girl friends." の no の用法に近い。
+  実際には外部データを受け取らずに {...} の命令の実行を開始する。</p>
+
+<p><span class='red'>int</span> main(void)
+  は {...} に定義される命令を実行した結果、なにかしら
+  int 型のデータが関数 main を呼び出したモノに戻されるであろうという予告。</p>
+
+<p>{...} は基本的に上から下へ順番に一つずつ命令が実行される。
+  命令はセミコロン(;)までがひとまとまりの命令文になる。
+  セミコロンを打ち忘れるとコンピュータは命令文の区切りがわからなくなる。
+  例えば、</p>
+
+<pre class="c">
+  1;
+</pre>
+は正しいＣの文(なにを意味するのかは今は問わない)。
+<pre class="c">
+  1+2;
+</pre>
+も正しいＣの文。
+<pre class="c">
+  1
+  +
+  2;
+</pre>
+としても意味は上のプログラムと変わらない。しかし、
+<pre class="c">
+  1;
+  +;
+  2;
+</pre>
+は意味が違うし、エラーにもなる。次もセミコロンが見当たらないので、底抜け
+(文の終わりがみつからない)エラーになってしまう。
+<pre class="c">
+  1
+  +
+  2
+</pre>
+
+
+<h4>{ } の位置と意味</h4>
+
+<p>左波括弧にいちばん近い右波括弧までをひとまとまりとする。</p>
+
+<p>複数の命令文をひとつにまとめるときに使う。</p>
+
+<p>C言語には、{ } に囲まれる文が一文だけのときは
+  { } を省略できる特別ルールがあるにはあるが、
+  情報処理応用の受講生はこの特別ルールを
+  <span class='red'>忘れろ</span>。使うとろくなことがない。</p>
+
+<p> { } の後のセミコロン(;)は大抵の場合、あってもなくても同じだが
+  無害と思ってつけまくると思わぬところで失敗する。
+  <span class='red'>{ } の後ろにセミコロンはありえない</span>
+  とひとまず覚えておく。
+</p>
+
+<table>
+  <tr>
+    <td>
+<pre class="c">
+int main(void)
+{
+	char name[32];
+	printf("your name?\n");
+	scanf("%s",name);
+	printf("nice to meet you, %s\n",name);
+	return 0;
+}
+</pre>
+    <td>
+      { } 内の5つの文をまとめて関数 main と名前をつける。
+      関数定義のときは { および } を独立した行の先頭に書こうぜ。
+  </tr>
+  <tr>
+    <td>
+<pre class="c">
+	while (1==1) {
+		LED(1);
+	}	
+</pre>
+      <td>
+	1==1 の間(つまり、いつまでも、無限に)、LED(1)を呼び出す。
+  </tr>
+  <tr>
+    <td>
+<pre class="c">
+	while (1==1)
+	{
+		LED(1);
+	}	
+</pre>
+      <td>
+	{ } の位置が違ってもプログラムの意味は変わらない。でも、
+	情報処理応用ではこのスタイルはやめよーぜ。
+  </tr>
+  <tr>
+    <td>
+<pre class="c">
+  	int i;
+	i=0;
+	while (1==1) {
+		LED(i%2);
+		Wait(1000);
+		i+=1;
+	}
+</pre>
+      <td>
+	1==1 の間、{ } 中の3つの命令を繰り返す。
+	LED(i%2)はiが偶数の時LED(0)、iが奇数のときLED(1)を呼び出す。
+	{ } に含まれる3つ目の文、
+	i +=1; で i の値はループの度に１ずつ大きくなる。
+	ループの外側には変数 i を使うための準備(宣言と初期化)が見える。
+  </tr>
+  <tr>
+    <td>
+<pre class="c">
+  	int i;
+	i=0;
+	while (i &lt; 100) {
+		LED(i%2);
+		Wait(1000);
+		i+=1;
+	}
+</pre>
+      <td>
+	変数iの値が100未満の間、{ }を繰り返す。
+  </tr>
+  <tr>
+    <td>
+<pre class="c">
+  	int i;
+	i=0;
+	while (i &lt; 100); {
+		LED(i%2);
+		Wait(1000);
+		i+=1;
+	}
+</pre>
+      <td>
+	よく見るまちがい。ビルドはエラーにならないが、
+	決してプログラマーが考えたようには動かない。
+	上のプログラムとの違いを見つけられますか?
+  </tr>
+  <tr>
+    <td>
+<pre class="c">
+  	int i;
+	i=0;
+	while (1==1) {
+		LED(i%2);
+		Wait(1000);
+		i+=1;
+		if (i &gt; 100) {
+			break;
+		}
+	}
+</pre>
+      <td>
+	if は ( ) が真の時、{ } を実行する。
+	break は自分を含む最も内側のループから脱出する。
+	if は後日、もう一度詳しい説明がある。
+  </tr>
+</table>
+
+<h4>puts(...)の意味</h4>
+
+<p>puts(...)は ... の部分の文字列をターミナル上に表示する命令。
+命令文となるためには最後（右端）にセミコロンが必要であったことを思い出せ。</p>
+
+<h4>return ...の意味</h4>
+
+<p>return ... は ... の部分のモノを関数の戻り値として、呼び出し側に戻す命令。
+命令文となるためには最後（右端）にセミコロンが必要であったことを思い出せ。</p>
+
+<p>{...} の中で return に出会うと、それより後の命令は捨てられる。</p>
+
+<h3>演習問題</h3>
+
+<ol>
+  <li>!!!Hello World!!!の代わりに good morning kyutech を表示するように。</li>
+  <li>good morning kyutech を 3行、表示するように。</li>
+  <li>good morning kyutech を 300行、表示するように。</li>
+  <li>本当に300行書いたかどうかを確認するにはどのような方法があるか？</li>
+</ol>
+
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

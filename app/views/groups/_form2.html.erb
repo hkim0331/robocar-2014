@@ -1,0 +1,26 @@
+<%= form_tag(:controller => "groups", :action =>"create") do |f| %>
+  <div class="field">
+    <%= label_tag 'グループ名' %><br />
+    <%= text_field_tag :name, params[:name], size: 60 %>
+  </div>
+  <div class="field">
+    <%= label_tag 'メンバー1 (学生番号(半角数字))' %><br />
+    <%= text_field_tag :member1, params[:member1], size: 60 %>
+  </div>
+  <div class="field">
+    <%= label_tag 'メンバー2 (学生番号(半角数字))' %><br />
+    <%= text_field_tag :member2, params[:member2], size: 60 %>
+  </div>
+  <div class="field">
+    <%= label_tag 'メンバー3 (学生番号(半角数字))' %><br />
+    <%= text_field_tag :member3, params[:member3], size: 60 %>
+  </div>
+  <div class="field">
+    <%= label_tag 'メンバー4 (学生番号(半角数字), 非常用)' %><br />
+    <%= text_field_tag :member4, params[:member4], size: 60 %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>配列</h2>
+
+<img src="images/thin_thick.png">
+
+<p>黒線にそって進む。細い線のところでは立ち止まらず、
+  太い線の上で止まるよう、ロボカーをコントロールしたい。
+  どんな工夫が考えられるか？</p>
+
+<p>配列を使って、過去10単位時間の光センサの状態を記録するようにしてみる。
+足りないプログラムは適宜補え。</p>
+
+<pre class="c">
+#define YES 1
+#define NO  0
+#define MAX 10
+
+int left_is_black(void)
+{
+	if (ADRead(0) &lt; 512) {
+		return NO; // 白
+	} else {
+		return YES; // 黒
+	}
+}			 
+
+int all_black(int data[]) // stop_on_thick_line() 中の定義と合わせる。
+{
+	unsigned int i;
+
+	for (i=0; i &lt; MAX; i++) {
+		if (data[i] == NO) { // 一個でも白なら all_black じゃない。
+			return NO;
+		} else {
+			; //なにもしないでループを続ける。
+		}
+	}
+	return YES; // 全部黒だった。
+}
+
+void stop_on_thick_line(void)
+{
+  	int data[MAX];
+	unsigned int i=0;
+  
+	while (1) {
+		forward(50);
+  		data[i % MAX] = left_is_black();
+		i += 1;
+		if (all_black(data)) {
+  			break;
+		}
+	}
+	stop();
+}  
+</pre>  
+
+<h3>配列の宣言</h3>
+
+<pre class="c">
+  要素の型 配列の名前[要素の数];
+</pre>
+
+<ul>
+  <li>要素の型は、変数の型と同じ。int やら double やら char などです。</li>
+  <li>要素の名前も変数と同じ。</li>
+  <li>要素の数は整数。</li>
+</ul>
+
+<h3>配列要素にアクセス</h3>
+
+<pre class="c">
+  配列名[添字]
+</pre>
+
+<ul>
+  <li>添字は 0 からスタート。配列の最初の要素は 配列名[0] でアクセス。</li>
+  <li>最後の要素は配列の最後の要素は 配列名[n] でアクセス。
+    ここで、n は配列を宣言した時の要素数から１を引いた数。</li>
+</ul>
+
+<h3>配列を引き数にとる関数</h3>
+
+<p>少しややこしいかも。</p>
+
+<pre class="c">
+  戻り値の型 関数名(配列の型 配列の名前[])
+</pre>
+
+<p>"配列の名前[]" は "* 配列の名前" ともできる。あとは授業で。</p>
+  
+<h3>演習問題</h3>
+
+<ol>
+  <li>上の例題で、20個の連続データを判定するように改造しなさい。</li>
+
+  <li>上の例題で、20個の連続データ中、黒が 5 個以内なら加速し、
+    15 個以上なら減速するように。</li>
+
+  <li>両目のデータを処理できるようプログラムを改造せよ。</li>
+
+  <li>0-99までの整数を配列に代入し、それを総和せよ。</li>
+  
+  <li>sizeof 演算子について調べよ。</li>
+
+  <li>まっすぐなラインをテスト走行させ、
+    そのときの左右センサの感知する値を分析し、
+    滑らかなストレート走行を実現する左右電圧を調整する賢いプログラム、
+    書けませんか。</li>
+</ol>
+
+<h3>文字列</h3>
+
+<p>C言語では文字列を文字(char)の配列として表す。
+  文字列の最後は文字列の最後を示す特別なデータ(NULL)を置く。</p>
+
+<p>(未完)</p>
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<style>
+  p { margin-left:1em; }
+  table { margin-left: 2em; border-collapse: collapse;}
+  td { border:1pt solid gray; padding: 5px;}
+  .ex {color:red;}
+  pre { font-family: monospace; font-size: 14pt;}
+</style>
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+
+<h2>中間アドバイス</h2>
+
+<p>受講生のプログラミングを見て気がついたこと、
+  言わなくちゃならないと思ったこと、
+  もう一度言わなくちゃならないと思ったこと。 </p>
+
+<h3>ノート、鉛筆</h3>
+
+<p>授業のメモ、開発すべきプログラムのスケッチをノートに書いているか？</p>
+
+<p>ウェブに資料を準備すると、
+  どこかのバカ大学の学生は「いつでも見られる」と安心し、
+  ついでに（試験前にぱっと見れば間に合う）と誤解する。
+そんなの間に合いません。</p>
+
+<p>ろくに考えてないことをスマート装ってプレゼンするより、
+  目の前の課題について自分はどう解決するかをじっくり考える力、
+  隣の人に紙に書いてきちんと説明できる力が大切だ。
+  他人に説明できない「プログラム」など、
+  人間よりも融通が利かないコンピュータに理解できるはずがない。
+  何よりも自分が理解してないことの裏返し。</p>
+
+<p>ネット上で <a href="boke.html">ボタン</a>
+  を見つけたら反射的にクリック、で、理解が深まるわけねーだろ。</p>
+
+<h3>文</h3>
+
+<p>C プログラムは上から下へ、左から右へ、順番に実行される。</p>
+
+<p>これに当てはまらないのを三つ、あるいはそれ以上述べよ。</p>
+
+<ol>
+  <li><input size="60"></li>
+  <li><input size="60"></li>
+  <li><input size="60"></li>
+  <li><input size="60"></li>
+</ol>
+
+<p>上の四角に書き込むべき内容を思いつかない学生、
+  授業を受けているとは言わない。座っているだけ。反省しなさい。</p>
+
+<h3>変数は使う前に宣言</h3>
+
+<p>変数は使う前に宣言する。次のプログラムは変数 x を整数の入れ物、
+  言い換えると整数を代入できる整数として宣言する。</p>
+
+<pre>int x;</pre>
+
+<p>変数 x の有効範囲はその宣言から後ろ、その宣言を含むもっとも内側の
+  { } の内部。変数のスコープという。</p>
+  
+<h3>変数の初期値</h3>
+
+<pre>int x;</pre>
+
+<p>と宣言しただけでは x の値は定まっていない。
+  初期化しない変数には予測できないゴミが入っている。</p>
+
+<table>
+  <tr>
+  <td>
+<pre>
+int x;
+x=0;
+</pre>
+  <td>宣言したあと、忘れずに初期化する。
+  </tr>
+  <tr>
+  <td><pre>int x=0;</pre><td>宣言と同時に初期化する。
+  </tr>
+  <tr>
+  <td>
+<pre>
+x=0;
+int x;
+</pre>
+  <td>使ったあとに宣言しても手遅れ。エラー。
+  </tr>
+</table>
+    
+<h3>代入</h3>
+
+<p>C言語では代入によって変数（コンピュータのある一部の情報）の値を書き換え、
+  その状態を人間がプログラムの結果として解釈する。</p>
+
+<p>代入は、
+
+  <pre> x = y; </pre>
+
+<p>のようにプログラムし、左辺の変数に右辺の式を評価した値がコピーされる。</p>
+
+<p>代入には方向性がある。= の代わりに &lArr; などを使い、
+  x &lArr; y; とプログラムできるように決めてあった方が良かったかもしれない。
+  残念でした。
+</p>
+
+<table>
+  <tr>
+    <td><pre> x = 1;</pre><td>変数 x に整数 1 を代入する。</tr>
+  <tr>
+    <td><pre> 1 = x;</pre><td>整数 には代入できない。エラー。</tr>
+  <tr>
+    <td><pre> x = y;</pre><td>変数 x に変数 y の値を代入する。</tr>
+  <tr>
+    <td><pre> x = f(y);</pre><td>変数 x に関数 f(y) の値を代入する。</tr>
+  <tr>
+    <td><pre> f(y) = x;</pre><td>関数 f(y) の値には代入できない。エラー。</tr>
+  <tr>
+    <td><pre> x == y ;</pre><td>変数 x と変数 y の値が等しくなかったら 0、等しかったら式全体の値が 0 以外の値となる。代入文ではない。</tr>
+  <tr>
+    <td><pre> x = y = z;</pre><td>x = (y = z);と解釈される。</tr>
+</table>
+
+<h4 class='ex'>確認</h4>
+
+<pre>
+  int x=1;
+  int y=2;
+  int z=3;
+
+  x=y=z;
+  printf("x=%i, y=%i, z=%i\n", x, y, z);
+</pre>
+
+<ol>
+  <li>上のプログラム(断片)で、
+    printf() によって表示される x、y、ｚの値はそれぞれいくつか?</li>
+
+  <li>上の例をちょっと変更。x=y=z; の行を x=y==z; に変更する。
+    表示される x、y、ｚの値はそれぞれいくつか?</li>
+
+  <li>上の結果を実際にプログラムを書いて確かめよ。</li>
+
+  <li>(授業中に問題出します。)
+</ol>
+
+
+<h3>プログラム全体の構成</h3>
+
+<p>上から下へ、必要な #include、必要な #define、 利用する関数、
+  最後に関数 main()をプログラムする。この順番でなくてもよいが、
+  慣れるまでは守れ。</p>
+
+<table>
+<tr>
+<td>
+<pre>
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+</pre>
+<td>
+最初に（上に）インクルード文。
+インクルードの必要がなければ、
+言い換えれば、
+プログラム中で使う関数や定数をすべて自力でプログラムするなら、
+#include する必要はない。
+</tr>
+<tr>
+<td>
+<pre>
+#define GOOD 0
+</pre>
+<td>必要ならば #define。
+</tr>
+<tr>
+<td>
+<pre>
+int add1(int n)
+{
+	int result;
+
+	result =n+1;
+	return result;
+}
+</pre>
+<td>引き数 n の値に応じて整数を返す関数 add1() の定義。
+</tr>
+<tr>
+<td>
+<pre>
+int sub(int n, int m)
+{
+	return n-m;
+}
+</pre>
+<td>引き数二つの整数の差を返す関数 sub()の定義。
+</tr>
+<tr>
+<td>
+<pre>
+int main(void)
+{
+	int x;
+	int y;
+	int z;
+
+	x=1;
+	y=2;
+	z=add1(x);
+	x=sub(x,y);
+	return GOOD;
+}
+</pre>
+<td>ファイルの一番下、最後に main() が無難。
+</tr>
+</table>
+
+<p>関数や変数には名前がつく。その名前で表す物が関数である場合、
+  名前の後ろに () をつけることが慣習的におこなわれている。</p>
+  
+<h3>関数内部の構成</h3>
+
+<p>料理に例えることができる。</p>
+
+<p>料理に必要な材料（変数の準備、宣言）を料理の前に整える。そのあとで
+  料理にとりかかる。</p>
+
+<table>
+<tr>
+<td>
+<pre>
+int main(void)
+{
+</pre>
+<td>戻り値 関数名（引き数）の形で関数を定義する。
+  料理の名前に相当。
+</tr>
+<tr>
+<td>
+<pre>  
+	int x;
+	int y;
+	int z;
+</pre>
+<td>変数宣言。料理の材料準備に相当。
+</tr>
+<tr>
+<td>
+<pre>   
+	x=1;
+	y=2;
+	z=add1(x);
+	x=sub(x,y);
+	return GOOD;
+</pre>
+<td>料理の手順。材料をどう加工するか。<br/>return で出来上がり。
+</tr>
+<tr>
+<td>
+<pre>  
+}
+</pre>
+<td>関数 main() はここまで。
+</tr>
+</table>
+
+<h3>インデント（字下げ）</h3>
+
+<p>ウェブで説明するのはめんどう。授業中に何例かやってみよう。</p>
+
+<ol>
+<li><a href="indent/ex1.c">ex1.c</a></li>
+<li><a href="indent/ex2.c">ex2.c</a></li>
+<li><a href="indent/ex3.c">ex3.c</a></li>
+<li><a href="indent/ex4.c">ex4.c</a></li>
+<li><a href="indent/ex5.c">ex5.c</a></li>
+</ol>
+
+
+<h3>名前</h3>
+
+<p>一文字目は英字。2文字目以降は英数字。アンダーバー(_)は英字と考える。</p>
+
+<h3>全角文字、半角文字の違い</h3>
+
+<h3>大文字、小文字の区別</h3>
+
+<h3>予約語</h3>
+
+<p><b>if, while, for, return, break, do, int, float, double, char, long,
+  short, switch, default, goto</b> は予約語。(もうちょっとあるかな？）
+
+<p>予約語は関数や変数の名前に使えない。</p>
+
+<h3>関数定義と関数呼び出し</h3>
+
+<p>仕掛け花火</p>
+
+<h3>関数を定義する順序</h3>
+
+<p>利用される関数はそれを利用する関数よりも前(上)に定義したほうが無難。</p>
+
+<pre>
+void sub(void)
+{
+	// do something
+}
+
+int main(void)
+{
+	sub();
+	return 0;
+}
+</pre>
+
+<h4 class='ex'>演習問題</h4>
+
+<ol>
+  <li>ロボカーを黒線に沿って進ませろ。
+    <p><img src="images/ex21.png"></p></li>
+
+  
+  <li>ロボカーを黒線に沿って進ませろ。短い黒線を2度踏んだら、2度目に停止。
+  <p><img src="images/ex22.png"></p></li>
+
+  <li>ロボカーを黒線に沿って進ませろ。短い黒線は無視、
+    太い黒線を踏んだら停止。
+  <p><img src="images/ex23.png"></p></li>
+  
+  <li>右に黒を感知したら右回転 1 秒、左に黒を感知したら左回転1秒、
+    両方黒を感知したらバックするつもりで書いた
+    <a href="indent/ex5.c">プログラム</a>がある。
+    しかし、ロボカーは期待通りには動かない。理由を述べよ。</li>
+
+  <li>角丸四角黒線に沿ってロボカーを一周させよ。
+  <p><img src="images/ex25.png"></p></li>
+
+  <li>八の字黒線に沿ってロボカーを一周させよ。
+    <p><img src="images/ex26.png"></p></li>
+</ol>
+
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

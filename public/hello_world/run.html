@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>forward, turn</h2>
+
+<p>hello_world.c を以下のように書き換える。</p>
+
+<pre class="c">
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+
+void run(void)
+{
+	puts("!!!Hello World!!!");
+}
+
+int main(void)
+{
+	run();
+	return EXIT_SUCCESS;
+}
+</pre>
+
+<ul>
+  <li>関数 puts() の情報は stdio.h に定義されている。
+    #include &lt;stdio.h> の行をコメントアウトしてビルドしたとき、
+    何が起こるか。実験せよ。
+    <p><input size="80"></p></li>
+
+  <li>EXIT_SUCCESS の情報は stdlib.h に定義されている。
+    #include &lt;stdlib.h> の行をコメントアウトしてビルドしたとき、
+    何が起こるか。確認せよ。
+    <p><input size="80"></p></li>
+
+  <li>原則として、main 関数の戻り値は int と決められている。
+    void main(void)と書き換え、return EXIT_SUCCESS; をコメントアウトし、
+    ビルドしたとき何が起こるか？確認せよ。
+    <p><input size="80"></p></li>
+</ul>
+
+<h3>!!!Hello World!!! を 100回</h3>
+
+<p>コピーペースト100回はめんどうだし、融通がきかない。</p>
+
+<p>プログラムをコピーペーストする代わりに、
+  「100回繰り返せ」をプログラムする。</p>
+
+<pre class="c">
+void run(void)
+{
+	int i;
+
+	for (i=0; i &lt; 100; i++) {
+		puts("!!!Hello World!!!");
+	}
+}
+
+int main(void)
+{
+	run();
+	return EXIT_SUCCESS;
+}
+</pre>
+
+<h3>!!!Hello World!!! を n 回</h3>
+
+<p>繰り返しの回数をrun()の外部から与える。</p>
+
+<pre class="c">
+void run(int n)
+{
+	int i;
+
+	for (i=0; i &lt; n; i++) {
+		puts("!!!Hello World!!!");
+	}
+}
+
+int main(void)
+{
+	run(100);
+	return EXIT_SUCCESS;
+}
+</pre>
+
+<p>どこがどう変わったかよーく見ること。</p>
+
+<h3>forward, turn</h3>
+
+<p>次のプログラムは不完全である。関数 run() から呼び出すべき
+  関数forward() と関数 turn()を定義していない。</p>
+
+<p>しかし、これまでの授業を集中して受講していた人にはぼんやり、
+  あるいは、はっきりとわかるはず。
+  これは前週の課題の模範解答のひな形です。</p>
+
+<pre class="c">
+
+void run(int n, int l)
+{
+	int i;
+
+	for (i=0; i &lt; n; i++) {
+		forward(l);
+		turn(360/n);
+	}
+}
+
+int main(void)
+{
+	run(4,40);
+	return 0;
+}
+</pre>
+
+<h4>演習問題</h4>
+
+<p>上のプログラムを完成させなさい。わからない受講生のために書くと、
+  void forward(int n), void turn(int n, int l)
+  をきちんと定義しろってこと。
+  ビルド、焼き付けたら、ロボカーは
+  一辺 40cm の正方形のエッジ上を動くはず。
+  run() の引き数を変えると、三角走りや五角形走りもする。
+
+<p><a href="../index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

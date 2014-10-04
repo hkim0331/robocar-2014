@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<style>
+  table {border-collapse: collapse;}
+  td {border:1pt solid black;}
+</style>
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>printf()/scanf()</h2>
+
+<p>関数 printf() はコンピュータからディスプレイやファイル、
+  プリンタにデータを出力するためのもの。</p>
+
+<p>関数 scanf() はその逆で、キーボードやファイル、
+  その他のデバイスからデータをコンピュータに入力するもの。</p>
+
+<p>そのような入出力を I/O と言ったりする。Input/Output の略だろう。</p>
+
+<p>printf()/scanf() 以外にも  I/O を実現するものもある。(put や get など)。
+  </p>
+
+<p>情報処理応用で使っているロボカーにはディスプレイやキーボードがないので、
+  printf()/scanf() でプログラミングする機会はないが、
+  コンピュータがその外界と交信するには・接触するには・影響を持つ・影響を及ぼすには必要になる。外界と相互作用を持たないコンピュータを考えてみよう。存在意味がない。</p>
+
+<h3>printf()</h3>
+
+<p>関数 printf()のシグナチャは、正確を期すならば、
+
+<pre class="c">
+int printf(const char * restrict format, ...);
+</pre>
+
+と、今まで見たこともないものだ。
+細かいことを抜きにして、2012 情報処理応用のスタイルでこれを書きなおせば、
+
+<pre class="c">
+int printf(char format[ ], ...);
+</pre>
+
+<ul>
+  <li>戻り値は int。</li>
+  <li>第一引き数は文字列(文字の配列)。</li>
+  <li>第二引き数以下はゼロ個以上ある。</li>
+</ul>
+
+<p>文字列 format 中の以下のパターンは特別な意味を持つ。</p>
+
+<table>
+  <tr><td>%i または %d<td>整数のスロット。</tr>
+  <tr><td>%c <td>文字のスロット。</tr>
+  <tr><td>%s<td>文字列のスロット。</tr>
+  <tr><td>\n<td>改行。</tr>
+  <tr><td>\t<td>タブ。</tr>
+</table>
+
+<p>「スロット」とある場所には順番に第二引き数以下の変数がそこに収まって、
+  結果、文字列となったものがディスプレイに表示される。例を数題。</p>
+
+<table>
+  <tr><td>printf("hello, world");<td>文字列 "hello, world" を印字する。</tr>
+  <tr><td>printf("hello, world\n");<td>文字列 "hello, world" を印字した後、改行。</tr>
+  <tr><td>printf("hello, world, %i\n", x);<td>文字列 "hello, world, " の後ろに、変数 x を整数フォーマットで %i の位置に埋め込んだ文字列を印字し改行。</tr>
+  <tr><td>printf("hello, %s", y);<td>文字列 "hello, " の後ろ、
+      %s の場所に変数 y を文字列と思ってくっつけた文字列を印字。</tr>
+  <tr><td>printf("hello, %s\n", y);<td>文字列 "hello, " の後ろ、
+      %s の場所に変数 y を文字列と思ってくっつけた文字列に改行文字を付与し印字。
+  </tr>
+  <tr><td>printf("%i+%i=%i",x,y,z);<td>整数型の変数 x,y,z の値をそれぞれ順番に
+      %iの位置に埋め込んだ文字列を印字。
+  </tr>
+  <tr><td>printf("%i+%i=%i",x,y,x+y);<td>整数型の変数 x,y,
+      および x+y の計算結果をそれぞれ順番に %i の位置に埋め込んだ文字列を印字。
+  </tr>
+</table>
+
+<p>printf()の戻り値は印字できた文字の数。大抵の場合は無視される。</p>
+
+<h3>scanf()</h3>
+
+<p>関数 scanf() は初心者には理解することがやや難しいとされる。</p>
+
+<p>関数 scanf() のシグネチャは、</p>
+
+<pre class="c">
+int scanf(const char *restrict format, ...);
+</pre>
+
+<p>printf()同様、意味を大きく変えることなく、
+  2012 情報処理応用のスタイルで簡単に書き直すと、</p>
+
+<pre class="c">
+int scanf(char format[ ], ...);
+</pre>
+
+<p>文字の配列(文字列) format 中に現れる %i, %c, %s の意味は printf()と同じ。
+  その他の文字は入力データ中のアンカー(船をつなぎとめるあれですね)として扱われる。</p>
+
+<p>わからんでしょ。初心者には難しいんです。</p>
+
+<p>第二引き数以降は、読み込んだデータをおさめる変数のアドレスが並ぶ。</p>
+  
+<p>さらにわからんでしょ。初心者が学習するにはC言語は向いていません。</p>
+
+<table>
+  <tr><td>scanf("%i",&amp;x);<td>整数型変数 x に整数を読み込む。</tr>
+  <tr><td>scanf("abc%idef",&amp;x);<td>整数型変数 x に文字列abcと文字列defに囲まれる整数を読み込む。</tr>
+  <tr><td>scanf("%s", s);<td>文字列型変数 s に文字列を改行文字の直前まで読み込む。</tr>
+  <tr><td>scanf("%i,%i", &amp;x, &amp;y);<td>コンマで区切られた整数ふたつを整数型変数 x,y に読み込む。</tr>
+</table>
+
+<p>整数型変数に整数を読み込むときは &amp; が必要で、
+  文字列型変数に文字列を読み込むときは &amp; はいらない。</p>
+
+<p>こんなめんどくさいことの理由は
+  「文字列」を「文字の配列」で表すC言語の特徴にあります。
+  みんなが聞く耳あるようだったら、授業中に気合入れて説明します。
+  よーく考えながら聞くこと。</p>
+
+<p>わからなくても、
+  printf()/scanf() は C 言語でもっとも不合理な部分のひとつでもあるので、
+  ここに詰まっていじけてはいけない。自信をもって、他の部分を理解した後、
+  戻ってくればいい。</p>
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

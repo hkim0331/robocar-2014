@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<title>robocar 2013</title>
+<style>
+td.box { border: 1pt solid black; width: 100px;}
+td {text-align: center;}
+table {margin-left: 2em;}
+</style>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>もっとセンサ</h2>
+
+<p>今回のプロジェクトは
+<span class='red'>Sensor4</span>
+とする。課題は、</p>
+
+<ul>
+<li>長さ 10cm 以下の連続する黒の長さを測れ。</li>
+</ul>
+
+<h3>まだまだ配列</h3>
+
+<p>前回の Sensor3 をベースに作ろう。すでに、void step(int n)、void stop(void)、
+int both_blacks(void) は完成品が手元にあり、
+5cm 長の黒に乗ったらロボカーは静止できるはず。今日の課題は先週の、</p>
+
+<p style="margin-left:4em;">
+
+5cm の黒だけでなく、6cm、7cm、8cm の黒を認識するには?
+</p>
+<p>の単純な発展形だ。</p>
+
+<h3>母国語で考える</h3>
+
+<ol>
+<li>Cで書けない学生は母国語でもどうすればロボカー課題が達成できるか説明できない。
+試しに、~/robocar/1210.txt に書いてみよ。これが今日の
+<span class='red'>個人課題の１番</span>。
+セーブを忘れないよう。<br/>
+
+<pre class="term">$ gedit ~/robocar/1210.txt</pre>
+
+<li>hkimura の回答は授業中に。まちがってもそれをコピーすれば OK などと思うな。
+手順を説明できない自分に危機感を持つべき。</li>
+
+<li>1210.txt をグループでチェックしあえ。なにか、メンバーの回答に不足や誤解はないか?
+自分の理解に穴はないか?</li>
+
+<li>３つの案を一つにまとめ、それをC言語に翻訳しんさい。</li>
+
+<li>ロボカーにみんなの考えが正しいかどうか、聞いてみなさい。
+プログラムを焼き付けて動作させてみろっつうコト。</li>
+
+</ol>
+
+<hr/>
+
+<p>前向きな学生、グループは以下を読まずに今日のプロジェクトを進めること。</p>
+
+<h3>ちょっとだけ回答</h3>
+
+<p>以下が100点とは思わないこと。
+自分で考えず書き写すだけはまったく勉強にならない。
+そんなのより、自分の力で考えたようにプログラムしロボカーが期待通りに動かなかったとき、
+自分の考えのどこに不足があったか、
+考えをC言語に翻訳する過程のどこにミスが入り込んだか、
+C言語の何を自分は理解していないか、
+汗かいて考えよう。それが単位や成績よりも大切なことだ。</p>
+
+<p>手元にある関数 step(), stop(), both_blacks() を有効利用する。</p>
+
+<ol>
+<li>step(1)を20回読んでロボカーを 20cm 進ませる。</li>
+<li>step(1)の直後にセンサの値をboth_blacks() で計測し、配列 bw[i] に記録する。</li>
+<li>動作完了後、配列 bw[i] の値をLEDで表示する。
+bw[i]が１つまり黒を感知していればLED(1)、bw[0]が0つまり白を感知していれば
+LED(0)の値を１秒間キープ。</li>
+</ol>
+
+<pre class="c">
+int counts(int n)
+{
+	int i;
+	int bw[20]; // black==1, white ==0
+
+	// 箇条書きの１番を実装する部分
+	for (i=0; i &lt; n; i++) {
+		step(1);
+		bw[i] = both_blacks();//２番の実装
+	}
+	stop();
+
+	// ３番の実装。
+	for (i=0; i &lt; n; i++) {
+		LED(0);
+		Wait(1000);
+		LED(bw[i]);//
+		Wait(1000);
+	}
+}
+</pre>
+
+<h3>ゴミ、初期化</h3>
+
+<h3>スイッチ</h3>
+
+<h3>今期の課題</h3>
+
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

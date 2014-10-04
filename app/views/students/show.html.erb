@@ -1,0 +1,45 @@
+<% if Rails.env == "development" %>
+<% end %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>名前:</b>
+  <%= @student.name %>
+</p>
+
+<p>
+  <b>学生番号:</b>
+  <%= @student.sid %>
+</p>
+
+<p>
+  <b>出席記録</b>
+  <ol>
+  	<% @icomes.each do |i| %>
+	  <li><%= i.attend_at %></li>
+  	<% end %>
+  </ol>
+</p>
+
+<p>
+  <b>グループ提出物</b>
+  <ul>
+    <% @g_reports.each do |r|%>
+    <li><%= File.basename(r.path) %> <%= link_to "[show]", 
+      :action => :show, :id => r.id, :controller => :exercises %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <b>個人提出物</b>(リセット 10/25)
+  <ul>
+    <% @s_reports.each do |r|%>
+    <li><%= File.basename(r.path) %> <%= link_to "[show]", 
+      :action => :show, :id =>r.id, :controller => :exercises %></li>
+    <% end %>
+  </ul>
+</p>
+
+
+<%= link_to 'Back', students_path %>

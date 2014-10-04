@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<style>
+.ans {margin-left: 2em;}
+</style>
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>テスト</h2>
+
+<p>以下の各問に答えなさい。
+回答にあたり、次のプログラムが main.c の適切な場所に定義されているものとする。</p>
+
+<pre class="c">
+#define P1 10000
+#define P2 (-1)*P1
+
+void fw(int v1, int v2)
+{
+	Mtr_Run_lv(v1,v2,0,0,0,0);
+}
+void stop()
+{
+	fw(0,0);
+}
+</pre>
+
+<ol>
+<li>符号付き整数 x, y の大きい方を返す関数 int max2(int x, int y) を定義せよ。<br>
+<pre class="c">
+int max2(int x, int y)
+{
+<textarea cols='60' rows='5'>
+</textarea>
+}
+</pre></li>
+
+<li>符号付き整数z の絶対値を返す関数 int abs(int z)を
+max2( ) を利用して定義せよ。<br>
+<pre class="c">
+<input size='5'> abs(int z)
+{
+<textarea cols='60' rows='2'>
+</textarea>
+}
+</pre></li>
+
+<li>符号付き整数x,y,z の最大値を返す関数 int max3(int x, int y, int z)を
+max2() を利用して定義せよ。<br>
+<pre class="c">
+<textarea cols='60' rows='5'>
+</textarea>
+</pre></li>
+
+<li>次の関数 f1( ) を呼び出すとロボカーはどんな動きをするか?<br>
+<pre class="c">
+void f1(void)
+{
+	fw(P1,P2);
+	stop();
+}
+</pre>
+<textarea class='ans' cols='60' rows='3'>
+</textarea></li>
+
+<li>次の関数 f2( ) を呼び出すとロボカーはどんな動きをするか?<br>
+<pre class="c">
+void f2(void)
+{
+	int i;
+
+	for (i=0;i<100000;i++) {
+		fw(P1,P2);
+	}
+	stop();
+}
+</pre>
+<textarea cols='60' rows='2'>
+</textarea></li>
+
+<li>次の関数 f3( ) を呼び出すとロボカーは何センチくらい前進するか?<br>
+<pre class="c">
+void f3(void)
+{
+	fw(P1,P2);
+	Wait(1000);
+}
+</pre>
+<textarea class='ans' cols='60' rows='3'>
+</textarea></li>
+
+<li>次の関数 f4 を f4(10000) として呼び出すとロボカーはどんな動きをするか?<br>
+<pre class="c">
+void f4(int n)
+{
+	int v;
+
+	while (n-->0) {
+		v = ADRead(0)-ADRead(1);
+		if (200 > abs(v)) {
+			fw(P1,P2);
+		} else if (v>0) {
+			fw(P1,P2/2);
+		} else if (0>v) {
+			fw(P1/2, P2);
+		} else {
+			break;
+		}
+	}
+}
+</pre>
+<textarea class='ans' cols='60' rows='5'>
+</textarea></li>
+</ol>
+
+<p><span style='color:red'>*注意*</span>
+f4 をロボカー課題の回答と誤解しないこと。</p>
+
+<form>
+<input type='submit'>
+</form>
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<h1>受講生一覧</h1>
+
+<% if Rails.env=="development" %>
+student_id: <%= session[:student_id] %><br/>
+previous_url: <%= session[:previous_url] %>
+<% end %>
+
+<p id='notice'><%= notice %></p>
+
+<%= render 'navi' %>
+
+<table>
+  <tr>
+    <th>学生番号</th>
+    <th>氏名</th>
+    <th>グループ</th>
+    <th>ロボカー</th>
+<!--
+    <th>Email</th>
+-->
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.sid %></td>
+    <td><%= student.name %></td>
+    <td><%= student.group_id %></td>
+    <td><%= if student.group_id; Group.find(student.group_id).car_id end %>
+<!--
+    <td><%#= student.email %></td>
+-->
+    <td><%= link_to image_tag('/images/eye2.png'), student %></td>
+    <td><%= link_to image_tag('/images/edit.png'), edit_student_path(student) %></td>
+    <td><%= link_to image_tag('/images/trash.png'), student, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= render 'navi' %>

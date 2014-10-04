@@ -1,0 +1,33 @@
+<!--
+<p class='warn'>under construction</p>
+-->
+
+<h1>課題提出状況</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Path</th>
+    <th>date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @exercises.each do |exercise| %>
+  <tr>
+    <td><%= exercise.sid %></td>
+    <td><%= File.basename(exercise.path) %></td>
+    <td><%= exercise.updated_at.strftime("%m/%d %H:%M") %></td>
+    <td><%= link_to image_tag("/images/eye2.png"), exercise %></td>
+    <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
+    <td><%= link_to image_tag("/images/trash.png"), exercise, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<!--
+<%#= link_to 'New Exercise', new_exercise_path %>
+-->
+<%= link_to 'Back', "/" %>

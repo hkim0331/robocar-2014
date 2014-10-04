@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>％演算子</h2>
+
+<p>C言語の特徴で、int どうしの演算の結果は int になる。
+  short どうしの演算は short。</p>
+
+<p>小数を知らなかった低学年時代、「10割る3」の答えは「3あまり1」だった。
+  C言語の割り算もこれ。</p>
+
+<pre class='c'>
+  int x=10;
+  int y=3;
+  int z;
+  int w;
+
+  z = x / y; // 3 が代入される。
+  w = x % y; // 1 が代入される。
+</pre>
+
+<p>% で割り算のあまりを求めることは、C 言語のプログラミングでは
+  受講生が予想するよりもたくさん出てくる。</p>
+  
+  
+<h3>演習問題</h3>
+
+<p>関数 foward() と stop() がある。</p>
+  
+<pre class="c">
+  void forward(void)
+  {
+  	Mtr_Run_lv(30000,-30000,0,0,0,0);
+  	Wait(50);
+  }
+  void stop(void)
+  {
+  	Mtr_Run_lv(0,0,0,0,0,0);
+  	Wait(50);
+  }
+</pre>
+
+<p>これら関数に手を加えることなく、
+  低速、中速、高速の三つの走行をする
+  low(), middle(), high()
+  をプログラムせよ。
+  できたらそれが PWM だ。
+  2年前の資料だが、
+<a href="http://edu.melt.kyutech.ac.jp/2010/robocar/pwm/">
+http://edu.melt.kyutech.ac.jp/2010/robocar/pwm/</a>参照。
+  速度を切り返すとき、LED の点灯が変わるとわかりやすい。</p>
+
+<p><a href="index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

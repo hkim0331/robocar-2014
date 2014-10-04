@@ -1,0 +1,113 @@
+body {
+    font-family: sans-serif;
+    padding-left: 3px;
+    padding-right: 1em;
+}
+
+header {
+    font-size: 18pt;
+    font-weight: bold;
+    padding-left: 0.5em;
+    background: purple;
+    color: white;
+}
+
+footer {
+    clear: both;
+    border-top: 1pt solid gray;
+    font-size: smaller;
+    }
+
+div#sidebar {
+    width: 12em;
+    float: left;
+    border-right: solid 1px; #999;
+}
+
+div#sidebar li li {
+    margin-left: -2em;
+}
+div#main {
+    margin-left: 12em;
+    padding-left: 1em;
+}
+
+pre.term {
+    background: black;
+    color: white;
+    font-family: monospace;
+    font-size: 12pt;
+    line-height: 20pt;
+}
+
+pre.c {
+    margin-left:2em;
+    margin-right:2em;
+    font-family: monospace;
+    font-size: 12pt;
+    border: 1pt dotted black;
+    padding: 5pt;
+    background: #CCFFFF;
+}
+
+h2,h3,h4 {
+    color: green;
+}
+/*
+h3 {
+    border-bottom: 1pt solid black;
+}
+*/
+/*
+div.section h3 {
+    border-bottom: 1pt solid black;
+}
+*/
+.warn {
+    color: red;
+}
+
+.red {
+    color: red;
+}
+
+.note {
+    background: #99FFFF;
+}
+
+.st {
+    background: red;
+    color: white;
+}
+
+p {
+    margin-left: 1em;
+}
+
+a {
+    text-decoration:none;
+}
+
+a:hover {
+    background: black;
+    color: white;
+}
+
+table.tabular {
+    border-collapse: collapse;
+}
+
+table.tabular td,th {
+    border: 1pt solid black;
+}
+
+.ex {
+    margin-left: 0;
+    font-weight: bold;
+    font-size: larger;
+    color: red;
+}
+
+.group {
+    font-weight:bold;
+}

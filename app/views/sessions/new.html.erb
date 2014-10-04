@@ -1,0 +1,32 @@
+<h1>LOGIN</h1>
+
+<% if Rails.env=="development" %>
+student_id: <%= session[:student_id] %><br/>
+previous_url: <%= session[:previous_url] %>
+<% end %>
+
+<p id='notice'>ログインが必要です。<p>
+
+<div class="login">
+    <% if flash[:alert] %>
+        <p id ="notice"><%= flash[:alert] %></p>
+    <% end %>
+
+    <%= form_tag do %>
+        <table>
+          <tr>
+            <td><%= label_tag :sid, "学生番号:" %></td>
+            <td><%= text_field_tag :sid, params[:sid] %></td>
+          </tr>
+          <tr>
+            <td><%= label_tag :password, "パスワード:" %></td>
+            <td><%= password_field_tag :password, params[:password] %></td>
+          </tr>
+        </table>
+        <div>
+            <%= submit_tag "login" %>
+        </div>
+    <% end %>
+</div>
+
+<%= render 'navi' %>

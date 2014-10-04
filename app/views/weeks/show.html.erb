@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Iteration:</b>
+  <%= @week.iteration %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @week.content %>
+</p>
+
+<p>
+  <b><%= Week::WD[:c1] %></b>
+  <%= @week.c1 %>
+</p>
+
+<p>
+  <b><%= Week::WD[:c2] %></b>
+  <%= @week.c2 %>
+</p>
+
+<p>
+  <b><%= Week::WD[:c3] %></b>
+  <%= @week.c3 %>
+</p>
+
+<p>
+  <b><%= Week::WD[:c4] %></b>
+  <%= @week.c4 %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @week.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_week_path(@week) %> |
+<%= link_to 'Back', weeks_path %>

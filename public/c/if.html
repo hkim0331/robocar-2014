@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>if</h2>
+
+<p>if 文の正当な形はelse 以下を省略しないこれ;</p>
+
+<pre class="c">
+if (condition) {
+	true case;
+} else {
+	false case;
+}
+</pre>
+
+<ul>
+
+<li>else { } は省略できる。
+しかし、Haskell などの現代的な言語では省略できない。
+それは意味があること。みんなもしばらく Haskell にならってほしいが、、、</li>
+
+<li>if は入れ子にできる。
+入れ子にできるのは true case の部分と false case の部分の2箇所ある。</li>
+
+<pre class="c">
+if (condition) {
+	true case;
+} else { if (conditon 2) {
+		true case 2;
+	} else {
+		false case 2;
+	}
+}
+</pre>
+
+上のようにプログラムすると見にくいので、下のように書こう。else if チェーンと呼ばれる。
+
+<pre class="c">
+if (condition) {
+	true case;
+} else if (conditon 2) {
+	true case 2;
+} else {
+	false case 2;
+}
+</pre>
+</ul>
+
+<p>
+|
+<a href="../index.html">back</a>
+|
+<a href="types.html">prev</a>
+|
+<a href="loops.html">next</a>
+|
+</p>
+
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

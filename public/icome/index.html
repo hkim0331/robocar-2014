@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+# VERSION: 1.0
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../stylesheets/screen.css" />
+<title>robocar 2013</title>
+</head>
+<body>
+<header>
+情報処理応用 ー Robocar Programming
+</header>
+<h2>icome</h2>
+
+<p>出席は icome &amp; で。</p>
+
+<div style="margin-left:2em">
+<pre class="term">$ icome &amp;</pre>
+</div>
+
+<p>ディスプレイ左上に小さいウィンドウと出席ボタンが見えるはず。</p>
+
+<p><img src="images/icome6_window.png"></p>
+
+<p>出席ボタンを押すと出席を記録します。</p>
+
+<p><img src="images/icome6_message.png"></p>
+
+<p><span class='warn'>&amp; を忘れて icome を起動した場合</span>、
+次からのコマンドを同じターミナルから入力できなくなる。
+解決策は二つ、</p>
+
+<ul>
+  <li>別のターミナルをもう一つ開き、そっちで作業する。</li>
+  <li>^Z(コントロールキーを押したままZ)の後に、bg。
+    <p><pre class="term">$ icome
+^Z
+[1]+ 停止
+$ bg
+[1]+ icome &
+$
+</pre><p></p>
+</ul>
+
+<p>icome は、
+
+<ol>
+  <li>firefox, lpcxpresso のゾンビを黙って殺す。</li>
+
+  <li>受講生が授業中に作成したプログラムをチェックする。
+
+    <p>指示通りの内容のファイルが
+      指定したフォルダの下に
+      指定した名前でセーブしてあれば本日出席となる。
+      そうでない時は欠席扱い。
+      成績はマイナス。</p>
+
+    <p>icome のウィンドウは授業中開いたままにすること。
+      閉じるとチェックができない。</p></li>
+
+  <li>授業時間のみ出席を受け付ける。</li>
+
+  <li>授業終了時正しくログアウトすれば icome は正しく終了する。</li>
+
+</ol>
+
+<p><a href="../index.html">back</a></p>
+<footer>
+Last update: <script>document.write(document.lastModified);</script>
+</footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sid: MyString
+  attend_at: 2013-10-09 00:32:38
+
+two:
+  sid: MyString
+  attend_at: 2013-10-09 00:32:38

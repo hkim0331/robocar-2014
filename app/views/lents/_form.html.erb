@@ -1,0 +1,52 @@
+<%= form_for(@lent) do |f| %>
+  <% if @lent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lent.errors.count, "error") %> prohibited this lent from being saved:</h2>
+
+      <ul>
+      <% @lent.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'car #' %><br />
+    <%= f.number_field :car_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :condition %><br />
+    <%= f.number_field :condition %>
+  </div>
+
+  <div class="field">
+    <%= f.label '貸し出し' %><br />
+    <%= f.date_select :lent_on %>
+  </div>
+
+  <div class="field">
+    <%= f.label '返却予定' %><br />
+    <%= f.date_select :willback_on %>
+  </div>
+
+  <div class="field">
+    <%= f.label '学生番号' %><br />
+    <%= f.text_field :sid %>
+  </div>
+
+  <div class="field">
+    <%= f.label '連絡先' %><br />
+    <%= f.text_field :contact %>
+  </div>
+
+  <div class="field">
+    <%= f.label '備考' %><br />
+    <%= f.text_area :note, :size => "20x4" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "貸し出し" %>
+  </div>
+<% end %>

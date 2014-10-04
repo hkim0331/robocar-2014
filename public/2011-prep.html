@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta "charset=utf-8"/>
+<link rel="stylesheet"  href="stylesheets/screen.css">
+<title>robocar 2013</title>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+
+<header>
+2011 情報処理基礎（Programming in C)
+</header>
+
+<h2>準備</h2>
+
+<p>プログラミングにはいろんなスタイルがあるが、
+もし、みんながプログラミングは初めて、あるいは、
+もういちど最初から学習し直そうと思っていたら、
+この授業のスタイルにあわせてください。</p>
+
+<h3>このページの項目：</h3>
+<ul>
+<li><a href="#terminal">ターミナル</a></li>
+<li><a href="#gedit">gedit</a></li>
+<ul>
+  <li><a href="#plugin">gedit プラグインのインストール</a></li>
+  <li><a href="#menu">gedit をメニューに追加</a></li>
+  <li><a href="#pc_gedit">自分 PC に gedit プラグイン</a></li>
+</ul>
+<li><a href="#iceweasel">iceweasel</a></li>
+<ul>
+  <li>*.c ファイルを iceweasel で開く</li>
+  <li>iceweasel が立ち上がらない</li>
+</ul>
+
+<li><a href="#etc">その他</a></li>
+</ul>
+
+<hr width="40%" align="left">
+
+<h3><a name="terminal">
+ターミナル</a></h3>
+
+<ul>
+  <li>ターミナルの文字の大きさは 14pt 以上とすること。
+
+  <p>ターミナルソフトウェアの種類はたくさんあり、
+    情報センターの場合、konsole がデフォルトです。</p>
+
+  <p>konsole の文字の大きさを変えるには、
+    <ol>
+      <li>konsole を立ち上げ、</li>
+      <li>設定 &rarr; フォント &rarr;  選択 メニューを選んで、
+	<p><img src="images/konsole.png" alt="konsole"></p>
+      </li>
+
+      <li>「サイズ」を 14 以上にする。
+	選んだフォントはどんなデザインか、
+	「The Quick いろはにほへと」の表示を見て確認しよう。
+	<p><img src="images/konsole_font.png"></p>
+      </li>
+
+    </ol>
+
+  </li>
+
+  <li>本資料ではターミナルを黒字に白で表示します。
+
+    <pre class="term">$ cal</pre>
+
+    <p>とあったら、
+    ターミナルで cal（エンター）とキー操作することを表します。
+    $ はコンピュータがターミナル上にあらかじめ表示する文字列
+    （プロンプトという）で、キーボードから打ってはいけません。</p>
+
+    <p>プロンプト $ が表示された状態でないと、
+      コマンドを入力することはできない。</p>
+  </li>
+</ul>
+
+<h3><a name="gedit">
+gedit</a></h3>
+
+<ul>
+  <li>プログラムを作るエディタは gedit を使う。
+    <p>情報センターでは gedit 以外にも emacs や kwrite などのエディタ
+      が使える。それらの使い方がわからなくても、
+      基本的に授業時間中のサポートはしません。</p>
+  </li>
+
+  <li>ターミナルと同じく、14ポイント以上の文字をつかうこと。
+    <p></p></li>
+
+  <li>プログラミングしやすいフォントを選択すること。
+    <p>プログラムする人が読みやすければいいとは思うが、
+      フォントによっては lと1、0とO、qとgなどが判別しにくいものもある。
+      そうしたフォントを使ったためにエラーがみつけられない、
+      字下げがそろわない等は本末転倒です。</p>
+
+    <p>ファニーなフォントでやりぬくという強い意志がない限り、
+      プログラミングではモノスペース
+      （文字の種類によって幅が変化しない、等幅）
+      のフォントを使う方が不必要な混乱を避けるためにもベターです。</p>
+  </li>
+</ul>
+
+<p>gedit の起動は、ターミナルから gedit (エンターキー）。</p>
+
+<p>
+<pre class="term">$ gedit
+</pre>
+</p>
+
+<p>こうして起動すると、起動した gedit を終了するまで、
+ターミナルからコマンドを入力することはできない。</p>
+
+<p>gedit の後ろに &amp; をつけて gedit &amp; で起動すると、
+geditの終了をまたず、引き続き、
+ターミナルで新しいコマンドを実行することができます。
+</p>
+
+<p>
+<pre class="term">$ gedit &amp;
+$ date
+2010年 4月16日 金曜日 18時33分06秒 JST
+$
+</pre>
+</p>
+
+<h3><a name="menu">
+gedit をメニューに追加</a></h3>
+
+<p>ターミナルから gedit がめんどくさいなら、
+メニューに gedit を追加しておくとよい。</p>
+
+<ol>
+  <li>デスクトップの左下隅、K メニューを右クリック<br/>
+    <p><img src="images/kmenu.png"></p>
+  </li>
+
+  <li>現れるメニューからメニューを追加を左クリック</li>
+
+  <li>エディタの項を右クリック<br/>
+    <p><img src="images/kmenuedit.png"></p>
+  </li>
+
+  <li>新規項目を左クリック</li>
+
+  <li>「項目名」に gedit<br/>
+    <p><img src="images/item_gedit.png"></p>
+  </li>
+
+  <li>コマンドに /usr/bin/gedit<br/>
+  <p><img src="images/usr_bin_gedit.png"></p>
+  </li>
+
+  <li>（お好みで）上の画面の右上方、
+    アイコンのエリアをクリックし、
+    お好みのアイコンを設定することができます。
+  </li>
+
+  <li>変更をセーブする。</li>
+
+  <li>gedit がメニューに現れる。</li>
+
+</ol>
+
+<h3><a name="plugin">gedit プラグインのインストール</a></h3>
+
+<p>
+みんなの先輩は半角文字/全角文字に無頓着な人が多かった。
+C のプログラムでは半角文字であるべきところを全角文字にしてしまうと、
+エラーとなって動作しない。
+とくに全角スペースは見つけにくいエラーのもとなので要注意。</p>
+
+<p>
+ということで、gedit に
+全角文字を入力したらそれを四角で囲んで表示する機能をプログラムしました。
+以下の手順で有効化できます。</p>
+
+<ol>
+  <li>まず、ターミナルから ds-install を実行。<br>
+<pre class="term">$ ds-install</pre></li>
+
+  <li>ds-install の実行後、gedit を立ち上げ、
+<pre class="term">$ gedit</pre></li>
+
+  <li>gedit の編集メニューから設定サブメニュー、プラグインタブを選び、
+スクロールして空白文字の表示にチェックマークを入れる。<br>
+
+<img src="images/gedit_drawspaces.png" alt="drawspaces">
+</li>
+
+<li>「プラグインの設定」をクリックして、
+  全角文字を囲む四角の色を選ぶことができます
+  （下図の右上の赤四角のエリア）。<br/>
+  <p><img src="images/drawspaces.png" alt="select_color"></p>
+
+  <p>図には
+    Draw non-breaking spaces と Draw tabs のチェックも入っていますが、
+    全角文字だけをマークすればいいので、それらの機能は殺してあります。
+    下二つのチェックマークは無効です。だけど、いちばん上の Draw spaces
+    はチェックを外すと全角マークも外れてしまいます。
+  </p>
+</li>
+
+</ol>
+
+<p>以上の操作を正しく実行したのち、gedit を起動し直す。
+全角文字が四角で囲まれていることがわかりますか（下図）。
+上記「プラグインの設定」で赤を選んでいます。</p>
+
+<p><img src="images/gedit_zenkaku_rectangle.png"
+	alt="gedit zenkaku rectangle"></p>
+
+<p>こうすると、日本語で書いたコメントの部分や、プログラム中、エラーにならない日本語文字列も赤で囲まれるが、
+ま、ノービスユーザなら、こっちのほうがいいっしょ。なれたらこの gedit プラグインを外せばいい。</p>
+
+<h3><a name="pc_gedit">
+自分 PC の gedit に</a></h3>
+
+<p>自分 PC の gedit にもこののプラグインをインストールできます。</p>
+
+<p>（書きかけ）</p>
+
+<h3><a name="iceweasel">
+iceweasel</a></h3>
+
+<ul>
+
+<li>iceweasel で *.c ファイルを開く[2010-04-26 追加]<br>
+
+<p>
+情報センターのブラウザ iceweasel に
+*.c ファイルを読んだら
+gedit でそれを開く設定をする。</p>
+
+<ol>
+<li>iceweasel を立ち上げ、
+  <span class="menu">編集</span>
+  メニューから設定を選ぶ。</li>
+
+<li>プログラムを選び、ファイルの種類から
+  「C ソースコード」を探す。<br/>
+  <img src="images/iceweasel.png"></li>
+
+<li>「C ソースコード」の「取り扱い方法」をクリック、
+(毎回確認する、
+あるいは GNU TexMacs Editor を使用が選ばれていたら変更する）
+「場所」のところ、/usr/bin/gedit をタイプ。<br/>
+<img src="images/iceweasel_gedit.png"></li>
+
+</ol>
+</li>
+
+<li>iceweasel が開かない<br>
+
+<p>PCを強制終了したときに iceweasel がゾンビとなることがあるようです。
+</p>
+
+<p>ターミナルから、</p>
+
+<pre class="term">$ iceweasel_recover.sh</pre>
+
+<p>で復活するそうです。（提供は情報処理センター）</p>
+</li>
+</ul>
+
+<h3><a name="etc">
+その他</a></h3>
+
+<h4>ecc/jcc</h4>
+
+<p>
+昨年度授業担当者からの情報を分析し、
+C コンパイラに小さな仕掛けを施したプログラムを作っています。
+これについてはおいおい説明します。
+</p>
+
+<p>ecc はターミナルから ecc （エンターキー）で起動します。</p>
+
+<p>
+<pre class="term">$ ecc hello_world.c
+Hello, World!
+$
+</pre>
+</p>
+
+<p>ecc を強制終了するにはコントロール C
+(コントロールキーを押したまま、C）のキー操作をします。</p>
+
+<h4><a name="wd">
+作業ディレクトリ</a></h4>
+
+<p>授業で作るプログラムはディレクトリ c の中にセーブするようにする。
+学期の最初に一度だけ、mkdir してそのディレクトリを作っておく。
+</p>
+
+<p>
+<pre class="term">$ mkdir ~/c</pre>
+</p>
+
+<p>gedit でプログラムを作成したらそのディレクトリ c の中にセーブ、
+ディレクトリ c に移動してコンパイル、実行すると吉。</p>
+</p>
+
+<pre class="term">$ cd ~/c
+$ cc sample.c
+$ ./a.out
+</pre>
+
+<h4><a name="bashrc">
+.bashrc</a></h4>
+
+
+<h4><a name="isc">
+情報センター</a></h4>
+
+<p>
+授業外に演習したい場合、情報センターは 22:00 まで空いているそうです。
+利用してください。
+</p>
+
+<h4><a name="vmware">
+Windowsユーザへ</a></h4>
+
+<p>
+自分の Windows PC で演習したいなら、
+<a href="vmware_linux.html">VMware Player + Ubuntu</a>をおすすめします。
+VMware Player ははやく言えば Windows 上で Linux を動かすためのソフトウェア、
+ubuntu は今一番流行っている linux、いずれも無料で手に入ります。</p>
+
+<ul>
+  <li><a href="http://www.vmware.com/jp/">VMWare</a></li>
+  <li><a href="http://www.ubuntulinux.jp/">ubuntu</a></li>
+</ul>
+
+<h4>Mac ファン</h4>
+
+<p>
+MacOSX であれば、同梱してあるDVDか、
+アップルから開発環境をダウンロードし、インストールできます。</p>
+
+<h4>Linux 使い</h4>
+
+<p>
+もし、あなたが linux 使いであるなら、言うことはなにもありません。</p>
+
+<p>
+臆せず、進め。</p>
+
+<div>
+<a href="prep.html.erb">&lt; back</a>
+<a href="intro.html.erb">^ up</a>
+<a href="hello_world.html.erb">next ></a>
+</div>
+
+<div id="footer">
+<hr>
+written by Hiroshi Kimura<br>
+Last update: <script>document.write(document.lastModified);</script>
+</div>
+
+</body>
+</html>

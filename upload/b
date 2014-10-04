@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# VERSION: 0.0
+
+if [ ! $# = 1 ]; then
+    echo usage: burn prog
+    exit
+fi
+
+CRP="/Volumes/CRP DISABLD"
+rm -f "${CRP}"/firmware.bin
+cp $1.bin "${CRP}"/firmware.bin
+if [ $? = 0 ]; then
+    diskutil unmount "${CRP}"
+    echo success.
+else
+    diskutil unmount "${CRP}"
+    echo burn failed.
+fi
+
+
