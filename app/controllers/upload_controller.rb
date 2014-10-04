@@ -25,11 +25,13 @@ class UploadController < ApplicationController
       File.open(File.join(DESTDIR, name),"wb") do |f|
         f.write params[:bin][:name].read
       end
-      flash[:alert] = "#{name} としてアップロードしました。"
+      flash[:alert] = "#{name} として送信しました。
+この名前のファイルを hkimura PC でロボカーに焼き込んでください。"
     end
 
     respond_to do |format|
-      format.html { redirect_to upload_url }
+#      format.html { redirect_to upload_url }
+      format.html
       format.json
     end
   end
