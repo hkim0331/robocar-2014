@@ -19,7 +19,7 @@ footer {
     }
 
 div#sidebar {
-    width: 12em;
+    width: 14em;
     float: left;
     border-right: solid 1px; #999;
 }
@@ -27,8 +27,10 @@ div#sidebar {
 div#sidebar li li {
     margin-left: -2em;
 }
+
 div#main {
-    margin-left: 12em;
+    margin-left: 14em;
+    margin-right: 2em;
     padding-left: 1em;
 }
 

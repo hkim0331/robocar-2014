@@ -12,11 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'グループ名(３クラスでユニークなもの)' %><br />
+    <%= f.label 'グループ名(今期クラスでユニークなもの)' %><br />
     <%= f.text_field :name, size: 60 %>
   </div>
+
   <div class="field">
-    <%= f.label 'メンバー (学生番号(半角数字)をスペースで区切って)' %><br />
+    <%= f.label 'メンバー (学生番号(半角数字)を半角スペースで区切って)' %><br />
     <%= f.text_field :members, size: 60 %>
   </div>
 

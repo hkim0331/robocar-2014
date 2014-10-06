@@ -6,10 +6,7 @@
 <% end %>
 -->
 
-<% unless session[:student_id] %>
-<p>送信にはログインが必要です。</p>
-<% end %>
-
+<% if session[:student_id] %>
 <p>コンパイルして得られた Debug/*.bin を選び、送信してください。</p>
 
 <fieldset id="upload">
@@ -19,6 +16,12 @@
 <%= submit_tag "送信" %>
 <% end %>
 </fieldset>
+<% else %>
+<p>送信にはログインが必要です。</p>
+
+<p><%= link_to "login", "/login" %></p>
+
+<% end %>
 
 <%= render 'navi' %>
 
