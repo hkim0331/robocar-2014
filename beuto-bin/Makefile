@@ -1,3 +1,4 @@
 clean:
-	${RM} *.bin
+	${RM} *.bin *.bak
+
 

@@ -5,7 +5,7 @@ student_id: <%= session[:student_id] %><br/>
 previous_url: <%= session[:previous_url] %>
 <% end %>
 
-<p id='notice'>ログインが必要です。<p>
+<p id='notice'>Please Login.<p>
 
 <div class="login">
     <% if flash[:alert] %>
@@ -15,11 +15,11 @@ previous_url: <%= session[:previous_url] %>
     <%= form_tag do %>
         <table>
           <tr>
-            <td><%= label_tag :sid, "学生番号:" %></td>
+            <th><%= label_tag :sid, "学生番号" %></th>
             <td><%= text_field_tag :sid, params[:sid] %></td>
           </tr>
           <tr>
-            <td><%= label_tag :password, "パスワード:" %></td>
+            <th><%= label_tag :password, "パスワード" %></th>
             <td><%= password_field_tag :password, params[:password] %></td>
           </tr>
         </table>
