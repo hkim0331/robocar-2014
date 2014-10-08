@@ -10,11 +10,8 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
 <p id='notice'><%= flash[:notice]%></p>
 <% end %>
 
-<p>
-  貸し出し回数を勤勉の証としてプラス評価することもある。
+<p>貸し出し回数を勤勉の証としてプラス評価することもある。
   <span class="red">返却の遅れ</span>はマイナス評価が当たり前。
-  <img src="images/trash.png">でレコードを消すときは、いったん、ロボカーを返却の状態にしてから実行すること。
-  じゃないとロボカーが行方不明になる。 
 </p>
 
 <%= render 'navi' %>
@@ -72,6 +69,14 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
   </tr>
 <% end %>
 </table>
+
+<h4>管理人へ</h4>
+
+<p>
+  <img src="images/trash.png">でレコードを消すときは、
+  いったん、ロボカーを返却の状態にしてから実行すること。
+  じゃないとロボカーが行方不明になります。
+</p>
 
 <%= render 'navi' %>
 
