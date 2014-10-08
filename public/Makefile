@@ -1,5 +1,5 @@
-HOST=robocar.melt.kyutech.ac.jp
-BASE=/srv/robocar/public
+HOST=robocar-2014.melt.kyutech.ac.jp
+BASE=/srv/robocar-2014/public
 
 all: install
 

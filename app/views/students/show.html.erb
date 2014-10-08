@@ -22,21 +22,32 @@
 </p>
 
 <p>
-  <b>グループ提出物</b>
+  <b>週テスト</b>
   <ul>
-    <% @g_reports.each do |r|%>
+    <% @s_reports.each do |r|%>
     <li><%= File.basename(r.path) %> <%= link_to "[show]", 
-      :action => :show, :id => r.id, :controller => :exercises %></li>
+      :action => :show, :id =>r.id, :controller => :exercises %></li>
+    <% end %>
+  </ul>
+</p>
+
+
+<p>
+  <b>個人提出物</b>(勝手にコピー)
+  <ul>
+    <% @s_reports.each do |r|%>
+    <li><%= File.basename(r.path) %> <%= link_to "[show]", 
+      :action => :show, :id =>r.id, :controller => :exercises %></li>
     <% end %>
   </ul>
 </p>
 
 <p>
-  <b>個人提出物</b>(リセット 10/25)
+  <b>グループ提出物</b>(グループで渾身のものを)
   <ul>
-    <% @s_reports.each do |r|%>
+    <% @g_reports.each do |r|%>
     <li><%= File.basename(r.path) %> <%= link_to "[show]", 
-      :action => :show, :id =>r.id, :controller => :exercises %></li>
+      :action => :show, :id => r.id, :controller => :exercises %></li>
     <% end %>
   </ul>
 </p>

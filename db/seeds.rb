@@ -8,47 +8,49 @@
 
 
 puts "seed Student"
-Student.transaction do
-    Student.delete_all
-    File.foreach("data/sid_uid.txt") do |line|
-      sid, uid=line.chomp.split(/\s/,2)
-      Student.create(sid: sid, uid: uid, password: "robocar", password_confirmation: "robocar");
-  end
+Student.delete_all
+s = 0
+File.foreach("data/sid_uid.txt") do |line|
+  sid, uid = line.chomp.split(/\s/,2)
+  Student.create(sid: sid, uid: uid, password: "robocar", password_confirmation: "robocar");
+  print '.'
+  s += 1
 end
+puts "\nadd #{s} students."
 
 puts "seed Icome"
 Icome.delete_all
+i = 0
 File.foreach("data/ucome.log") do |line|
   next if line=~/^#/
-  cols = line.chomp.split
-  if cols.length == 5
-    sid, ip, attend = line.chomp.split(/\s/,3)
-  elsif cols.length == 6
-    sid, uid, ip, attend = line.chomp.split(/\s/,4)
-  else
-    raise "format error"
-  end
-  Icome.create(sid: sid, attend_at: attend);
+  attend, sid, time = line.chomp.split(/\s/,3)
+  Icome.create(sid: sid, attend_at: time);
+  print '.'
+  i += 1
 end
+puts "\nadd #{i} icome entries."
 
 puts "seed Car"
-Car.transaction do
-  Car.delete_all
-  Car::Max.times do
-    Car.create(condition: Car::Free);
-  end
+Car.delete_all
+Car::Max.times do
+  Car.create(condition: Car::Free);
+  puts '.'
 end
 
-puts "seed Week"
+puts "\nseed Week"
 Week.delete_all
 (1..16).each do |w|
   Week.create(iteration: w)
+  print '.'
 end
 
-puts "seed Lent"
+puts "\nseed Lent"
 Lent.delete_all
 (1..Car::Max).each do |c|
 	Lent.create(car_id: c, condition: Car::Free, sid: 'hkimura', contact: '3457')
+  print '.'
 end
+
+puts "\ndone"
 
 
