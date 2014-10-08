@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# VERSION: 0.3
+# VERSION: 0.3.1
 
 if [ ! $# = 1 ]; then
     echo usage: burn prog.bin
