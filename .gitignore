@@ -24,4 +24,4 @@
 #
 Gemfile.lock
 config/database.yml
-
+!data/ucome.log
