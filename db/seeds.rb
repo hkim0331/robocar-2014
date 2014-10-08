@@ -9,27 +9,31 @@
 
 puts "seed Student"
 Student.delete_all
+s = 0
 File.foreach("data/sid_uid.txt") do |line|
   sid, uid = line.chomp.split(/\s/,2)
   Student.create(sid: sid, uid: uid, password: "robocar", password_confirmation: "robocar");
   print '.'
+  s += 1
 end
+puts "\nadd #{s} students."
 
-puts "\nseed Icome"
+puts "seed Icome"
 Icome.delete_all
+i = 0
 File.foreach("data/ucome.log") do |line|
   next if line=~/^#/
   attend, sid, time = line.chomp.split(/\s/,3)
   Icome.create(sid: sid, attend_at: time);
   print '.'
+  i += 1
 end
+puts "\nadd #{i} icome entries."
 
-puts "\nseed Car"
-Car.transaction do
-  Car.delete_all
-  Car::Max.times do
-    Car.create(condition: Car::Free);
-  end
+puts "seed Car"
+Car.delete_all
+Car::Max.times do
+  Car.create(condition: Car::Free);
   puts '.'
 end
 
@@ -47,6 +51,6 @@ Lent.delete_all
   print '.'
 end
 
-puts '\ndone'
+puts "\ndone"
 
 
