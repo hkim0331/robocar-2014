@@ -43,11 +43,11 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(params[:group])
+
     if Group.last.nil?
       @group.car_id = 1
     else
-      # car 0 is for hkimura and yoshino.
-      @group.car_id = ((Group.last.id + 1) % Car::Max) + 1
+      @group.car_id = (Group.last.id % Car::Max) + 1
     end
 
     respond_to do |format|
@@ -101,7 +101,7 @@ class GroupsController < ApplicationController
     else
       alert = 'only admin can destroy.'
     end
- 
+
     respond_to do |format|
       format.html { redirect_to groups_url, alert: alert }
       format.json { head :no_content }
