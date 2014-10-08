@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <!--
-# VERSION:
+# VERSION: 1.0
 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="../stylesheets/screen.css" />
-<title>robocar 2014</title>
+<title>robocar 2013</title>
 </head>
 <body>
 <header>
@@ -14,68 +14,36 @@
 </header>
 <h2>複数のプロジェクト</h2>
 
-<p>
-robocar.zip を展開したプロジェクトで開発を進めているとする。
-</p>
+<p>複数のプロジェクトを進める場合、
+  ファイル名の変更やコードのコメントアウトをするよりも、
+  あらたにプロジェクトを起こした方がいい。</p>
 
-<p>
-課題をひとつクリアして、別の課題に取り組もうとしたとする。
-</p>
-
-<p>
-main.c を上書きしてしまうと、クリアした過去の課題が残らない。
-main.c をプロジェクト内の別ファイルにリネームしても、
-古い main() をコメントアウトするか別の関数にリネームしない限り、
-新しいmain.c 中の main() とバッティングし、
-ビルド時にエラーになる。
-</p>
-
-<p>簡単な回避策は二つ。</p>
-
-<h3>1, main.c をプロジェクト外部の別ファイルにコピー</h3>
+<p>今期の情報処理応用では、一日ひとつ、
+新しいプロジェクトを起こそうと考えている。</p>
 
 <ol>
-	<li>LPCXpresso の main.c の上で右クリック、</li>
-	<li>コピーを選んで、</li>
-	<li>ファイルブラウザ上の適当な場所にペースト。</li>
-	<li>ペーストした main.c を適当な名前に変えておく。</li>
-	<li>プロジェクトに戻って、main.c を新しい内容で書き換える。</li>
+  <li>LPCXpresso を立ち上げ、</li>
+
+  <li>robocar プロジェクトを選んでいる状態で、
+    <p><img src="images/select_robocar.png"></p></li>
+
+  <li>念のため、File メニューからRefresh。</li>
+
+  <li>つづいて File メニューから Rename。
+    <p><img src="images/rename_project.png"></p></li>
+
+  <li>そのプロジェクトを表す名前に変えて OK ボタン。
+    ビルドでできあがるバイナリの名前も
+    "変更したプロジェクトの名前.bin"
+    になる。</li>
+
 </ol>
 
-<p>
-	昔のプロジェクトに戻りたくなったら、セーブしたファイルを
-	main.c にコピーペーストで戻せばよい。</p>
+<p>別の課題に取り組むときは再度、
+  <a href="lpcxpresso/#robocar.zip">robocar.zip</a>
+  を import project(s) からインポートする。</p>
 
-<p>
-	ひとつのプロジェクトを使い回す作戦。
-	ファイルの容量は食わないが、
-	プロジェクトを切り替える度のコピーペーストはめんどうではないか？
-</p>
-
-
-<h3>2, 別のプロジェクトを立ち上げる</h3>
-
-<p>
-	main.c のコピーペーストよりも、別プロジェクトを立ち上げる方が便利。
-	LPCXpresso は複数のプロジェクトを管理できるようにできている。
-</p>
-
-<ol>
-	<li>LPCXpresso で robocar プロジェクトを選択、</li>
-	<li>File メニューから
-		Rename... を選んでプロジェクトを別の名前に。</li>
-	<li>robocar.zip を新たに import する。
-		下図は古いプロジェクトを eight と名称替えし、
-		新たに robocar.zip を import して、src/main.c を開いたところ。
-	</li>
-</ol>
-
-<img src="images/projects.png" style='width: 600px;'>
-		
-<p>
-	昔の課題を手直ししたくなったら、
-	そのプロジェクト（上の例では eight）を開けば良い。
-</p>
+<p>robocar を適切な名前に変更し、開発開始。</p>
 
 <p><a href="../index.html">back</a></p>
 <footer>
