@@ -55,4 +55,4 @@ OKボタンを押して進む。
 [戻る](../)
 
 ----
-by hkimura.
+Last update: <script>document.write(document.lastModified);</script>
