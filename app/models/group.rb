@@ -10,7 +10,7 @@ class Group < ActiveRecord::Base
       begin
         members = self.members.split
   		raise "学生番号は半角数字８ケタです。" unless
-                members.all?{|x| x =~ /\A\d{8}\Z/}
+                members.all?{|x| x =~ /\A(\d{8})|(hkimura)|(yosshino)\Z/}
         members.each do |sid|
         unless Student.find_by_sid(sid)
           raise "#{sid}さんは受講者リストにみつかりません。"
