@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <!--
-# VERSION: 1.0
+# VERSION:
 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="../stylesheets/screen.css" />
-<title>robocar 2013</title>
+<title>robocar 2014</title>
 <style>
 img.icon {
 width:1em;
@@ -19,22 +19,20 @@ width:1em;
 </header>
 <h2>LPCXpresso:エラーと警告</h2>
 
-<p>往々にして、プログラムに間違い（エラー）を入り込ませてしまうが、
-  それはきわめてふつうのこと。卑屈になる必要はない。</p>
+<p>プログラムに間違い（エラー）を入り込ませてしまうのはきわめてふつう。
+  しかし、エラーがあるとプログラムはビルドできず、ロボカーに焼けない。</p>
 
-<p>
-  しかし、エラーがあるプログラムはビルドできない。ロボカーにも焼けない。</p>
-
-<p>
+<blockquote style='font-size:smaller;'>
   LPCXpresso が「ビルドに失敗しました」と表示するのを無視し、
-  ビルドできたと思い込んで修正前の以前のバイナリを繰り返しロボカーに焼き付け、
-  泥沼にはまったチームが過去にはあった。</p>
+  ビルドできたと思い込んで修正前のバイナリを繰り返しロボカーに焼き付け、
+  泥沼にはまったチームが過去にはあった。
+</blockquote>
 
 <h4><img src="images/red.png"> について</h4>
 
 <p>
-  ビルド時にエラーを見つけると LPCXpresso は
-  エラーが見つかった行の左に<span class='warn'>赤丸</span>にペケの
+  LPCXpresso はエラーが見つかった行の左に
+  <span class='warn'>赤丸</span>にペケの
   <img src="images/red.png" class="icon">
   マークを表示する。</p>
 
@@ -46,14 +44,18 @@ width:1em;
 （スクリーンショットは黄色っぽいが本来は赤です）。</p>
 
 <p><img src="images/red.png" class="icon">
-の上にカーソルをあわせると、どんなエラーかがポップアップする。</p>
+にカーソルをあわせるとエラーの内容を教えてくれる。
+ひどい日本語の時もあるが、そのひどい日本語はどんな意味か、
+メモをとって覚えよう。
+</p>
 
 <p><img src="images/error-2.png"></p>
 
-<p>上の例ではとじ括弧が余計だ。それを削除し、セーブするか、ビルドすると
+<p>上の例ではとじ括弧が余計。それを削除し、ビルドすると
 <img src="images/red.png" class="icon">、
 <span style="border:1pt solid red;">&nbsp;&nbsp;</span>
 は消える。</p>
+
 <p>
   プログラムのどこかに一カ所でも
   <img src="images/red.png" class="icon">
@@ -86,7 +88,9 @@ width:1em;
   の意味がわからなかったらとりあえず
   hkimura や TA に質問してみよう。</p>
 
-<p>今期の授業が終わる頃には警告の意味を理解し、修正できるようになる(はず)。なってほしい。</p>
+<p>
+今期の授業が終わる頃には警告の意味を理解し、修正できるようになる(はず)。
+</p>
 
 <p><a href="../index.html">back</a></p>
 <footer>

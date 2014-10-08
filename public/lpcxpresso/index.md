@@ -1,21 +1,27 @@
 ## LPCXpresso
 ![startup](images/startup.png)
 
-eclipse のプラグイン。情報センターのＰＣには version 4 と vesion 7 をインストール。
+eclipse のプラグイン。
 通常の C プログラムの開発と、ロボカーを動かすプログラムの開発の両方で利用する。
 
 ### 最新版は version 7.3.0
-2014から。立ち上げは、
+立ち上げは、
 
 ````sh
 $ lpcxpresso &
 ````
 
-ネットから Windows/OSX/Linux 版が無料でダウンロードできる。
-ダウンロード・インストールの方法は
+[http://www.lpcware.com](http://www.lpcware.com/lpcxpresso/download)
+から Windows/OSX/Linux 版が無料でダウンロードできる。
+![download](images/download.png)
+
+
+ダウンロードしたファイルをダブルクリックでインストーラーが立ち上がります。
+<!--
+* インストールの方法は
 [ここ](to_my_pc.html)
 。
-
+-->
 
 ### version4
 2013まで使用した実績あり。
@@ -28,7 +34,7 @@ $ lpcxpresso4 &
 
 ###ワークスペース
 
-ワークスペースは作成したプログラムのセーブ場所と思って80%大丈夫。
+「ワークスペース」は作成したプログラムのセーブ場所と思ってほぼ OK。
 
 ![](images/workspace_name.png)
 
@@ -36,15 +42,17 @@ $ lpcxpresso4 &
 
 <span class='warn'>まちがうと成績評価されない</span>。正確に。</li>
 
-### 評価版で OK
+### 評価版で大丈夫
 
 ![](images/unregistered.png)
 
 レジストレーションしていない LPCXpresso は 8k 以上のプログラムは作れない。
-大丈夫。受講生が毎年作るロボカープログラムの平均的なサイズは 3k ぐらい。
+
+でも大丈夫。受講生が毎年作るロボカープログラムの平均的なサイズは 3k ぐらい。
 
 OKボタンを押して進む。
 
-<!--
-[戻る]("../")
--->
+[戻る](../)
+
+----
+by hkimura.
