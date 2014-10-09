@@ -19,8 +19,9 @@
   ![select robocar.zip](images/import_robocar.png)
 4. Next ボタンでページが切り替わり、Finish ボタンでインポート完了。ウィンドウ左上はこんな感じ、<br>
   ![imported](images/imported.png)
-5. もうひとふんばり。あとで別のプロジェクトを開始するときのため、
-  インポートしたばかりの robocar プロジェクトの名前を変えます。robocar の上を右クリック。
+5. もうひとふんばり。後日、別のプロジェクトを開始するときのため、
+  インポートしたばかりの robocar プロジェクトの名前を変えておく。
+  robocar の上を右クリック。
   現れるメニューの Rename を選択。<br>
   ![rename menu](images/rename_project_menu.png)
 6. 別の名前に換えておく。<br>
