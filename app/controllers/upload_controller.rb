@@ -2,12 +2,6 @@
 class UploadController < ApplicationController
   skip_before_filter :authorize, only: [:new]
 
-  # if Rails.env == "development"
-  #   DESTDIR = File.join(Rails.root,"binaries")
-  # else
-  #   DESTDIR = "/srv/robocar-2014/binaries"
-  # end
-
   DESTDIR = File.join(Rails.root, "beuto-bin")
 
   def index
