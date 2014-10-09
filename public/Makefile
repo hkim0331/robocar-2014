@@ -7,6 +7,7 @@ install:
 	rsync -av --exclude='*~' --exclude='Makefile' --exclude='#*' \
 		--exclude='.DS_Store' --exclude='*.bak' \
 		--exclude='*.ai' \
+		--exclude='*.md' \
 		. ${HOST}:${BASE}
 
 2013-2014:

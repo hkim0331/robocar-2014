@@ -11,17 +11,12 @@ eclipse のプラグイン。
 $ lpcxpresso &
 ````
 
-[http://www.lpcware.com](http://www.lpcware.com/lpcxpresso/download)
-から Windows/OSX/Linux 版が無料でダウンロードできる。
-![download](images/download.png)
+workspace が `/home/t/########/robocar/workspace` となっていることを確認。
+\######## はログインアカウントです。
 
-
-ダウンロードしたファイルをダブルクリックでインストーラーが立ち上がります。
-<!--
-* インストールの方法は
-[ここ](to_my_pc.html)
-。
--->
+授業で使うのと同じバージョンの LPCXpresso は
+[ここ](http://www.lpcware.com/lpcxpresso/download)
+からダウンロードできます。
 
 ### （version4）
 2013まで使用した実績あり。
