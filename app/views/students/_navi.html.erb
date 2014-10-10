@@ -2,6 +2,8 @@
 <%= link_to '授業資料', "/" %>
 |
 <%= link_to 'グループ一覧', groups_path %>
+<% if session[:admin] %>
 |
 <%= link_to '受講生追加', new_student_path %>
+<% end %>
 </p>
