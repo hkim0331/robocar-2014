@@ -5,8 +5,14 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.order(:sid)
-
+    if session[:admin]
+      @students = Student.order(:sid)
+    elsif session[:student_id]
+      @students = [Student.find(session[:student_id])]
+    else
+      redirect_to login_url, notice: 'Login が必要です。'
+      return
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @students }
@@ -21,7 +27,6 @@ class StudentsController < ApplicationController
       redirect_to students_url, notice: "他のユーザのプロフィールは閲覧できません。"
       # 2013-10-21, return is necessary here.
       return
-      #
     end
     @icomes = Icome.find_all_by_sid(@student.sid)
     @s_reports = Exercise.find_all_by_sid(@student.sid)
