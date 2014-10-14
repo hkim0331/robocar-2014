@@ -11,6 +11,13 @@ eclipse のプラグイン。
 $ lpcxpresso &
 ````
 
+workspace が `/home/t/########/robocar/workspace` となっていることを確認。
+\######## はログインアカウントです。
+
+授業で使うのと同じバージョンの LPCXpresso は
+[ここ](http://www.lpcware.com/lpcxpresso/download)
+からダウンロードできます。
+
 ### （version4）
 2013まで使用した実績あり。
 古いため、ネットに同じバージョンのものは見つからない。

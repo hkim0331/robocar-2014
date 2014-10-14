@@ -3,7 +3,7 @@
 ![note](images/kirakira_notes.png)
 
 いきなり、ロボカーのプログラミングに挑戦。
-みんなが子供の頃に歌った「キラキラ星」をプログラムしてみる。
+みんなが子供の頃に歌った「キラキラ星」をプログラムします。
 プログラムの詳しい内容は来週以降。今日は、
 
 * プロジェクトの始め方
@@ -50,8 +50,8 @@ int main(void)
 1. [http://robocar-2014.melt.kyutech.ac.jp](http://robocar-2014.melt.kyutech.ac.jp)
 の左上、バイナリ転送をクリック、
 
-2. choose File でコンパイルしたバイナリ 
-`workspace/kirakira/Debug/kirakira.bin` 
+2. choose File でコンパイルしたバイナリ
+`workspace/kirakira/Debug/kirakira.bin`
 を選んで送信ボタン、
 
 ブラウザ上に "〜〜〜 としてアップロードしました" と出るので、それをメモし、
@@ -61,6 +61,8 @@ int main(void)
 
 [別ページ](/burn/) に書きました。
 
+### スイッチオン
+
 みんなのグループのロボカーは声をあげたかな？
 
 ###　ロボカーと音の関係
@@ -69,13 +71,16 @@ int main(void)
 |:--:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |pitch|179 |160 |142 |134 |120 |107 |95 | 90|
 
+pitchは BuzzerSet(pitch,vol) の pitch です。
+
 ### TRY
 
 * 三三七拍子、行ってみよう。
 * ベートーベン「運命」はソソソミー、ファファファレーだ。
-* キラキラ星に挑戦しよう。
+* キラキラ星の演奏に挑戦しよう。
 
 [back](../index.html)
+
 ____
 Last update: <script>document.write(document.lastModified);</script>
 
