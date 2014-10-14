@@ -28,7 +28,6 @@ $ lpcxpresso4 &
 ````
 
 ###ワークスペース
-
 「ワークスペース」は作成したプログラムのセーブ場所と思ってほぼ OK。
 
 ![](images/workspace_name.png)
