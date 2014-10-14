@@ -17,7 +17,17 @@
 
 の表示が出る。`1.bin`のところを覚えて、ロボカー持って教卓に直行する。
 
+[
+[up](../indx.html)|
+[立ち上げ](start.html)|
+[プロジェクト開始](projects.html)|
+[ビルド](build.html)|
+[転送](transfer.html)|
+[焼付](../burn/)
+]
+
 ----
+Last update: <script>document.write(document.lastModified);</script>
 
 
 

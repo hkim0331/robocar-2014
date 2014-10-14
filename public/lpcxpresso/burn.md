@@ -12,10 +12,15 @@
 1. USB ケーブルをつなぐ。ケーブルの裏表に注意。<br>
 ![connect](images/connect.jpg)
 1. 接続を確認したら、次のコマンド、
+
 ````sh
 $ ./burn 40.bin
 ````
+
 をターミナルから入力。40.bin はアップロードの際にメモしたファイル名。
+
+2014/10 から上記コマンドは `./b 40` と入力できるようにしました。
+
 
 success が表示されたら、ケーブルを外し、
 安全な場所でロボットのスイッチをon。
@@ -33,7 +38,19 @@ success が表示されたら、ケーブルを外し、
 5. コピーが完了したら、USB メモリを安全な方法で外す。
 6. ロボカーのスイッチをオン。
 
+[
+[up](../index.html)
+|
+[立ち上げ](start.html)
+|
+[プロジェクト開始](projects.html)
+|
+[ビルド](build.html)
+|
+[転送](transfer.html)
+|
+[焼付](burn.html)
+]
 
-[back](../index.html)
 ----
 Last update: <script>document.write(document.lastModified);</script>

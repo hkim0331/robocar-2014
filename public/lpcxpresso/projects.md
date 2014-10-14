@@ -2,7 +2,7 @@
 
 ### 準備の準備
 
-[http://robocar-2014.melt.kyutech.ac.jp](http://robocar-2014.melt.kyutech.ac.jp)
+[授業ページ](/)
 の左上メニューから robocar.zip をダウンロードしておく。
 情報センターPCではダウンロードフォルダにセーブされるはず。
 
@@ -15,7 +15,7 @@
 1. LPCXpresso を立ち上げ、
 2. ウィンドウの左中央あたり、import project(s)ボタンを押す。<br>
   ![import project](images/import_project.png)
-3. Archiveの右、Browse...ボタンでダウンロードした robocar.zip を選ぶ。<br>
+3. Archiveの右、Browse...ボタンを押し、先ほどダウンロードした robocar.zip を選ぶ。<br>
   ![select robocar.zip](images/import_robocar.png)
 4. Next ボタンでページが切り替わり、Finish ボタンでインポート完了。ウィンドウ左上はこんな感じ、<br>
   ![imported](images/imported.png)
@@ -31,8 +31,14 @@
 
 ![ready to develop](images/ready_to_develop.png)
 
-[back](../index.html)
-
+[
+[up](../index.html)|
+[立ち上げ](start.html)|
+[プロジェクト開始](projects.html)|
+[ビルド](build.html)|
+[転送](transfer.html)|
+[焼付](burn/)
+]
 ----
 Last update: <script>document.write(document.lastModified);</script>
 
