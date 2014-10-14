@@ -11,18 +11,6 @@ eclipse のプラグイン。
 $ lpcxpresso &
 ````
 
-[http://www.lpcware.com](http://www.lpcware.com/lpcxpresso/download)
-から Windows/OSX/Linux 版が無料でダウンロードできる。
-![download](images/download.png)
-
-
-ダウンロードしたファイルをダブルクリックでインストーラーが立ち上がります。
-<!--
-* インストールの方法は
-[ここ](to_my_pc.html)
-。
--->
-
 ### （version4）
 2013まで使用した実績あり。
 古いため、ネットに同じバージョンのものは見つからない。
@@ -33,7 +21,6 @@ $ lpcxpresso4 &
 ````
 
 ###ワークスペース
-
 「ワークスペース」は作成したプログラムのセーブ場所と思ってほぼ OK。
 
 ![](images/workspace_name.png)
