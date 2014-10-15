@@ -7,7 +7,7 @@
 
 あるいは、授業中であれば、hkimura の Mac にバイナリを転送し、ロボカーに焼き付ける。
 
-1. [http://robocar-2014.melt.kyutech.ac.jp](http://robocar-2014.melt.kyutech.ac.jp)
+1. [授業資料](http://robocar-2014.melt.kyutech.ac.jp)
 を開き、左上の方に見つかるバイナリ転送をクリック、![will transfer](images/will_transfer.png)
 1. ログインが必要ならログインし、(アカウントを持たない学生はバイナリ転送できません)
 1. バイナリの位置を正確に入力、

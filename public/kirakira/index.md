@@ -11,7 +11,7 @@
 * バイナリ転送の仕方
 * ロボカーへの焼き付け方
 
-を覚えることを主眼とする。
+を覚えること。
 
 ### プロジェクト開始
 robocar.zip をインポート、プロジェクトの名前を kirakira に変更（しているはず）。
@@ -47,7 +47,7 @@ int main(void)
 
 ### バイナリ転送
 
-1. [http://robocar-2014.melt.kyutech.ac.jp](http://robocar-2014.melt.kyutech.ac.jp)
+1. [授業資料](http://robocar-2014.melt.kyutech.ac.jp)
 の左上、バイナリ転送をクリック、
 
 2. choose File でコンパイルしたバイナリ
@@ -59,7 +59,7 @@ int main(void)
 
 ### 焼き付け
 
-[別ページ](/burn/) に書きました。
+[別ページ](/lpcxpresso/burn.html) を見るべし。
 
 ### スイッチオン
 
