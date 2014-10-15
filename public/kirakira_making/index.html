@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+  <head>
+    <title>Presentation</title>
+
+    <meta charset='utf-8'>
+    <script src='js/slides.js'></script>
+    <script src='js/slide-resize.js'></script>
+  </head>
+
+  <style>
+    /* Your individual styles here, or just use inline styles if that’s what you want. */
+  </style>
+
+  <body style='display: none'>
+
+    <section class='slides layout-regular template-default'>
+      <!-- Your slides (<article>s) go here. Delete or comment out the slides below. -->
+
+      <article class='biglogo'></article>
+
+      
+<article>
+<h3>Making of Kirakira</h3>
+<p>先週の授業では、</p>
+<ul>
+<li>グループを結成した。</li>
+<li>キラキラ星を演奏するプログラムを作った。</li>
+<li>プロジェクトのインポート、編集、ビルド、バイナリ転送、ロボカーの焼き付けを覚えた。</li>
+<li>ロボカーが理解する関数(BuzzerSet(), BuzzerStart(),...)を使えば楽勝だった。</li>
+<li>(マイカーとマイPCがあればもっと楽と理解した。)</li>
+</ul>
+</article>
+
+<article>
+<h3>プログラムを改良する</h3>
+<p>みんなの作ったプログラムはだいたいこんな感じ。</p>
+<pre><code>int main(void)
+{
+  const unsigned short MainCycle = 60;
+  Init(MainCycle);
+
+  BuzzerSet(179, 100);
+  BuzzerStart();
+  Wait(400);
+  BuzzerStop();
+  Wait(100);
+  ...
+  ...
+}
+</code></pre>
+<p><a href="main1.html">main.c</a></p>
+</article>
+
+<article>
+<h3>どこを改良するか？</h3>
+<p>「動けばいい」はダメ。
+もうちょっと課題が難しくなるとすぐに動かなくなる。</p>
+<ul>
+<li>main関数を短く。</li>
+<li>コピペをなるべく使わない。</li>
+<li>関数を利用して、BuzzerSet()...Wait(3000)までのブロックをまとめる。</li>
+</ul>
+<p>たとえばこんなのどうですか？ =&gt; <a href="main2.html">main2.c</a></p>
+</article>
+
+<article>
+<h3>まだ改良する</h3>
+<p>関数使ったが、DO() や SO()の関数のボディはほとんど同じもの。
+変更が必要になったら、関数の数だけ、変更する箇所があることは変わらない。</p>
+<p>共通する部分をさらに関数でまとめる。</p>
+<p><a href="main3.html">main3.c</a></p>
+</article>
+
+<article>
+<h3>さらに改良</h3>
+<p>キラキラ星の場合、一つ一つの音符のボリューム、音長さ、休み時間は同じ。</p>
+<p>同じ長さは別のところにプログラムしておくと、
+後で変更したくなっても、変更の箇所がプログラム中に散らばらず、作業が楽になる。</p>
+<p><a href="main4.html">main4.c</a> を見よ。</p>
+</article>
+
+<article>
+<h3>完成と思ったところでさらに</h3>
+<p>DO(), RE(), MI() 関数はアイデアであったけど、さらにアイデアをしぼる。</p>
+<p>DO, RE, MI を音のピッチを表す定数とし、楽曲を配列で表現する。</p>
+<p>配列の最後に、「配列はここで終わり」を示すマークをつけておく。
+そのマークをロボカーが読んだら演奏を終了する。</p>
+<p><a href="main5.html">main5.c</a></p>
+</article>
+
+<article>
+<h3>もっとプログラム</h3>
+<p>ここまで来るとちょっと欲が出てくる。キラキラ星以外の楽曲も鳴らしたいぞ。</p>
+<p>カエルの歌だ。しかし、カエルの歌にはキラキラ星には出てこなかった休止府もある。</p>
+<p>ので、プログラムを変更。楽曲の終わりの他に休止符を理解するように改良する。</p>
+<p>カエルの歌は関数 kaeru() で定義しよう。</p>
+<p><a href="main6.html">main6.c</a></p>
+</article>
+
+<article>
+<h3>趣味で</h3>
+<p><a href="main7.html">main7.c</a> の変更は軽微です。</p>
+<p>関数 kirakira() と関数 kaeru() の中で、ともに for ループを呼んでいるのが
+見苦しいと思われたので、それを関数 music() に変更。</p>
+</article>
+
+<article>
+<h3>短い音符も</h3>
+<p>カエルの歌には短い音符も出てきます。短い音符をどうプログラムするか、
+方法はいろいろあると思いますが、
+ここでは DURATION と PAUSE の長さを変えることにします。</p>
+<p>受講生は別の方法でトライすること。</p>
+<p><a href="main8.html">main8.c</a></p>
+</article>
+
+
+
+    </section>
+
+  </body>
+</html>
