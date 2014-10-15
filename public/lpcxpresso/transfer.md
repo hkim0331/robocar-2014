@@ -23,7 +23,7 @@
 [プロジェクト開始](projects.html)|
 [ビルド](build.html)|
 [転送](transfer.html)|
-[焼付](../burn/)
+[焼付](burn.html)
 ]
 
 ----
