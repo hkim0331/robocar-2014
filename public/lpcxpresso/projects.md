@@ -2,7 +2,7 @@
 
 ### 準備の準備
 
-[授業ページ](/)
+[授業資料](/)
 の左上メニューから robocar.zip をダウンロードしておく。
 情報センターPCではダウンロードフォルダにセーブされるはず。
 
@@ -37,7 +37,7 @@
 [プロジェクト開始](projects.html)|
 [ビルド](build.html)|
 [転送](transfer.html)|
-[焼付](burn/)
+[焼付](burn.html)
 ]
 ----
 Last update: <script>document.write(document.lastModified);</script>

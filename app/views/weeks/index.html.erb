@@ -1,4 +1,4 @@
-<h1>進行状況</h1>
+<h1>講義記録</h1>
 
 <table>
   <tr>
@@ -7,9 +7,7 @@
     <th><%= Week::WD[:c1] %></th>
     <th><%= Week::WD[:c2] %></th>
     <th><%= Week::WD[:c3] %></th>
-<!--
     <th><%= Week::WD[:c4] %></th>
--->
     <th>備考</th>
     <% if session[:admin] %>
     <th></th>
@@ -23,15 +21,15 @@
     <td><%= week.c1 %></td>
     <td><%= week.c2 %></td>
     <td><%= week.c3 %></td>
-<!--
     <td><%= week.c4 %></td>
--->
     <td><%=raw week.note %></td>
+    <% if session[:admin] %>
     <td><%= link_to image_tag('/images/edit.png'), edit_week_path(week) %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <p>
-<%= link_to 'Back', "/" %>
+<%= link_to '授業資料', "/" %>
 </p>
