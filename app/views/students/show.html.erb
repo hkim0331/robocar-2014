@@ -23,12 +23,6 @@
 
 <p>
   <b>週テスト</b>
-  <ul>
-    <% @s_reports.each do |r|%>
-    <li><%= File.basename(r.path) %> <%= link_to "[show]", 
-      :action => :show, :id =>r.id, :controller => :exercises %></li>
-    <% end %>
-  </ul>
 </p>
 
 
@@ -36,8 +30,7 @@
   <b>個人提出物</b>(勝手にコピー)
   <ul>
     <% @s_reports.each do |r|%>
-    <li><%= File.basename(r.path) %> <%= link_to "[show]", 
-      :action => :show, :id =>r.id, :controller => :exercises %></li>
+    <li><%= File.basename(r) %></li>
     <% end %>
   </ul>
 </p>
@@ -46,7 +39,7 @@
   <b>グループ提出物</b>(グループで渾身のものを)
   <ul>
     <% @g_reports.each do |r|%>
-    <li><%= File.basename(r.path) %> <%= link_to "[show]", 
+    <li><%= File.basename(r.path) %> <%= link_to "[show]",
       :action => :show, :id => r.id, :controller => :exercises %></li>
     <% end %>
   </ul>
