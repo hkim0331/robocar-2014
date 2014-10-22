@@ -29,7 +29,12 @@ class StudentsController < ApplicationController
       return
     end
     @icomes = Icome.find_all_by_sid(@student.sid)
-    @s_reports = Exercise.find_all_by_sid(@student.sid)
+    # 2014-10-22
+    personal_dir = File.join(Exercise::PERSONAL_EX,@student.sid)
+    puts "personal_dir: #{personal_dir}"
+    @s_reports = Dir.glob(File.join(personal_dir,"*"))
+    puts "@s_reports: #{@s_reports}"
+    #
     @g_reports = Exercise.find_all_by_sid(@student.group_id)
     respond_to do |format|
       format.html # show.html.erb

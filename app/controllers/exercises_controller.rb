@@ -69,11 +69,10 @@ class ExercisesController < ApplicationController
       flash[:alert] = "#{o_name} としてアップロードしました。"
     end
 
-    @exercise=Exercise.new(sid: gid, path:saveto)
+    @exercise = Exercise.new(sid: gid, path: saveto)
 
     respond_to do |format|
       if @exercise.save
-#        format.html { redirect_to exercises_path, notice: 'Group Ex was successfully created.' }
         format.html { redirect_to new_exercise_path, alert: 'グループ課題を送信しました。' }
         format.json { render json: @exercise, status: :created, location: @exercise }
       else

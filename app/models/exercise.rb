@@ -1,10 +1,11 @@
 class Exercise < ActiveRecord::Base
   attr_accessible :path, :sid
 
-  DIR = if Rails.env == 'production'
-            "/srv/robocar/exercises"
-        else
-            "/Users/hkim/Desktop"
-        end
-
+  if Rails.env == 'production'
+    DIR = "/srv/robocar-2014/group_ex"
+    PERSONAL_EX = "/srv/robocar-2014/upload"
+  else
+    DIR = "/Users/hkim/Desktop"
+    PERSONAL_EX = "/Users/hkim/Desktop"
+  end
 end
