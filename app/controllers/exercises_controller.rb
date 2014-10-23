@@ -73,7 +73,8 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       if @exercise.save
-        format.html { redirect_to new_exercise_path, alert: 'グループ課題を送信しました。' }
+#        format.html { redirect_to new_exercise_path, alert: 'グループ課題を送信しました。' }
+        format.html { redirect_to "/", alert: 'グループ課題を送信しました。' }
         format.json { render json: @exercise, status: :created, location: @exercise }
       else
         format.html { render action: "new" }
