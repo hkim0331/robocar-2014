@@ -6,12 +6,14 @@
 
 <table>
   <tr>
-    <th>Id</th>
-    <th>Path</th>
-    <th>date</th>
+    <th>Group</th>
+    <th>Program</th>
+    <th>Upload at</th>
+    <th></th>
+<!--
     <th></th>
     <th></th>
-    <th></th>
+-->
   </tr>
 
 <% @exercises.each do |exercise| %>
@@ -20,8 +22,10 @@
     <td><%= File.basename(exercise.path) %></td>
     <td><%= exercise.updated_at.strftime("%m/%d %H:%M") %></td>
     <td><%= link_to image_tag("/images/eye2.png"), exercise %></td>
-    <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
-    <td><%= link_to image_tag("/images/trash.png"), exercise, confirm: 'Are you sure?', method: :delete %></td>
+<!--
+    <td><%#= link_to 'Edit', edit_exercise_path(exercise) %></td>
+    <td><%#= link_to image_tag("/images/trash.png"), exercise, confirm: 'Are you sure?', method: :delete %></td>
+-->
   </tr>
 <% end %>
 </table>
