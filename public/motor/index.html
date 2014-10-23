@@ -43,26 +43,27 @@
 
   <span class="n">Mtr_Run_lv</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
   <span class="n">Wait</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
-  <span class="n">Mtr_Run_lv</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">Mtr_Run_lv</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>    <span class="c1">// エラー</span>
 
   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<h3>問題１</h3>
+<h3>演習１</h3>
 <ol>
 <li>Wait(5000)でロボカーが何cm進んだか、測定せよ。</li>
 <li>ロボカーを 1cm 前進、静止させよ。</li>
 <li>ロボカーを 10cm 前進、静止させよ。</li>
-<li>ロボカーを 5cm 後退させよ。</li>
+<li>ロボカーを 5cm 後退、静止させよ。</li>
+<li>スイッチを入れてから ２ 秒後にロボカーが動作開始するようにせよ。</li>
 </ol>
-<h3>問題２</h3>
+<h3>演習２</h3>
 <ol>
-<li>ロボカーを 90 度、右回転させよ。</li>
-<li>ロボカーを 360 度、左回転させよ。</li>
+<li>ロボカーを右に 90 度回転させ、静止。</li>
+<li>ロボカーを左に 360 度回転させ、静止。</li>
 </ol>
-<h3>問題３</h3>
+<h3>演習３</h3>
 <ol>
 <li>ロボカーを2倍の速度で10cm 前進、静止させよ。</li>
 <li>ロボカーを1/2の速度で10cm 前進、静止させよ。</li>
@@ -83,67 +84,90 @@
 <p>であることを示す。</p>
 <p>授業ではシグナチャ以外、関数 Mtr_Run_lv()のボディは深入りしない。
 授業のレベルを超えて勉強したい学生はどんどん行け。
-「short 型の m1」って意味がわかるか？が授業で求めるレベルだ。</p>
+「short 型の m1」って意味がわかるか？が授業で求めるレベル。</p>
 <h3>ビットを理解する</h3>
 <p>ビット(bit)は 0 か 1 か必ずどちらかの状態を取る。</p>
 <h3>char, short, int, long</h3>
-<p>CPU によって違うが、ロボカーに搭載されている CPU(ARM) の場合、</p>
+<p>bit が表現できるパターンは二通り。</p>
+<p>bit をまとめ、もっとたくさんのパターンを表せるようにする。
+そして、そのパターンにどんな意味を持たせるかを合理的に決める。
+何個のビットをひとまとめにするかにより、char、short、int、long の型になる。</p>
+<p>ロボカーに搭載の CPU では</p>
 <table>
 <thead>
 <tr>
 <th align="left">型</th>
 <th align="left">ビット長</th>
 <th align="left">表現できるデータの種類</th>
+<th align="left">unsigned</th>
+<th align="left">signed</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">char</td>
 <td align="left">8bit</td>
-<td align="left">2<sup>8</sup> -1 通り。</td>
+<td align="left">2<sup>8</sup> 通り</td>
+<td align="left">0 ~ 2<sup>8</sup>-1</td>
+<td align="left">-2<sup>7</sup> ~ 2<sup>7</sup>-1</td>
 </tr>
 <tr>
 <td align="left">short</td>
 <td align="left">16bit</td>
-<td align="left">2<sup>16</sup> -1 通り。</td>
+<td align="left">2<sup>16</sup> 通り</td>
+<td align="left">0 ~ 2<sup>16</sup>-1</td>
+<td align="left">-2<sup>15</sup> ~ 2<sup>15</sup>-1</td>
 </tr>
 <tr>
 <td align="left">int</td>
 <td align="left">32bit</td>
-<td align="left">2<sup>32</sup> -1 通り。</td>
+<td align="left">2<sup>32</sup> 通り</td>
+<td align="left">0 ~ 2<sup>32</sup>-1</td>
+<td align="left">-2<sup>31</sup> ~ 2<sup>31</sup>-1</td>
 </tr>
 <tr>
 <td align="left">long</td>
 <td align="left">64bit</td>
-<td align="left">2<sup>64</sup> -1 通り。</td>
+<td align="left">2<sup>64</sup> 通り</td>
+<td align="left">0 ~ 2<sup>64</sup>-1</td>
+<td align="left">-2<sup>63</sup> ~ 2<sup>63</sup>-1</td>
 </tr>
 </tbody>
 </table>
-<h4>問題（中学生か小学生レベル）</h4>
+<h4>演習（小学生、中学生レベル）</h4>
 <ul>
-<li>2<sup>8</sup> はいくらか？ 2<sup>16</sup> は？ 2<sup>32</sup>, 2<sup>64</sup> は？</li>
+<li>2<sup>8</sup> はいくらか？ 2<sup>16</sup>, 2<sup>32</sup>, 2<sup>64</sup> は？</li>
 </ul>
 <h3>(double, float)</h3>
 <p>小数点付きの数を保持するときに使う。
-ロボカーではほとんど使わない。さらに float は他の場所でもほとんど使われない。</p>
+ロボカー授業では使わない。
+さらに float は他の場所でも現在はほとんど使われない。</p>
 <h3>unsigned, signed</h3>
-<p>bit パターンの解釈の方法。unsigned (符号なし)は 0 をいちばん小さいデータとする。
-signed は 0 を中央のデータとする。</p>
+<p>bit パターンの解釈の方法を表す。</p>
+<ul>
+<li>unsigned (符号なし)は 0 をいちばん小さいデータとする。
+一番大きい数はすべてのビットが１となった数。</li>
+<li>signed は 0 を中央のデータとする。
+すべてのビットが１になった数は「１を足すと０」という性質から、-1 を表すと考える。</li>
+<li>signed/unsigned が省略された場合は signed が指定されたと考える。</li>
+</ul>
 <p><img src="data:image/png;base64,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" style="width:70%;"></p>
 
-<p>省略された場合は signed が指定されたと考える。</p>
 <h3>short m1</h3>
 <p>"short m1" は、省略しないとすれば "signed short m1"。
 つまり、"符号付き 16 ビットの整数 m1"。その意味を理解できないとダメ。</p>
-<p>short m1 と宣言された変数 m1 が取りうる値の最小値、最大値はいくらか？</p>
-<h3>問題</h3>
+<p>"short m1" と宣言された変数 m1 が取りうる値の最小値、最大値はいくらか？</p>
+<h3>演習</h3>
 <ul>
-<li>Mtr_Run_lv(10000,-10000,0,0,0,0)　に比べてMtr_Run_lv(40000,-40000,0,0,0,0)が
-４倍速にならない理由を述べよ。</li>
+<li>Mtr_Run_lv(10000,-10000,0,0,0,0)　と比較し、
+Mtr_Run_lv(40000,-40000,0,0,0,0)が４倍速にならない理由を述べよ。</li>
 </ul>
 <h2>今日のグループ課題</h2>
-<p>ロボカーを一辺が 30cm の正方形の辺に沿って走らせろ。一周したら静止。
-完成したらロボカーの演技を hkimura に見せ、そのプログラムを送信する。</p>
+<p>一辺が 30cm の正方形の辺に沿ってロボカーを走らせろ。一周したら静止。
+完成したらロボカーの演技を hkimura に見せ、そのプログラム main.c を送信しなさい。
+送信するのは motor.bin じゃねーぞ。</p>
+<hr>
+<p>written by hkimura.</p>
         </article>
       </div>
     </div>
