@@ -9,7 +9,7 @@
 <% if session[:student_id] %>
 <p>コンパイルして得られた Debug/*.bin を選び、送信してください。</p>
 
-<fieldset id="upload">
+<fieldset id="upload" style='background: #ffffcc;'>
 <legend>グループIDは自動計算します。</legend>
 <%= form_tag({action: 'upload'}, {multipart: true}) do %>
 <%= file_field :bin, :name %>
