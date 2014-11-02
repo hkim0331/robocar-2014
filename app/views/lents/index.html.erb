@@ -29,7 +29,7 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
     <th>備考</th>
     <% if session[:admin] %>
     <th>連絡先</th>
-    <th></th>
+    <th>返却</th>
     <th>編</th>
     <th>削</th>
     <% end %>
@@ -53,18 +53,10 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
     <td><%= lent.note %></td>
     <% if session[:admin] %>
       <td><%= lent.contact %></td>
-      <td><% if lent.back_on %>
-          <%= link_to image_tag('/images/check.png'), "/lents/#{lent.id}/returned", method: :put %>
-          <% else %>
-          <%= link_to '返却', "/lents/#{lent.id}/returned", method: :put %>
-          <% end %>
-      </td>
-<!--
-    <td><%= link_to image_tag('/images/loope2.png'), lent %></td>
--->    
-    <td><%= link_to image_tag('/images/edit.png'), edit_lent_path(lent) %></td>
-    <!-- FIXME: routes -->
-    <td><%= link_to image_tag('/images/trash.png'), lent, confirm: 'Are you sure?', method: :delete %></td>
+      <td><%= link_to 'ret',"/lents/#{lent.id}/returned" %>
+      <td><%= link_to image_tag('/images/edit.png'),
+              edit_lent_path(lent) %></td>
+      <td><%= link_to 'del',"/lents/#{lent.id}/destroy" %>
     <% end %>
   </tr>
 <% end %>
@@ -73,7 +65,7 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
 <h4>管理人へ</h4>
 
 <p>
-  <img src="images/trash.png">でレコードを消すときは、
+  del でレコードを消すときは、
   いったん、ロボカーを返却の状態にしてから実行すること。
   じゃないとロボカーが行方不明になります。
 </p>

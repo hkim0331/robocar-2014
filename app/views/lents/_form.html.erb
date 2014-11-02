@@ -17,17 +17,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :condition %><br />
+    <%= f.label '状況' %><br />
     <%= f.number_field :condition %>
+    1:アキ、２:貸出中、３:戻った、-1: 壊れた
   </div>
 
   <div class="field">
-    <%= f.label '貸し出し' %><br />
+    <%= f.label '貸し出し日' %><br />
     <%= f.date_select :lent_on %>
   </div>
 
   <div class="field">
-    <%= f.label '返却予定' %><br />
+    <%= f.label '返却予定日' %><br />
     <%= f.date_select :willback_on %>
   </div>
 
