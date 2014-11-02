@@ -11,6 +11,7 @@ previous_url: <%= session[:previous_url] %>
 
 <table>
   <tr>
+    <th>通番</th>
     <th>学生番号</th>
     <th>氏名</th>
     <th>グループ</th>
@@ -22,9 +23,10 @@ previous_url: <%= session[:previous_url] %>
     <th></th>
     <th></th>
   </tr>
-
+<% num = 0 %>
 <% @students.each do |student| %>
   <tr>
+    <td><%= num += 1 %></td>
     <td><%= student.sid %></td>
     <td><%= student.name %></td>
     <td><%= student.group_id %></td>
