@@ -53,7 +53,7 @@ void step(void) {
 }
 
 int is_black_left(void) {
-	return ADRead(LEFT_EYE) > BLACK;　//左目のセンサーが黒閾値以上だったら真
+	return ADRead(LEFT_EYE) > BLACK;//左目のセンサーが黒閾値以上だったら真
 }
 
 int is_black_right(void) {
