@@ -1,0 +1,4 @@
+#!/usr/bin/env dash
+#-*- mode: Shell-script; -*-
+sshfs hkim.jp:  .
+

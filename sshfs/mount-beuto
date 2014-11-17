@@ -1,0 +1,8 @@
+#!/usr/bin/env dash
+#-*- mode: Shell-script; -*-
+DEST=`pwd`
+sshfs robocar-2014.melt.kyutech.ac.jp:/srv/robocar-2014/beuto-bin/ \
+    ${DEST} && \
+    echo "mount successfull for " ${DEST}
+
+

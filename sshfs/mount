@@ -1,0 +1,15 @@
+#!/usr/bin/env dash
+#-*- mode: Shell-script; -*-
+# programmed by Hiroshi Kimura in 2010-05-23.
+
+if [ $# != 1 ]; then
+	echo "usage: ./mount server:/path/to/the/directory"
+	exit 2
+fi
+DEST=`pwd`
+sshfs $1 ${DEST} && \
+    echo "sshfs: mount successfull for " ${DEST}
+
+
+
+
