@@ -16,13 +16,15 @@
         <article id="content" class="markdown-body">
           <h2>LED</h2>
 <p>LED は Light Emitting Diode の頭文字。これの青い色を出すのを発明した人のノーベル賞はみんな知ってる。</p>
-<p>今日の個人課題プロジェクトは led。簡単な課題なので、全員、完成させること。</p>
+<p>今日の個人課題プロジェクトは led。
+簡単な課題なので、全員、完成させること（10分）。
+その後、スラローム課題に取り組め。</p>
 <h3>関数 void LED(unsigned char n)</h3>
 <p>ロボカーには小さいLEDが二つ付いている。
 ロボカーが左に黒を検知したら左のLED、
 右に黒を検知したら右のLED、
 break コマンドなどでループから脱出したら両方のLEDをつけるようにしこんだら、
-ロボカーが自分のプログラムのどの辺を実行しているのか、よくわかって便利だ。</p>
+ロボカーが自分のプログラムのどの辺を実行しているのか、目に見えて便利だ。</p>
 <table>
 <thead>
 <tr>
@@ -56,8 +58,8 @@ break コマンドなどでループから脱出したら両方のLEDをつけ�
     <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">MainCycle</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
     <span class="n">Init</span><span class="p">(</span><span class="n">MainCycle</span><span class="p">);</span>
 
-    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="n">LED</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">LED</span><span class="p">((</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
@@ -81,7 +83,8 @@ x　と y を整数としたとき、 x % y で x を y で割った余りを求
 <p>i が 0 から 99 まで変わる時、i%2 の値は、0、1を繰り返す。
 (i%2)+1 の値はループの間、1と2 を繰り返し、LED の表に照らし合わせると、
 緑、オレンジを点滅させる。</p>
-<p>% は掛け算 * や 割り算 / と同じ優先度なので、+ や - よりも先に計算される。
+<p>% は掛け算 * や 割り算 / と同じ優先度なので、
+足し算 + や引き算 - よりも先に計算される。
 (i%2)+1 は i%2+1とカッコを省略しても同じ結果になるが、
 カッコがあったほうが優しさを感じられる。さらにスペースを演算子の前後に入れ、</p>
 <div class="codehilite"><pre><span class="p">(</span><span class="vg">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="il">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="il">1</span>
@@ -97,9 +100,9 @@ x　と y を整数としたとき、 x % y で x を y で割った余りを求
     <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">MainCycle</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
     <span class="n">Init</span><span class="p">(</span><span class="n">MainCycle</span><span class="p">);</span>
 
-    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="n">LED</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
     <span class="n">Wait</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">LED</span><span class="p">((</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
         <span class="n">Wait</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
@@ -110,7 +113,7 @@ x　と y を整数としたとき、 x % y で x を y で割った余りを求
 </pre></div>
 
 
-<p>あるいは Wait() を含む LED 関数をプログラムするか、だ。</p>
+<p>あるいは点灯してから Wait() する 自分用 LED 関数をプログラムするか、だ。</p>
 <h4>個人課題</h4>
 <p>緑、オレンジの点滅に合わせて、音を鳴らせ（救急車のイメージ）。</p>
 <p>引き続き、<a href="/slalom/">グループ課題</a> へ。これは中間テスト。</p>

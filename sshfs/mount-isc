@@ -1,0 +1,7 @@
+#!/usr/bin/env dash
+#-*- mode: Shell-script; -*-
+HERE=`pwd`
+sshfs hkimura@remote-t.isc.kyutech.ac.jp: ${HERE} && \
+      echo "sshfs: mount successfull for " ${HERE}
+
+

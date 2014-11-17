@@ -1,0 +1,8 @@
+#!/usr/bin/env dash
+#-*- mode: Shell-script; -*-
+sshfs -p 10022 \
+    hkimura@remote-t.isc.kyutech.ac.jp:literacy \
+    ~/Desktop/sshfs && \
+    echo "mount successfull for Desktop/sshfs"
+
+
