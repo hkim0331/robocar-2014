@@ -15,15 +15,18 @@
       <div id="markup">
         <article id="content" class="markdown-body">
           <h2>中間テスト回想</h2>
-<p>教員の回答と自分グループの回答を見比べて一喜一憂するより、なにをあのシラガデブは教えたいのか、汲み取ってくれ。</p>
+<p>教員の回答と自分グループの回答を見比べて一喜一憂するより、
+あのオジさんはなにを教えたいのか、汲み取ってくれ。</p>
 <ul>
 <li>ロボカーには個体差がある。それを無視したプログラムではロボカーは思ったようには動いてくれない。</li>
 <li>プログラムは一発では動かない。
-何度も修正することを念頭におき、定数は定数として #define し、共通の作業は一つの関数にまとめると、
+何度も修正することを念頭におき、
+定数は定数として #define し、共通の内容は一つの関数にまとめる。
 結果的に短い時間でプログラムは完成し、他の人にもわかりやすいプログラムとなる。</li>
 <li>「あとできれいにすればいい」とアドバイス無視で作成したプログラムは、いつまでも汚い。
 修正に時間がかかり、あるいは期待通りに動かない。</li>
 </ul>
+<p><a href="/answers/">回収したテスト</a></p>
 <h2>step をベースに slalom</h2>
 <p>前々回の授業のテーマは step だった。5mm づつ前進し、黒テープで止まる。これをベースに slalom を考える。</p>
 <p>プロジェクト step の main.c は以下のようなものだろう。</p>
@@ -104,8 +107,10 @@
 <p>関数の戻り値は関数のボディ中で最初に実行する return に続く式の値になる。</p>
 <h4>ADRead(LEFT_EYE) &gt; BLACK　の値は？</h4>
 <p>LEFT_EYE、BLACK の値はプログラムの上の方で #define されている。</p>
-<p>ADRead(LEFT_EYE) は unsigned short (0~2^16-1)の値を返す。それと BLACK との大小を比較する。</p>
-<p>ADRead(LEFT_EYE) の戻す値が定数 BLACK よりも大きい時、ADRead(LEFT_EYE) &gt; BLACK の値は真となる。</p>
+<p>ADRead(LEFT_EYE) は unsigned short (0~2^16-1)の値を返す。
+それと BLACK との大小を比較する。</p>
+<p>ADRead(LEFT_EYE) の戻す値が定数 BLACK よりも大きい時、
+ADRead(LEFT_EYE) &gt; BLACK の値は真となる。</p>
 <p>この値を return するということは 関数 is_black_left(void) の戻り値が真、ということ。</p>
 <div class="codehilite"><pre><span class="k">return</span> <span class="p">(</span><span class="n">ADRead</span><span class="p">(</span><span class="n">LEFT_EYE</span><span class="p">)</span><span class="o">&gt;</span><span class="n">BLACK</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -116,16 +121,19 @@
 </pre></div>
 
 
-<p>でも同じ意味になるが、0 と比較するだけ無駄っしょ。なので、ほとんどの C プログラマはこう書く、</p>
+<p>両者同じ意味になるが、0 と比較するだけ無駄っしょ。
+なので、ほとんどの C プログラマはこう書く、</p>
 <div class="codehilite"><pre><span class="k">return</span> <span class="n">ADRead</span><span class="p">(</span><span class="n">LEFT_EYE</span><span class="p">)</span><span class="o">&gt;</span><span class="n">BLACK</span><span class="p">;</span>
 </pre></div>
 
 
 <h2>step をどうやって slalom に？</h2>
 <p>まずは母国語で考える。</p>
-<p>C 言語がわからないという人は、たいていの場合、日本語でもどうしていいか、わかってないんだ。
-プログラミング言語学ぼうって意義はここにもある。</p>
-<p>どうすれば、黒テープに沿ってロボカーを動かせるか？
+<p>「C 言語がわからない」という人は、たいていの場合、
+<span style='color:red;'>日本語でもどうしていいかわかってない</span>ことが多い。
+分析的に考えられないことを言語に責任を天下するのは無責任ってことじゃないかい。</p>
+<p>プログラミング言語を学ぼうって意義のひとつはここ。</p>
+<p>どうすれば、黒テープに沿ってロボカーを動かせるか？分析的に考えてみよう。
 黒テープの幅はロボットの目となるフォトセンサーの間隔よりちょっと狭いってことが重要だ。</p>
 <h3>第一バージョン（日本語）</h3>
 <div class="codehilite"><pre><span class="err">もし、黒線をまたいでいたら前進。</span>
@@ -135,27 +143,49 @@
 </pre></div>
 
 
-<p>ちょっとあやふやな部分があるが、これを理解できるのが人間。
-しかし、ロボット（コンピュータ）はこのままでは理解できない。もっと丁寧に仕事の内容を書き下してやる必要がある。</p>
+<p>あやふやな部分があるが、これを理解できるのが人間。
+しかし、ロボット（コンピュータ）はこのままでは理解できない。
+もっと具体的に仕事の内容を書き下してやる必要がある。</p>
 <h3>第２バージョン（半分日本語）</h3>
+<p>関連するところだけ。</p>
 <div class="codehilite"><pre><span class="kt">void</span> <span class="n">go</span><span class="o">-</span><span class="n">straight</span><span class="p">(</span><span class="kt">int</span> <span class="n">distance</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">motor</span><span class="p">(</span><span class="n">LEFT</span><span class="p">,</span><span class="n">RIGHT</span><span class="p">);</span>
   <span class="n">Wait</span><span class="p">(</span><span class="n">MM</span> <span class="o">*</span> <span class="n">distance</span><span class="p">);</span> <span class="c1">//MMは1mm前進する時間。</span>
 <span class="p">}</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="err">黒線をまたいでいたら</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">go_straight</span><span class="p">(</span><span class="mi">1</span><span class="n">mm</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="err">右にずれたら</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">turn_left</span><span class="p">();</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="err">左にずれたら</span><span class="p">)</span><span class="err">　</span><span class="p">{</span>
-  <span class="n">turn_right</span><span class="p">();</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="err">ゴールに着いたら</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">slalom</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="err">黒線をまたいでいたら</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">go_straight</span><span class="p">(</span><span class="mi">1</span><span class="n">mm</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="err">右にずれたら</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">turn_left</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="err">左にずれたら</span><span class="p">)</span><span class="err">　</span><span class="p">{</span>
+    <span class="n">turn_right</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="err">ゴールに着いたら</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">sing</span><span class="p">(</span><span class="n">kaeru</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<p>日本語で書いた部分を、意味を保ったまま C 言語に翻訳していこう。</p>
+<p>日本語の部分を、意味を保ったまま、 C 言語に翻訳していこう。</p>
+<h3>黒線をまたいでいたら？を翻訳</h3>
+<p>同じ意味でも良い方は一つではない。プログラムする人の個性が出る。</p>
+<p>以下は一例です。</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">is_left_white</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">!</span> <span class="n">is_left_black</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">is_left_white</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">!</span> <span class="n">is_left_black</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="p">...</span>
+    <span class="c1">// 「黒をまたいでいたら」のC表現</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_left_whilte</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_right_white</span><span class="p">())</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+</pre></div>
+
+
 <h3>第３バージョン（だいぶC）</h3>
 <div class="codehilite"><pre><span class="kt">int</span> <span class="n">keru</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="n">DO</span><span class="p">,</span><span class="n">RE</span><span class="p">,</span><span class="n">MI</span><span class="p">,</span><span class="n">FA</span><span class="p">,</span><span class="n">MI</span><span class="p">,</span><span class="n">RE</span><span class="p">,</span><span class="n">DO</span><span class="p">};</span>
 <span class="kt">void</span> <span class="nf">sing</span><span class="p">(</span><span class="kt">int</span> <span class="n">song</span><span class="p">[])</span> <span class="p">{</span>
@@ -167,32 +197,34 @@
   <span class="n">Wait</span><span class="p">(</span><span class="n">MM</span> <span class="o">*</span> <span class="n">distance</span><span class="p">);</span> <span class="c1">//MMは1mm前進する時間。</span>
 <span class="p">}</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="n">left_is_white</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">right_is_white</span><span class="p">())</span> <span class="p">{</span>
-  <span class="n">go_straight</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">left_is_black</span><span class="p">())</span> <span class="p">{</span>
-  <span class="n">turn_left</span><span class="p">();</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">right_is_black</span><span class="p">())</span> <span class="p">{</span>
-  <span class="n">turn_right</span><span class="p">();</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">left_is_black</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">right_is_black</span><span class="p">())</span> <span class="p">{</span>
-  <span class="n">sing</span><span class="p">(</span><span class="n">kaeru</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="p">;</span>
+<span class="kt">void</span> <span class="n">slalom</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_left_white</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_right_whilte</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">go_straight</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_left_black</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">turn_left</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_right_black</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">turn_right</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_left_black</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_right_is_black</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">sing</span><span class="p">(</span><span class="n">kaeru</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="p">;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>これでいけると思う人？　まだマトリックス、見てないね？</p>
 <h3>C プログラムの気持ちになって</h3>
-<p>left_is_white() その他の下請け関数が完璧にプログラムされていても、まだ、ロボカーは期待通りには動かない。
+<p>まだ、ロボカーは期待通りには動かない。
 理由はふたつ。</p>
 <ul>
 <li>if は一瞬で通り過ぎる。</li>
 <li>条件を並べる順番に注意。</li>
 </ul>
 <div class="codehilite"><pre><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">left_is_white</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">right_is_white</span><span class="p">())</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_left_white</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_right_white</span><span class="p">())</span> <span class="p">{</span>
     <span class="n">go_straight</span><span class="p">(</span><span class="mi">1</span><span class="n">mm</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">left_is_black</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">right_is_black</span><span class="p">())</span> <span class="p">{</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">left_is_black</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">right_is_black</span><span class="p">())</span> <span class="p">{</span><span class="err">　</span><span class="c1">// ここ</span>
     <span class="k">break</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">left_is_black</span><span class="p">())</span> <span class="p">{</span>
     <span class="n">turn_left</span><span class="p">();</span>
@@ -206,10 +238,62 @@
 </pre></div>
 
 
-<p>while (1==1) は無限ループの表現方法の一つ。1==1 は何回評価しても真に決まっている。
-普通の C プログラマは同じことを  while (1) や　for (;;) とプログラムしたりする。</p>
-<p>if を while で囲み(こっちは納得できる）、判定順番を変えた（それがどうだって？）。</p>
-<p>しかし、これはかなりよく効く。説明は授業をよく聞こう。</p>
+<p>while (1==1) は無限ループの表現方法の一つ。1==1 は何回評価しても真。
+おなじことを普通の C プログラマは  while (1) や　for (;;) とプログラムしたりする。</p>
+<p>if を while で囲み(こっちは納得できる）、判定順番を変えた（それがどうだって？）。
+しかし、これはかなりよく効く。説明は授業をよく聞こう。</p>
+<h3>if ? それとも if else ?</h3>
+<p>二つのループを比べる。</p>
+<div class="codehilite"><pre><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_left_black</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_right_black</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_left_whilte</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_right_white</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">go_straight</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_left_black</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">turn_left</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_right_black</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">turn_right</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_left_black</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_right_black</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_left_whilte</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_right_white</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">go_straight</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_left_black</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">turn_left</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_right_black</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">turn_right</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>上のループは一周する間に必ずすべての if を評価する。</li>
+<li>下のループは if の条件が真になったら、以下の if は評価されない。</li>
+</ul>
+<h2>is_left_black() はそれでいいか？</h2>
+<p>実は、これまでのプログラムには微妙な間違いがあります。
+気がついた人はいたか？
+コンピュータの処理速度のためにその間違いに気がつかなかった。</p>
+<p><a href="led.html">別ページ</a>で説明します。</p>
 <hr>
 <p>written by hkimura.</p>
         </article>
