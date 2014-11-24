@@ -9,6 +9,7 @@ install:
 		--exclude='*.ai' \
 		--exclude='*.md' \
 		. ${HOST}:${BASE}
+	@echo "don't forget to chmod length/ for cgi call."
 
 2013-2014:
 	gsed -i.bak \
