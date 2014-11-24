@@ -1,28 +1,0 @@
-<hr>
-From: aaa<br>
-aaa
-<hr>
-<hr>
-From: 12345<br>
-自分の考えをここに。
-<hr>
-<hr>
-From: aaa<br>
-koredato
-<hr>
-ここに日本語を<br>開業入れて<br>書いてみる。
-<hr>
-From: abc<br>
-
-<hr>
-ここに日本語を<br>開業入れて<br>書いてみる。<br>lkondo no a douka
-From: abc<br>
-
-<hr>
-学生番号ないときはエラーにすっか？
-From: 12345<br>
-
-<hr>
-From: suz<br>
-purintsicha dame
-<hr>

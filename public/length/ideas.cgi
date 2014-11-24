@@ -13,7 +13,7 @@ end
 
 def append(text)
   File.open(IDEAS,'a') do |f|
-    return CGI::escapeHTML(text).gsub(/\n/,'<br>')
+    return CGI::escapeHTML(text).gsub(/\r\n/,'<br>')
   end
 end
 
@@ -39,8 +39,13 @@ EOF
   elsif cgi.request_method=='POST'
     File.open(IDEAS,"a") do |f|
       f.print <<EOD
-From: #{cgi['sid']}<br>
+<p>
+<b>From</b>: #{cgi['sid']}<br>
+<b>Date</b>: #{Time.now}
+</p>
+<p>
 #{append(cgi['text'])}
+</p>
 <hr>
 EOD
     end
