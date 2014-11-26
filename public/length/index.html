@@ -28,9 +28,10 @@
 </ol>
 <p>授業は聞いてるだけじゃダメ。考えてっか？
 クリックして
-<a href="ideas.cgi">自分の考えを述べよ</a>。</p>
+<a href="ideas.cgi">自分の考えを述べよ</a>。分析的に、筋道立てて。</p>
 <h2>step を応用する</h2>
-<p>ロボカーの動作を 「5mm ずつステップ」に戻す。</p>
+<p>ロボカーの動作を「連続的にスムーズに」から、いったん、
+「5mm ずつステップ」に戻す。その方がプログラムが簡単になるよ。</p>
 <div class="codehilite"><pre><span class="cp">#include &quot;LPC13xx.h&quot;</span>
 <span class="cp">#include &quot;gpio.h&quot;</span>
 <span class="cp">#include &quot;vs-wrc103.h&quot;</span>
@@ -112,20 +113,22 @@
 
 <h3>問題</h3>
 <p>プログラムは良さげで良くない。
-黒線をはさんでステップしていて、黒黒になった状況でロボカーがどんな動作をするか、説明しなさい。</p>
+黒線をはさんでステップしていて、黒黒になった状況でロボカーがどんな動作をするか、
+予測し、説明しなさい。</p>
 <h2>黒線の長さを測る</h2>
 <p>整数型の変数 blacks を準備し、5mm 進むごとに連続何回、黒黒をカウントするかを数えよう。
 黒テープの幅は 18mm。４つ以上黒黒が続いたら「長い黒」だ。</p>
 <div class="codehilite"><pre>    <span class="p">...</span>
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_black</span><span class="p">(</span><span class="n">LEFT</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">is_black</span><span class="p">(</span><span class="n">RIGHT</span><span class="p">))</span> <span class="p">{</span>
             <span class="n">blacks</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="n">step</span><span class="p">();</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">blacks</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">step</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">blacks</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span><span class="err">　</span><span class="c1">// 長いな。</span>
                 <span class="n">stop</span><span class="p">();</span>
                 <span class="k">break</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">blacks</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-                <span class="p">;</span> <span class="c1">// ライントレースの方法を変えねば。</span>
-                <span class="p">;</span> <span class="c1">// 白黒、黒白の時に曲がる方向が逆だ。</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">blacks</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span><span class="err">　</span><span class="c1">// 中ぐらい？</span>
+                <span class="p">;</span> 
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// 短いぞ？</span>
+                <span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -142,18 +145,21 @@
 
 <p>さて、上の変数 blacks の値はいくらでしょう？　正解は「決まってない」です。
 多くの初心者が「ゼロになる」と思い込んで痛い目にあっています。</p>
-<p>黒黒が連続する回数を数えたいんだから、ループに入る前と、黒黒以外になったとき、変数 blacks は 0 にリセットしないといけない。さて、それはどこでしょう？</p>
-<h2>黒枠内を進むには</h2>
-<p>プログラム中、コメントで書いたが、ライントレースしているときと、黒枠中を進むときは、
-白黒、黒白を見たときに曲がる方向が違う。ちゃんとプログラムしとけ。</p>
+<p>黒黒が連続する回数を数えたいんだから、</p>
+<ul>
+<li>ループに入る前と、</li>
+<li>黒黒以外になったとき、</li>
+</ul>
+<p>変数 blacks は 0 にリセットしないといけない。
+さて、それはプログラムでいえばどこか？正解をグループ内で確認すること。</p>
 <h2>音で知らせる問題</h2>
-<p>踏み越した黒の長さをブザーで知らせろ。</p>
-<h2>模様を測定する --- 配列の利用</h2>
+<p>踏み越した黒の長さをブザーで知らせろ。１cmはプッ、３cmはプップップッのように。</p>
+<h2>模様を測定する --- 配列が利用できれば</h2>
 <p>ロボカーを一定の時間（あるいは黒３cmエリアまで）動かす。
 動作開始後、停止するまでのグラウンドの状況を音で報告させろ。
 配列に step ごとの白黒を記録し、動作完了したら配列に記録されたデータに従って音出しすればいい。</p>
 <h2>ステップをあえてやめる</h2>
-<p>ステップすれば黒線長さを測るのは比較的楽。ステップやめても長さを測れるか。測れ。</p>
+<p>ステップすれば黒線長さを測るのは比較的楽。ステップやめても長さを測れるようにせよ。</p>
 <h2></h2>
 <p>written by hkimura.</p>
         </article>

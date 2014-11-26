@@ -36,7 +36,7 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
   </tr>
 
 <% @lents.each do |lent| %>
-  <% next if lent.sid =~ /hkimura/ %>
+  <%# next if lent.sid =~ /hkimura/ %>
   <% if delay?(lent) %>
   <tr class='delay'>
   <% else %>

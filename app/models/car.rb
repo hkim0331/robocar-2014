@@ -8,8 +8,6 @@ class Car < ActiveRecord::Base
 
   Conditions = {Free => "free", Lent => "lent", Broken => "broken"}
 
-  # 最大個数 -1 を指定すること。 (group_id +1 % Max) +2 とするため。
-  # 姑息だ。もっと正々堂々とプログラムしよう。2014-10-06.
-  Max = 35
+   Max = 36
 
 end
