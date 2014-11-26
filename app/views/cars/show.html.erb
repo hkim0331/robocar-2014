@@ -2,19 +2,22 @@
 
 <p>
   <b>Status:</b>
-  <%= @car.status %>
+  <%= @car.condition %>
 </p>
 
+<!--
+  lent_on, will_cars is not on Cars table.
+  must look for them from Lents table.
 <p>
   <b>Lent on:</b>
-  <%= @car.lent_on %>
+  <%#= @car.lent_on %>
 </p>
 
 <p>
   <b>Will back:</b>
-  <%= @car.will_back %>
+  <%#= @car.will_back %>
 </p>
-
+-->
 
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>
