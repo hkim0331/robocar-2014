@@ -8,6 +8,7 @@ class Car < ActiveRecord::Base
 
   Conditions = {Free => "free", Lent => "lent", Broken => "broken"}
 
-   Max = 36
+  # これはcar_id ではなく、剰余演算の分母。
+  Max = 36
 
 end
