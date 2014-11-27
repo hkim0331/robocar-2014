@@ -20,10 +20,10 @@
 </div>
 
 <p>黒エリアの長さを求めたい。
-左下から右上への黒線に乗ってロボカーを動かすのだが、</p>
+左下から右上への黒線に乗ってロボカーを走らせ、</p>
 <ol>
 <li>最初の短い本黒線は踏み越し、</li>
-<li>真ん中の長い黒エリアの中を前進、</li>
+<li>真ん中の長い黒エリアの中を突き抜け、</li>
 <li>右上の黒エリアの向こう側エッジ（白白）で停止したい。</li>
 </ol>
 <p>授業は聞いてるだけじゃダメ。考えてっか？
@@ -122,11 +122,11 @@
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_black</span><span class="p">(</span><span class="n">LEFT</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">is_black</span><span class="p">(</span><span class="n">RIGHT</span><span class="p">))</span> <span class="p">{</span>
             <span class="n">blacks</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
             <span class="n">step</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">blacks</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span><span class="err">　</span><span class="c1">// 長いな。</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">blacks</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 長いな。</span>
                 <span class="n">stop</span><span class="p">();</span>
                 <span class="k">break</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">blacks</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span><span class="err">　</span><span class="c1">// 中ぐらい？</span>
-                <span class="p">;</span> 
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">blacks</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 中ぐらい？</span>
+                <span class="p">;</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// 短いぞ？</span>
                 <span class="p">;</span>
             <span class="p">}</span>
@@ -136,9 +136,14 @@
 </pre></div>
 
 
+<p>なんども言ったが、プログラムに 20 とか、4 とか、
+数字をプログラム中に埋め込むのはよくないマナーだ。
+定数なら意味のある名前で define しとけ。
+上は説明のために涙を飲んで 20 とか 4 とかしている。
+関数で書けばもっといい。int is_long(blacks) とかでどうか？</p>
 <h3>初期化は重要</h3>
-<p>変数の名前はかなり自由に付けられる。
-しかし、意味のある変数名を選ばないとあとでプログラムの内容がわからなくなる。</p>
+<p>変数（もちろん関数も）の名前はかなり自由に付けられる。
+しかし、意味のある名前を選ばないとあとでプログラムの内容がわからなくなる。</p>
 <div class="codehilite"><pre><span class="kt">int</span> <span class="n">blacks</span><span class="p">;</span>
 </pre></div>
 
@@ -158,6 +163,8 @@
 <p>ロボカーを一定の時間（あるいは黒３cmエリアまで）動かす。
 動作開始後、停止するまでのグラウンドの状況を音で報告させろ。
 配列に step ごとの白黒を記録し、動作完了したら配列に記録されたデータに従って音出しすればいい。</p>
+<div><img src="data:image/png;base64,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" style='width:50%;'></div>
+
 <h2>ステップをあえてやめる</h2>
 <p>ステップすれば黒線長さを測るのは比較的楽。ステップやめても長さを測れるようにせよ。</p>
 <h2></h2>
