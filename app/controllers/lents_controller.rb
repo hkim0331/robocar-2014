@@ -6,10 +6,10 @@ class LentsController < ApplicationController
   # GET /lents.json
   def index
     @lents =  if params[:all]
-      Lent.order("updated_at DESC")
-    else
-      Lent.where(:condition => Lent::Lent).order(:car_id)
-    end
+                Lent.order("updated_at DESC")
+              else
+                Lent.where(:condition => Lent::Lent).order(:car_id)
+              end
     @today = Date.today
 
     respond_to do |format|

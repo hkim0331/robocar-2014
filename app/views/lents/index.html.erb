@@ -16,10 +16,10 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
 
 <%= render 'navi' %>
 
-<table>
+<table id='lent'>
   <tr>
-    <th>Car #</th>
-    <th>状況</th>
+    <th style='width:1em'>#</th>
+    <th style='width:2em'>状況</th>
     <th>貸出日</th>
     <th>返却予定</th>
     <th>返却日</th>
@@ -31,18 +31,25 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
     <th>連絡先</th>
     <th>返却</th>
     <th>編</th>
+    <!-- confirm できない
     <th>削</th>
+-->
     <% end %>
   </tr>
 
-<% @lents.each do |lent| %>
+  <% @lents.each do |lent| %>
+  <!--
   <%# next if lent.sid =~ /hkimura/ %>
-  <% if delay?(lent) %>
+  -->
+  <% puts "today: #{@today}" %>
+  <% puts lent.willback_on %>
+  <% if lent.condition==Lent::Conditions[Lent] and
+     @today > lent.willback_on %>
   <tr class='delay'>
   <% else %>
   <tr>
   <% end %>
-    <td><%= lent.car_id %></td>
+    <td style='text-align:right'><%= lent.car_id %></td>
     <td><%= Lent::Conditions[lent.condition] %></td>
     <td><%= lent.lent_on %></td>
     <td><%= lent.willback_on %></td>
@@ -56,19 +63,25 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
       <td><%= link_to 'ret',"/lents/#{lent.id}/returned" %>
       <td><%= link_to image_tag('/images/edit.png'),
               edit_lent_path(lent) %></td>
-      <td><%= link_to 'del',"/lents/#{lent.id}/destroy" %>
+
+      <!-- confirm できるまで保留
+           <td><%= link_to 'del', "/lents/#{lent.id}/destroy",
+                   method: :delete, data: {confirm: "really?"} %>
+             -->
     <% end %>
   </tr>
 <% end %>
 </table>
 
-<h4>管理人へ</h4>
+<% if session[:admin] %>
+<h4>管理人の方へ</h4>
 
 <p>
   del でレコードを消すときは、
   いったん、ロボカーを返却の状態にしてから実行すること。
   じゃないとロボカーが行方不明になります。
 </p>
+<% end %>
 
 <%= render 'navi' %>
 
