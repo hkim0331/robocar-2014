@@ -15,39 +15,45 @@
     <%= f.label 'car #' %><br />
     <%= f.number_field :car_id %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label '状況' %><br />
     <%= f.number_field :condition %>
     1:アキ、２:貸出中、３:戻った、-1: 壊れた
   </div>
+  <br>
 
   <div class="field">
     <%= f.label '貸し出し日' %><br />
     <%= f.date_select :lent_on %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label '返却予定日' %><br />
     <%= f.date_select :willback_on %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label '学生番号' %><br />
     <%= f.text_field :sid %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label '連絡先' %><br />
     <%= f.text_field :contact %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label '備考' %><br />
     <%= f.text_area :note, :size => "20x4" %>
   </div>
+  <br>
 
   <div class="actions">
     <%= f.submit "貸し出し" %>
   </div>
-<% end %>
+
+  <% end %>

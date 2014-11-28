@@ -12,7 +12,7 @@ class Lent < ActiveRecord::Base
   Returned = 3
   Broken = -1
 
-  Conditions = {Free => "空き", Lent => "貸", Returned => "R",
+  Conditions = {Free => "空き", Lent => "貸出中", Returned => "戻り",
     Broken => "故障"}
 
 end
