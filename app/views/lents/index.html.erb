@@ -19,7 +19,7 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
 <table id='lent'>
   <tr>
     <th style='width:1em'>#</th>
-    <th style='width:2em'>状況</th>
+    <th style='width:em'>状況</th>
     <th>貸出日</th>
     <th>返却予定</th>
     <th>返却日</th>
@@ -38,14 +38,12 @@ request.env['HTTP_USER_AGENT']: <%= request.env['HTTP_USER_AGENT'] %>
   </tr>
 
   <% @lents.each do |lent| %>
-  <!--
-  <%# next if lent.sid =~ /hkimura/ %>
-  -->
-  <% puts "today: #{@today}" %>
-  <% puts lent.willback_on %>
-  <% if lent.condition==Lent::Conditions[Lent] and
-     @today > lent.willback_on %>
-  <tr class='delay'>
+  <% if lent.condition == Lent::Lent %>
+    <% if @today > lent.willback_on %>
+    <tr class='delay'>
+    <% else %>
+    <tr class='lent'>
+    <% end %>
   <% else %>
   <tr>
   <% end %>

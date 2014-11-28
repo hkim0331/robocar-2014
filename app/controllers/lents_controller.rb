@@ -6,7 +6,8 @@ class LentsController < ApplicationController
   # GET /lents.json
   def index
     @lents =  if params[:all]
-                Lent.order("updated_at DESC")
+                #Lent.order("updated_at DESC")
+                Lent.order("lent_on DESC")
               else
                 Lent.where(:condition => Lent::Lent).order(:car_id)
               end

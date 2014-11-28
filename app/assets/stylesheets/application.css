@@ -25,6 +25,7 @@ h1 {
 table { border-collapse: collapse;}
 table#lent td,th {padding: 5px;}
 tr.delay { color: red;}
+tr.lent  { color: green;}
 
 tr.list_line_odd {}
 tr.list_line_even {background:#ccffff}
