@@ -54,13 +54,9 @@ int is_white(uint8_t n) {
 	return ! is_black(n);
 }
 
-int main(void) {
-	const unsigned short MainCycle = 60;
-	Init(MainCycle);
-	int blacks;
+void length(void) {
+	int blacks = 0;
 
-	Wait(1000);
-	blacks=0;
 	for (;;) {
 		if (is_white(LEFT) && is_white(RIGHT)) {
 			blacks = 0;
@@ -85,6 +81,26 @@ int main(void) {
 		}
 	}
 	stop();
+}
+
+void epilog(int n) {
+  while (n>0) {
+    LED(3);
+    Wait(100);
+    LED(0);
+    Wait(100);
+    n -= 1;
+  }
+}
+
+int main(void) {
+	const unsigned short MainCycle = 60;
+	Init(MainCycle);
+
+    Wait(1000);
+    length();
+	epilog(10);
+
 	return 0;
 }
 
