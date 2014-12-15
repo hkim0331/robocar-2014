@@ -90,10 +90,10 @@
 
 
 <h3>c = smaller(a,b)って？</h3>
-<p>c = 4 を「c に 4 を代入する」と読まずに、こう呼んだらどうか、「c に 4 を計算した結果を代入する」。
+<p>c = 4 を「c に 4 を代入する」と読まずに、こう読んだらどうか、「c に 4 を計算した結果を代入する」。
 4 を計算した結果は 4 だ。計算して値を求めることを「評価する」というと頭良く聞こえる。</p>
-<p>c = smaller(a,b) は 「c に smaller(a,b) の評価値を代入する」。
-smaller(a,b) の評価値とはsmaller(a,b)が return で返してくる値のことで、
+<p>c = smaller(a,b) は 「c に smaller(a,b) を計算した結果を代入する」。
+smaller(a,b) の計算結果とはsmaller(a,b)が return で返してくる値のことで、
 この場合、aとbの小さい方の整数。</p>
 <h3>なんで関数を定義するか？</h3>
 <p>便利なことがあるから。</p>
@@ -204,8 +204,8 @@ smaller(smaller(a,b),smaller(c,d))
 
 
 <p>larger 定義して、それを利用して max を定義するとこは学習できた。
-別のアプローチでプログララムしてみる。
-a,b,cを大きさの順に並べ替えなくても比較を３回すればいい。</p>
+別のアプローチでプログラムしてみる。
+a,b,cを大きさの順に並べ替えなくても比較を３回すればいいだろう。</p>
 <div class="codehilite"><pre><span class="c1">//改良、sub() はやりすぎか？</span>
 <span class="cp">#include &lt;stdio.h&gt;</span>
 <span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
@@ -235,6 +235,7 @@ a,b,cを大きさの順に並べ替えなくても比較を３回すればいい
 </pre></div>
 
 
+<p>同じ内容なら、プログラムが短い方が読みやすい。タイプの量も少なくて済む。バグも入りにくくなる。</p>
 <h3>素数</h3>
 <p>unsigned int の範囲でできるだけ大きな素数を探し当てよう。
 素数は 1 と自分以外、自分を割り切る整数がない数。</p>
@@ -248,7 +249,7 @@ a,b,cを大きさの順に並べ替えなくても比較を３回すればいい
 </pre></div>
 
 
-<p>中身はどうなる？</p>
+<p>中身はどうなる？下を見ずに、まず、自分で書いてみれ。</p>
 <div class="codehilite"><pre><span class="kt">int</span> <span class="nf">is_prime</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
@@ -266,6 +267,7 @@ a,b,cを大きさの順に並べ替えなくても比較を３回すればいい
 
 <p>この関数 is_prime()には小さなバグがある。それはなんでしょう？どう変更すればいい？
 考えてみること。君らは考えようとしないのがダメと思う。</p>
+<p>is_prime()を呼び出すプログラム、</p>
 <div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -333,7 +335,7 @@ sys 0m0.001s
 
 <p>1,600倍の高速化に成功！どんな工夫だったでしょう？</p>
 <h3>完全数</h3>
-<p>完全数とは自分を除く約数の和が自分と等しくなる整数のこと。「博士が愛した数式」に出てくる。
+<p>完全数とは自分を除く約数の和が自分と等しくなる整数のこと。映画「博士が愛した数式」に出てくる。
 たとえば 6 の約数は 1,2,3。 足すと6になるので6は完全数。
 そのほか28も完全数。次の完全数はいくつでしょう？できるだけ大きな完全数を見つけなさい。</p>
 <ul>
@@ -345,19 +347,19 @@ sys 0m0.001s
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
 
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">sum</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="n">ret</span><span class="o">==</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">sum</span> <span class="o">==</span> <span class="n">n</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>sum は定義時にすぐ0に初期化するのにiは  初期化しない理由はすぐ下で1に初期化するからです。
-return ret==n; の意味、わかりますか？</p>
+return sum == n; の意味、わかりますか？</p>
 <p>is_perfect()を速くできるかな？</p>
 <h3>FizzBuzz</h3>
 <h3>guess me!</h3>
