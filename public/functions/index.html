@@ -17,19 +17,19 @@
           <h2>関数</h2>
 <p>関数が使えないうちはプログラミングはまったく楽しくない。</p>
 <p>関数が使えるようになるとプログラムは分かりやすく、作りやすく、改良しやすくなる。</p>
-<p>関数を理解するために理解すべきこと</p>
+<p>関数を理解するために理解すべきこと:</p>
 <ul>
 <li>関数の名前 --- どんな名前でその関数は呼び出されるか</li>
 <li>引数 --- どんな種類の引数をいくつ受け取るか</li>
-<li>戻り値 ---　関数を実行した結果、どんな種類の情報がえられるか</li>
+<li>戻り値 ---　関数を実行した結果、どんな種類の情報が得られるか</li>
 <li>関数を定義するとはどういうことか、どんなふうに定義するか</li>
 <li>関数を呼び出すとはどういうことか、どんなふうに呼び出せるのか</li>
 </ul>
 <h3>整数二つのうち、「小さい方はこれ」っていうプログラム（関数）を作りたい。</h3>
 <p>Cプログラマは以下の三つを考える。</p>
 <ul>
-<li>その関数には smaller という名前をつけよう。</li>
-<li>「整数二つを受け取る」んだから、関数 smaller の引数はふたつ、ともに int だ。それらを区別するためにそれぞれ違った名前 x, y で呼ぼう。</li>
+<li>その関数には関数の働きがわかるよう、 smaller という名前をつけよう。</li>
+<li>「整数二つを受け取る」んだから、関数 smaller の引数はふたつ、ともに int だ。ふたつの整数を区別するためにそれぞれ違った名前 x, y で呼ぼう。</li>
 <li>「小さい方」は整数だ。だから関数 smaller の戻り値は整数だ。</li>
 </ul>
 <p>ということで次をプログラムする。</p>
@@ -59,23 +59,32 @@
 </pre></div>
 
 
-<p>こんな書き方もあるが、覚えんでもよい。</p>
+<p>次の書き方もあるが、余裕のある奴だけ、覚えればいい。</p>
 <div class="codehilite"><pre><span class="kt">int</span> <span class="nf">smaller</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="n">y</span><span class="p">)</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<p>関数は return 文に出会うか、関数定義の末尾に到着すると終了する。
-ほとんどの関数は、
+<p>関数は{ }の中を上から下へ、Cの決まりにしたがい実行され（if で分岐したり、for でループしたり）、 
+return 文に出会うか、関数定義の末尾に到着すると終了する。</p>
+<p>ほとんどの関数は、
 後ろの方で述べる戻り値 void の関数をのぞき、
 関数定義の末尾に到着することはない。</p>
 <h3>関数 small を呼び出す</h3>
-<p>関数 smaller を定義したら、それを呼び出すにはその名前 smaller の後ろ、
-()の中にsmallerが必要とするデータ（引数）を入れる。</p>
+<p>関数 smaller を定義したら、それを呼び出すにはその名前 smaller に必要なデータ（引数）を、
+()の中に与えて、</p>
+<div class="codehilite"><pre><span class="n">smaller</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+</pre></div>
+
+
+<p>のように呼び出す。呼び出すというのは、その関数をコンピュータが実行するということ。</p>
 <p>呼び出しがすんだら関数 smaller は渡した引数の小さい方の整数を返してくる。
-戻り値を煮るなり焼くなりするのは関数 smaller を呼び出したプログラム（関数）の責任。</p>
+戻り値を煮るなり焼くなりするのは関数 smaller を呼び出したプログラム（関数）の責任。
+上の例では smaller(3,4) は3を返してくるが、呼び出し側はそれを受け取らず、無視している。
+ま、悪いプログラム例だ。</p>
+<p>ふつうは、戻り値は別の変数に代入するか、他の関数の引数として利用する。</p>
 <div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
@@ -90,11 +99,21 @@
 
 
 <h3>c = smaller(a,b)って？</h3>
-<p>c = 4 を「c に 4 を代入する」と読まずに、こう読んだらどうか、「c に 4 を計算した結果を代入する」。
-4 を計算した結果は 4 だ。計算して値を求めることを「評価する」というと頭良く聞こえる。</p>
-<p>c = smaller(a,b) は 「c に smaller(a,b) を計算した結果を代入する」。
-smaller(a,b) の計算結果とはsmaller(a,b)が return で返してくる値のことで、
+<p>c = 4 を「c に 4 を代入する」と読まずに、こう読んだらどうか、
+「c に 4 を計算した結果を代入する」。
+4 を計算した結果は 4 だ。関数や式を計算して値を求めることを「評価する」という。
+「評価する」を使えば、c = 4 は「c に4の評価値を代入する」と読む。</p>
+<p>c = smaller(a,b) は 「c に smaller(a,b) の評価値を代入する」。
+smaller(a,b) の評価値とはsmaller(a,b)が return で返してくる値のことで、
 この場合、aとbの小さい方の整数。</p>
+<p>もっと細かく言うと、smaller(a,b)の評価値は次のように求まる。</p>
+<ol>
+<li>引数 a の評価値を求める。</li>
+<li>引数 b の評価値を求める。</li>
+<li>それらの値を smaller の定義式に現れる引数（上の例ではx,y)に代入し、</li>
+<li>smaller の { } を実行する。</li>
+<li>実行中に　return に出会ったら、その右の式を評価し、関数の戻り値（評価値）とする。</li>
+</ol>
 <h3>なんで関数を定義するか？</h3>
 <p>便利なことがあるから。</p>
 <p>3つの整数の最小値をプリントする関数を、</p>
@@ -161,7 +180,7 @@ smaller(smaller(a,b),smaller(c,d))
 <div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
 <span class="kt">int</span> <span class="nf">larger</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">&lt;</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
@@ -175,15 +194,15 @@ smaller(smaller(a,b),smaller(c,d))
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">10</span>
-    <span class="kt">int</span> <span class="n">b</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">c</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
         <span class="n">z</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">==</span><span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
         <span class="n">z</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
@@ -203,19 +222,19 @@ smaller(smaller(a,b),smaller(c,d))
 </pre></div>
 
 
-<p>larger 定義して、それを利用して max を定義するとこは学習できた。
-別のアプローチでプログラムしてみる。
+<p>larger 定義して、それを利用して max を定義するとこは学習できた。</p>
+<p>別のアプローチでプログラムしてみる。
 a,b,cを大きさの順に並べ替えなくても比較を３回すればいいだろう。</p>
 <div class="codehilite"><pre><span class="c1">//改良、sub() はやりすぎか？</span>
 <span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span> <span class="o">==</span> <span class="n">c</span><span class="o">*</span><span class="n">c</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">int</span> <span class="nf">is_normal</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+<span class="kt">int</span> <span class="nf">is_normal</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">return</span> <span class="n">sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span> <span class="o">||</span> <span class="n">sub</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">a</span><span class="p">)</span> <span class="o">||</span> <span class="n">sub</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">sub</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="o">||</span> <span class="n">sub</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span> <span class="n">sub</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -253,14 +272,15 @@ a,b,cを大きさの順に並べ替えなくても比較を３回すればいい
 <div class="codehilite"><pre><span class="kt">int</span> <span class="nf">is_prime</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 素数じゃない。</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//素数じゃない。</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span><span class="c1">//素数だ。</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//素数だ。</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -276,8 +296,9 @@ a,b,cを大きさの順に並べ替えなくても比較を３回すればいい
         <span class="k">if</span> <span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
             <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%u is prime</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">;</span>
         <span class="p">}</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -287,18 +308,18 @@ a,b,cを大きさの順に並べ替えなくても比較を３回すればいい
 <p>素直なプログラムだが、こりゃー大変だ。一番大きな素数が求まるまでに何時間かかるか？
 (答え、無限ループのバグがあり、止まらない)</p>
 <p>ズルというか、アイデアを絞る。一番大きい数から調べて、最初に見つかった数が答えだ。
-また、signed int で -1 となるビットパターンが unsigned int の最大値だったことを上手に使う。</p>
+また、signed int で -1 となるビットパターンが unsigned int の最大値だったことを上手に使う。
+裏技。必須ではないが驚くべきでもない。</p>
 <div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 
     <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
             <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%u is prime</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
             <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">i</span><span class="o">--</span><span class="p">;</span>
         <span class="p">}</span>
+        <span class="n">i</span><span class="o">--</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -315,12 +336,12 @@ a,b,cを大きさの順に並べ替えなくても比較を３回すればいい
 
 real    0m18.240s
 user    0m18.212s
-sys 0m0.010s
+sys     0m0.010s
 </pre></div>
 
 
 <p>答え　4294967291　を見つけるのに 18 秒かかっています。改良プログラム prime2での実行。</p>
-<div class="codehilite"><pre><span class="nv">$ </span><span class="nb">time</span> ./prime
+<div class="codehilite"><pre><span class="nv">$ </span><span class="nb">time</span> ./prime2
 <span class="m">4294967295</span> is not prime
 <span class="m">4294967294</span> is not prime
 <span class="m">4294967293</span> is not prime
@@ -329,11 +350,12 @@ sys 0m0.010s
 
 real    0m0.011s
 user    0m0.001s
-sys 0m0.001s
+sys     0m0.001s
 </pre></div>
 
 
-<p>1,600倍の高速化に成功！どんな工夫だったでしょう？</p>
+<p>1,600倍の高速化に成功！どんな工夫だったんだろう？
+中学生くらいなら説明すればわかるはずというくらいの単純なアイデアです。</p>
 <h3>完全数</h3>
 <p>完全数とは自分を除く約数の和が自分と等しくなる整数のこと。映画「博士が愛した数式」に出てくる。
 たとえば 6 の約数は 1,2,3。 足すと6になるので6は完全数。
@@ -358,11 +380,28 @@ sys 0m0.001s
 </pre></div>
 
 
-<p>sum は定義時にすぐ0に初期化するのにiは  初期化しない理由はすぐ下で1に初期化するからです。
-return sum == n; の意味、わかりますか？</p>
-<p>is_perfect()を速くできるかな？</p>
+<ul>
+<li>sum は定義時にすぐ0に初期化するのにiは    初期化しない理由はすぐ下で1に初期化するから。</li>
+<li>return sum == n の意味、わかるか？わからない理由が難しいが、
+日本語の能力に欠けているか、自分が何をしようとしているか見失っているんだろうな。</li>
+<li>is_perfect()を速くできるか？これはちょっと難しいかも。</li>
+</ul>
 <h3>FizzBuzz</h3>
+<p>FizzBuzz ゲームをプログラムせよ。</p>
 <h3>guess me!</h3>
+<ol>
+<li>0 &lt; x &lt; n の乱数をコンピュータに作らせる。</li>
+<li>人間が入力した数字とその乱数がぴったりだったら人間の勝ち。</li>
+<li>入力が違っていたら大きいか小さいかだけ、人間に知らせる。</li>
+<li>n = 100なら7回以内に当てないと人間の負け。</li>
+</ol>
+<p>真の乱数の作り方は難しい。周期の非常に長い周期関数でごまかすのが普通だ。</p>
+<div class="codehilite"><pre><span class="err">ごかますプログラム</span>
+</pre></div>
+
+
+<p>あとは任せた。</p>
+<p>人間とコンピュータの役割を逆にしたプログラムも作ってみよう。</p>
 <h3>100言ったら負けゲーム</h3>
 <h2>戻り値や引数が void とは？</h2>
 <p>void は ''I have nothing to do.'' の nothing と同じ意味。</p>
