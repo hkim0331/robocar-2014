@@ -22,6 +22,7 @@
     <%= f.label 'car #' %><br />
     <%= f.select :car_id, @free_cars %>
   </div>
+  <br>
 
   <%= f.hidden_field :condition, value: Lent::Lent %>
 
@@ -29,32 +30,37 @@
     <%= f.label '貸し出し' %><br />
     <%= f.date_select :lent_on %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label '返却予定' %><br />
     <%= f.date_select :willback_on %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label '学生番号' %><span class="req">*</span><br />
     <%= f.text_field :sid, value: '空欄不可' %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label '連絡先' %><span class="req">*</span><br />
     <%= f.text_field :contact, value: '空欄不可' %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label '備考' %><br />
     <%= f.text_area :note, :size => "20x4" %>
   </div>
+  <br>
 
   <div class="actions">
     <%= f.submit "貸し出し" %>
   </div>
+  <br>
 <% end %>
-
 
 <p>
   <%= link_to 'Back', lents_path %>

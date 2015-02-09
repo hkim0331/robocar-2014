@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <title>index.md—/Users/hkim/Dropbox/robocar-2014/public/functions</title>
+    <style type="text/css">
+    body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;padding-top:10px;padding-bottom:10px;background-color:white;padding:30px;color:#333}body>*:first-child{margin-top:0!important}body>*:last-child{margin-bottom:0!important}a{color:#4183c4;text-decoration:none}a:hover{text-decoration:underline}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0}kbd{background:#f1f1f1;background:-moz-linear-gradient(#f1f1f1,#ddd);background:-webkit-linear-gradient(#f1f1f1,#ddd);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#dddddd')";border-radius:2px;border:1px solid #ddd;border-bottom-color:#ccc;border-right-color:#ccc;padding:1px 4px;line-height:10px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}.container{max-width:920px;margin:0 auto 20px auto}#header{background:#fafafa;background:-moz-linear-gradient(#fafafa,#eaeaea);background:-webkit-linear-gradient(#fafafa,#eaeaea);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom:1px solid #cacaca;box-shadow:0 1px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1)}#markup{padding:3px}#markup article{padding-top:30px}.markdown-body{font-size:14px;line-height:1.6}.markdown-body>*:first-child{margin-top:0!important}.markdown-body>*:last-child{margin-bottom:0!important}.markdown-body a.absent{color:#c00}.markdown-body a.anchor{bottom:0;cursor:pointer;display:block;left:0;margin-left:-30px;padding-left:30px;position:absolute;top:0}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{cursor:text;font-weight:bold;margin:20px 0 10px;padding:0;position:relative}.markdown-body h1 .mini-icon-link,.markdown-body h2 .mini-icon-link,.markdown-body h3 .mini-icon-link,.markdown-body h4 .mini-icon-link,.markdown-body h5 .mini-icon-link,.markdown-body h6 .mini-icon-link{color:#000;display:none}.markdown-body h1:hover a.anchor,.markdown-body h2:hover a.anchor,.markdown-body h3:hover a.anchor,.markdown-body h4:hover a.anchor,.markdown-body h5:hover a.anchor,.markdown-body h6:hover a.anchor{line-height:1;margin-left:-22px;padding-left:0;text-decoration:none;top:15%}.markdown-body h1:hover a.anchor .mini-icon-link,.markdown-body h2:hover a.anchor .mini-icon-link,.markdown-body h3:hover a.anchor .mini-icon-link,.markdown-body h4:hover a.anchor .mini-icon-link,.markdown-body h5:hover a.anchor .mini-icon-link,.markdown-body h6:hover a.anchor .mini-icon-link{display:inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size:inherit}.markdown-body h1{color:#000;font-size:28px}.markdown-body h2{border-bottom:1px solid #ccc;color:#000;font-size:24px}.markdown-body h3{font-size:18px}.markdown-body h4{font-size:16px}.markdown-body h5{font-size:14px}.markdown-body h6{color:#777;font-size:14px}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin:15px 0}.markdown-body hr{background:url("/public/github-dirty-shade.png") repeat-x scroll 0 0 transparent;border:0 none;color:#ccc;height:4px;padding:0}.markdown-body>h2:first-child,.markdown-body>h1:first-child,.markdown-body>h1:first-child+h2,.markdown-body>h3:first-child,.markdown-body>h4:first-child,.markdown-body>h5:first-child,.markdown-body>h6:first-child{margin-top:0;padding-top:0}.markdown-body a:first-child h1,.markdown-body a:first-child h2,.markdown-body a:first-child h3,.markdown-body a:first-child h4,.markdown-body a:first-child h5,.markdown-body a:first-child h6{margin-top:0;padding-top:0}.markdown-body h1+p,.markdown-body h2+p,.markdown-body h3+p,.markdown-body h4+p,.markdown-body h5+p,.markdown-body h6+p{margin-top:0}.markdown-body li p.first{display:inline-block}.markdown-body ul,.markdown-body ol{padding-left:30px}.markdown-body ul.no-list,.markdown-body ol.no-list{list-style-type:none;padding:0}.markdown-body ul li>*:first-child,.markdown-body ol li>*:first-child{margin-top:0}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-bottom:0}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:14px;font-style:italic;font-weight:bold;margin:15px 0 5px;padding:0}.markdown-body dl dt:first-child{padding:0}.markdown-body dl dt>*:first-child{margin-top:0}.markdown-body dl dt>*:last-child{margin-bottom:0}.markdown-body dl dd{margin:0 0 15px;padding:0 15px}.markdown-body dl dd>*:first-child{margin-top:0}.markdown-body dl dd>*:last-child{margin-bottom:0}.markdown-body blockquote{border-left:4px solid #ddd;color:#777;padding:0 15px}.markdown-body blockquote>*:first-child{margin-top:0}.markdown-body blockquote>*:last-child{margin-bottom:0}.markdown-body table{border-collapse:collapse;border-spacing:0}.markdown-body table th{font-weight:bold}.markdown-body table th,.markdown-body table td{border:1px solid #ccc;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#f8f8f8;border:1px solid #eaeaea;border-radius:3px 3px 3px 3px;margin:0 2px;padding:0 5px;white-space:nowrap}.markdown-body pre>code{background:none repeat scroll 0 0 transparent;border:medium none;margin:0;padding:0;white-space:pre}.markdown-body .highlight pre,.markdown-body pre{background-color:#f8f8f8;border:1px solid #ccc;border-radius:3px 3px 3px 3px;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px}.markdown-body pre code,.markdown-body pre tt{background-color:transparent;border:medium none}.codehilite{background:#fff}.codehilite .c{color:#998;font-style:italic}.codehilite .err{color:#a61717;background-color:#e3d2d2}.codehilite .k{color:#000;font-weight:bold}.codehilite .o{color:#000;font-weight:bold}.codehilite .cm{color:#998;font-style:italic}.codehilite .cp{color:#999;font-weight:bold}.codehilite .c1{color:#998;font-style:italic}.codehilite .cs{color:#999;font-weight:bold;font-style:italic}.codehilite .gd{color:#000;background-color:#fdd}.codehilite .gd .x{color:#000;background-color:#faa}.codehilite .ge{color:#000;font-style:italic}.codehilite .gr{color:#a00}.codehilite .gh{color:#999}.codehilite .gi{color:#000;background-color:#dfd}.codehilite .gi .x{color:#000;background-color:#afa}.codehilite .go{color:#888}.codehilite .gp{color:#555}.codehilite .gs{font-weight:bold}.codehilite .gu{color:#aaa}.codehilite .gt{color:#a00}.codehilite .kc{color:#000;font-weight:bold}.codehilite .kd{color:#000;font-weight:bold}.codehilite .kp{color:#000;font-weight:bold}.codehilite .kr{color:#000;font-weight:bold}.codehilite .kt{color:#458;font-weight:bold}.codehilite .m{color:#099}.codehilite .s{color:#d14}.codehilite .na{color:#008080}.codehilite .nb{color:#0086b3}.codehilite .nc{color:#458;font-weight:bold}.codehilite .no{color:#008080}.codehilite .ni{color:#800080}.codehilite .ne{color:#900;font-weight:bold}.codehilite .nf{color:#900;font-weight:bold}.codehilite .nn{color:#555}.codehilite .nt{color:#000080}.codehilite .nv{color:#008080}.codehilite .ow{color:#000;font-weight:bold}.codehilite .w{color:#bbb}.codehilite .mf{color:#099}.codehilite .mh{color:#099}.codehilite .mi{color:#099}.codehilite .mo{color:#099}.codehilite .sb{color:#d14}.codehilite .sc{color:#d14}.codehilite .sd{color:#d14}.codehilite .s2{color:#d14}.codehilite .se{color:#d14}.codehilite .sh{color:#d14}.codehilite .si{color:#d14}.codehilite .sx{color:#d14}.codehilite .sr{color:#009926}.codehilite .s1{color:#d14}.codehilite .ss{color:#990073}.codehilite .bp{color:#999}.codehilite .vc{color:#008080}.codehilite .vg{color:#008080}.codehilite .vi{color:#008080}.codehilite .il{color:#099}
+    </style>
+    <style type="text/css">
+      .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="markup">
+        <article id="content" class="markdown-body">
+          <h2>関数</h2>
+<p>関数が使えないうちはプログラミングはまったく楽しくない。</p>
+<p>関数が使えるようになるとプログラムは分かりやすく、作りやすく、改良しやすくなる。</p>
+<p>関数を理解するために理解すべきこと:</p>
+<ul>
+<li>関数の名前 --- どんな名前でその関数は呼び出されるか</li>
+<li>引数 --- どんな種類の引数をいくつ受け取るか</li>
+<li>戻り値 ---　関数を実行した結果、どんな種類の情報が得られるか</li>
+<li>関数を定義するとはどういうことか、どんなふうに定義するか</li>
+<li>関数を呼び出すとはどういうことか、どんなふうに呼び出せるのか</li>
+</ul>
+<h2>例題: 整数二つのうち、「大きい方はこれ」っていう関数</h2>
+<p>Cプログラマは以下の三つを考える。</p>
+<ul>
+<li>その関数には関数の働きがわかるよう、 larger という名前をつけよう。</li>
+<li>「整数二つを受け取る」んだから、関数 larger の引数はふたつ、ともに int だ。ふたつの整数を区別するためにそれぞれ違った名前 x, y で呼ぼう。</li>
+<li>「大きい方」は整数だ。だから関数 larger の戻り値は整数。</li>
+</ul>
+<p>ということで次をプログラムする。</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">larger</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>プログラムの仕方はただ一通りではなく、次のような定義でもよい。</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">larger</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">z</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">z</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>次の書き方もあるが、余裕のある奴だけ覚えればいい。</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">larger</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>関数は{ }の中を上から下へ、左から右へ、
+if で分岐したり、for でループしたりしつつ、
+Cの決まりにしたがい実行され、
+return 文に出会うか、関数定義の末尾に到着すると呼び出しを終了し、
+その関数を呼び出した元の関数に戻り値を返す。</p>
+<p>ほとんどの関数は、
+後ろの方で述べる戻り値 void の関数をのぞき、
+関数定義の末尾に到着することはない。</p>
+<h3>関数 larger を呼び出す</h3>
+<p>関数 larger() を定義したら、
+関数が必要とするデータ（引数）を ( ) の中に与え、</p>
+<div class="codehilite"><pre><span class="n">larger</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+</pre></div>
+
+
+<p>のように呼び出す。呼び出すというのはその関数をコンピュータに計算てもらうということ。</p>
+<p>コンピュータはプログラムに書かれた指示通りに動き（計算し）、答えを返してくる。
+ほんとに大きい方が返ってくるかどうかはプログラマの責任。
+まちがったプログラムからは正しい答えは返ってこない。</p>
+<p>返ってきた戻り値を煮るなり焼くなりするのは関数 larger を呼び出したプログラム（関数）の役割になる。
+上の例では larger(3,4) は4を返してくるが、
+呼び出し側はそれを受け取らず、無視している。
+ま、悪いプログラム例だ。</p>
+<p>ふつうは、戻り値は別の変数に代入するか、他の関数の引数として利用する。</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">larger</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span> <span class="c1">// larger(a,b)の戻り値がcに代入される</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;c=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>c = larger(a,b)って？</h3>
+<p>c = 4 を「c に 4 を代入する」と読まずに、こう読んだらどうか、
+「c に 4 を計算した結果を代入する」。
+4 を計算した結果は 4 だ。関数や式を計算して値を求めることを「評価する」という。
+「評価する」を使えば、c = 4 は「c に4の評価値を代入する」と読む。</p>
+<p>c = larger(a,b) は 「c に larger(a,b) の評価値を代入する」。
+larger(a,b) の評価値とはlarger(a,b)が return で返してくる値のことで、
+この場合、aとbの大きい方の整数。</p>
+<p>もっと細かく言うと、larger(a,b)の評価値は次のように求まる。</p>
+<ol>
+<li>引数 a の評価値を求める。</li>
+<li>引数 b の評価値を求める。</li>
+<li>それらの値を larger の定義式に現れる引数（上の例ではx,y)に代入し、</li>
+<li>larger の { } を実行する。</li>
+<li>{ } 内を実行中に　return に出会ったら、
+   return の右の式を評価し、関数の戻り値（評価値）とする。</li>
+</ol>
+<h3>なんで関数を定義するか？</h3>
+<p>便利なことがあるから。</p>
+<p>3つの整数の最大値をプリントする関数を、</p>
+<ul>
+<li>関数 larger を利用しないで、</li>
+<li>関数 larger を利用して、</li>
+</ul>
+<p>書いてみる。
+整数 a,b,c は初期値を代入しているが、プログラム実行中に scanf で読ませてもいいだろう。</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">&gt;</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="o">&gt;</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>きっとどっかで間違っている。自信なし。</p>
+<p>larger を利用してみる。</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="kt">int</span> <span class="nf">larger</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">larger</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">larger</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)));</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>すっきり！</p>
+<p>4つの整数の最大値を求めることが必要になっても、
+larger(larger(a,b), larger(c,d))
+などと応用が利く。</p>
+<p>以下、main にベタ書きせず、できるだけ関数で書いてみよ。</p>
+<h2>例題: 直角三角形？</h2>
+<p>a, b, cを直角三角形の３辺の長さとする。その３角形は直角三角形かどうかを判定する。</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="kt">int</span> <span class="nf">larger</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">max</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">larger</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">larger</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)));</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;直角三角形</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;直角三角形ではない</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>関数 larger() を利用して関数 max() を定義するとこは学習できたか？</p>
+<h3>改良</h3>
+<p>別のアプローチでプログラムしてみる。
+a, b, c の最大値を求めなくても、順番を変え、比較を３回すればいいだろう。</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">is_normal</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">sub</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="o">||</span> <span class="n">sub</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span> <span class="n">sub</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+
+    <span class="c1">//a,b,c には整数を読み込むこと。</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_normal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;直角三角形</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;直角三角形にならない</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>同じ内容ならプログラムが短い方が読みやすい。
+関数を書くことでプログラムが短く、読みやすくなる。
+タイピングの量も少なくて済む。バグも入りにくくなる。</p>
+<h2>例題: 素数</h2>
+<p>unsigned int の範囲でできるだけ大きな素数を探し当てよう。
+素数は 1 と自分以外、自分を割り切る整数がない数。</p>
+<ul>
+<li>その関数の名前として何がふさわしいだろう？　--- is_prime でどうだ？</li>
+<li>その関数は何を引数にとるべきか？ --- 判定すべき整数 n。問題文に unsigned int の範囲とあるから...</li>
+<li>その関数の戻り値はどんな値とすべきか？ --- C では真はなんだった？偽はなんだった？</li>
+</ul>
+<p>ということで、整数nが素数かどうかを判定する関数の書き出しはこんな感じ、</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="n">is_prime</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+
+
+<p>中身はどうなる？下を見ずに、まず、自分で書いてみれ。</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">is_prime</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//素数じゃない。</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//素数だ。</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>この関数 is_prime()には小さなバグがある。それはなんでしょう？どう変更すればいい？
+考えてみること。君らは考えようとしないのがダメと思う。</p>
+<p>is_prime()を呼び出すプログラム、</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%u is prime</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>unsigned int がオーバーフローして0になることを利用する点をのぞいて
+素直なプログラムだが、こりゃー大変だ。一番大きな素数が求まるまでに何時間かかるか？</p>
+<p>ズルというか、アイデアを絞る。一番大きい数から調べて、最初に見つかった数が答えだ。
+また、signed int で -1 となるビットパターンが unsigned int の最大値だったことを上手に使う。
+裏技だ。必須ではないが驚くべきでもない。</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// iに代入されるのはマイナスの数ではない。</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%u is prime</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">i</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>このプログラムはまだ甘ちゃんです。もう少し勉強すれば数100倍速いプログラムにできます。</p>
+<div class="codehilite"><pre><span class="nv">$ </span><span class="nb">time</span> ./prime
+<span class="m">4294967295</span> is not prime
+<span class="m">4294967294</span> is not prime
+<span class="m">4294967293</span> is not prime
+<span class="m">4294967292</span> is not prime
+<span class="m">4294967291</span> is prime
+
+real    0m18.240s
+user    0m18.212s
+sys     0m0.010s
+</pre></div>
+
+
+<p>答え 4294967291 を見つけるのに 18 秒かかっています。</p>
+<p>改良プログラム prime2 での実行。</p>
+<div class="codehilite"><pre><span class="nv">$ </span><span class="nb">time</span> ./prime2
+<span class="m">4294967295</span> is not prime
+<span class="m">4294967294</span> is not prime
+<span class="m">4294967293</span> is not prime
+<span class="m">4294967292</span> is not prime
+<span class="m">4294967291</span> is prime
+
+real    0m0.011s
+user    0m0.001s
+sys     0m0.001s
+</pre></div>
+
+
+<p>18.24/0.011 = 約1,600倍の高速化に成功！どんな工夫だったんだろう？
+中学生くらいなら説明すれば理解出来るくらいの単純なアイデアです。
+考えてみよう。</p>
+<h2>例題: 完全数</h2>
+<p>完全数とは自分を除く約数の和が自分と等しくなる整数のこと。
+映画「博士が愛した数式」に出てくる。
+たとえば 6 の自分を除く約数は 1,2,3。 足すと6になるので6は完全数。
+そのほか28も完全数。次の完全数はいくつでしょう？できるだけ大きな完全数を見つけなさい。</p>
+<ul>
+<li>関数の名前は　is_perfect、引数は判定すべき整数 n 、戻り値は0/1で真/偽とする。</li>
+</ul>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">is_perfect</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">sum</span> <span class="o">==</span> <span class="n">n</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>sum は定義時にすぐ0に初期化するのにiは初期化しない。
+　その理由はすぐ下で1に初期化するから。</li>
+<li>return sum == n の意味、わかるか？わからない理由が難しいが、
+  日本語の能力に欠けているか、自分が何をしようとしているか見失っているんだろうな。</li>
+<li>is_perfect()を速くできるか？これはちょっと難しいかも。</li>
+</ul>
+<h2>例題: FizzBuzz</h2>
+<p>（未完）</p>
+<p>FizzBuzz ゲームをプログラムせよ。</p>
+<h2>例題: guess me!</h2>
+<p>（未完）</p>
+<ol>
+<li>0 &lt; x &lt; n の乱数をコンピュータに作らせる。</li>
+<li>人間が入力した数字とその乱数がぴったりだったら人間の勝ち。</li>
+<li>入力が違っていたら大きいか小さいかだけ、人間に知らせる。</li>
+<li>n = 100なら7回以内に当てないと人間の負け。</li>
+</ol>
+<p>真の乱数の作り方は難しい。周期の非常に長い周期関数でごまかすのが普通だ。</p>
+<div class="codehilite"><pre><span class="err">乱数をごかますプログラム</span>
+</pre></div>
+
+
+<p>あとは任せた。</p>
+<p>人間とコンピュータの役割を逆にしたプログラムも作ってみよう。</p>
+<h2>例題: 100言ったら負けゲーム</h2>
+<p>（未完）</p>
+<h2>戻り値や引数が void とは？</h2>
+<p>（未完）</p>
+<p>void は ''I have nothing to do.'' の nothing と同じ意味。</p>
+<p>戻り値がない関数は本来行儀が悪すぎ。</p>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
