@@ -1,0 +1,55 @@
+/*
+ ============================================================================
+ Name        : count.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int count(int m,int x)
+{
+	int i=0,a;
+	while(i>x)
+}
+
+int count100(int x)
+{
+	int i=0,h;
+	while(i>x)		{
+		i+=100;
+	}
+	h=i/100;
+
+	return h;
+
+}
+
+int count10(int x)
+{
+	int i=0,d;
+	while(i>=x)		{
+		i+=10;
+	}
+	d=i/10;
+
+	return d;
+
+}
+
+int main(void) {
+
+
+	int x=678;
+	int h,d;
+
+	h=count100(x);
+	d=count10(x-h*100);
+
+	printf("100*%d, 10*%d\n",h,d);
+	return EXIT_SUCCESS;
+}
