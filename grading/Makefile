@@ -1,26 +1,29 @@
-SQL3=/usr/bin/sqlite3
+SQL3 = /usr/bin/sqlite3
+DB   = grading.sqlite3
+
+all: create sid-jname-gid icome p_ex g_ex endterm line-trace
 
 create:
-	cat create.sql | ${SQL3} robocar-2014.db
+	cat create.sql | ${SQL3} ${DB}
 
 sid-jname-gid:
-	./sid-jname-gid.rb
+	./sid-jname-gid.rb ${DB}
 
 icome:
-	cat icome.sql |sqlite3 development.sqlite3
-	./icome.rb
+	cat icome.sql | sqlite3 development.sqlite3
+	./icome.rb ${DB}
 
 p_ex:
-	./personal_ex.rb
+	./personal_ex.rb ${DB}
 
 g_ex:
-	./group_ex.rb
+	./group_ex.rb ${DB}
 
 endterm: exam/all-by-yoshino.csv
-	./exam.rb $<
+	./exam.rb ${DB} $<
 
-l_ex: line-trace.txt
-	./line-trace.rb $<
+line-trace: line-trace.txt
+	./line-trace.rb ${DB} $<
 
 ######################
 
