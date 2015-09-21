@@ -1,4 +1,4 @@
-# 情報処理応用（ロボカー）期末試験解答見本
+# 情報処理応用（ロボカー）期末試験　解答例
 
 ````c
 #include <stdio.h>
@@ -65,7 +65,7 @@ int max(int a[], int n)
 // 7 --------------------
 int D(int a, int b, int c)
 {
-  return b * b - 4 * a * c >= 0;
+  return b * b- 4 * a * c >= 0;
 }
 
 // 8 --------------------
@@ -106,7 +106,64 @@ int count(void)
   return ret;
 }
 
-//--------------------------------------
+// 以下、火曜日追加分
+// --------------------
+int f_is_over(int m)
+{
+  int i;
+
+  for (i=1; ;i++) {
+    if (factorial(i) > m) {
+      break;
+    }
+  }
+  return i;
+}
+
+// --------------------
+int dsum(int n)
+{
+  int i;
+  int sum = 0;
+  for (i=1;i<n;i++) {
+    if (n % i == 0) {
+      sum += i;
+    }
+  }
+  return sum;
+}
+
+// --------------------
+void perfects(int n)
+{
+  int i;
+
+  for(i=1; i<=n; i++) {
+    if (dsum(i) == i) {
+      printf("%d ",i);
+    }
+  }
+  printf("\n");
+}
+
+// --------------------
+int same_digits(int n)
+{
+  int digit;
+
+  digit= n % 10;
+  while (1) {
+    if (n == 0) {
+      return 1;
+    } else if (n % 10 == digit) {
+      n /=10 ;
+    } else {
+      return 0;
+    }
+  }
+}
+// --------------------
+
 int main(void)
 {
   int a[] = {73, 26, 38, 43, 67, 91, 14};
@@ -122,7 +179,16 @@ int main(void)
   printf(" 9, %d\n", factorial(6));
   printf("10, %d\n", count());
 
+  printf("factorialof %d > 2000000\n", f_is_over(2000000));
+
+  printf("dsum(28): %d\n", dsum(28));
+  perfects(1000);
+
+  printf("same digits? %d\n", same_digits(999999));
+  printf("same digits? %d\n", same_digits(998999));
+
   return 0;
 }
 ````
+
 以上。

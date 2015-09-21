@@ -10,6 +10,7 @@ install:
 		--exclude='*.md' \
 		. ${HOST}:${BASE}
 	@echo "don't forget to chmod length/ for cgi call."
+	@echo "don't forget to chown/chmod 2014-expressions.html."
 
 2013-2014:
 	gsed -i.bak \
