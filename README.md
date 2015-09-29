@@ -1,10 +1,10 @@
-# robocar-2014
+# robocar-2015
 
-情報応用（ロボカー）2014 授業資料リポジトリ
+情報応用（ロボカー）2015 授業資料リポジトリ
 
 ## Prerequisites
 
-Ruby 2.1, Rails 3.2.3
+Ruby 1.9.3, Rails 3.2.3
 
 ## Running
 
